@@ -1,0 +1,49 @@
+%\documentclass[]{report}
+%\usepackage[ngerman]{babel}
+%\usepackage{hyphenat}
+%\hyphenation{Mathe-matik wieder-gewinnen}
+
+
+
+% Title Page
+%\title{Ingenieurmäßige Arbeit}
+%\author{Eshan Savla}
+
+
+%\begin{document}
+%\maketitle
+
+%\begin{abstract}
+%\end{abstract}
+
+%\tableofcontents
+%\vspace{2cm}
+
+%\chapter{Einleitung}
+%Industrieroboter werden primär in der Industrie für die Aufgabe der Handhabung, Montage oder Verarbeitung von Werkstücken und Teile eingesetzt. Häufig finden Industrieroboter als Schweißroboter, Lackierroboter oder Montageroboter Anwendung. Diese Art der Roboter sind meistens nicht autonom und müssen bei Bedarf für ihre Aufgabenausführung an neuen Produkte oder Werkstücke angepasst und umprogrammiert werden.
+
+
+%\end{document}          
+
+
+\input{Peripherie/documentclass}
+\input{Peripherie/Packages}
+\input{Peripherie/Meta}
+\input{Peripherie/Einstellungen}
+
+\begin{document}
+	\include{Kapitel/Titelseite}
+	\pagenumbering{Roman}
+	%\include{Kapitel/Eid}
+	\include{Kapitel/Abstrakt}
+	\include{Kapitel/Verzeichnisse}
+	
+	\pagenumbering{arabic}
+%	\include{Kapitel/Einleitung}
+%	\include{Kapitel/Grundlagen}
+	\include{Kapitel/Methodik}
+%	\include{Kapitel/Stand_der_Technik}
+%	\include{Kapitel/FazitundAusblick}
+	\printbibliography
+%	\include{Kapitel/Anhang}
+\end{document}

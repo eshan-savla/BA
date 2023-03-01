@@ -1,0 +1,288 @@
+\appendix
+\chapter{Codeausschnitte}
+\section{processit\textunderscore detection}
+\subsection{Abstraktion der Nahterkennung} \label{a:abstraktion_nahterkennung}
+\begin{lstlisting}[language=Python, columns=fullflexible, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}]
+class GeometricFeatureDetector():
+	"""Abstract class to be inherited by concrete implementations of detectors"""
+	
+	def __init__(self, config, transform):
+		"""Initialise base class and parameters
+		Args:
+		config: dataclass containing configuration information
+		transform: transformation from TCP to Sensor
+		"""
+		...
+	
+	def process(self, points):
+		"""Abstract method to process laser scans during movement
+		Args:
+		points: data points from laser sensor
+		"""
+		...
+		
+	def evaluate(self):
+		"""Abstract method to evaluate seam location"""
+		...
+		
+class FilletWeldFinder(GeometricFeatureDetector):
+	"""Class to detec fillet weld seam"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Initialiser for class. Inherits from parent class"""
+		super().__init__(*args, **kwargs)
+		...
+		
+	def process(self, points):
+		"""specific method to process scans of fillet weld seam"""
+		...
+		
+	def evaluate(self):
+		"""specific method to evaluate location of fillet weld seam"""
+		...
+		
+class SquareButtWeldFinder(GeometricFeatureDetector):
+	"""Class to detect butt weld seam"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__(*args, **kwargs)
+		...
+		
+	def process(self, points):
+		"""specific method to process scans of square butt weld seam"""
+		...
+		
+	def evaluate(self):
+		"""specific method to evaluate location of square butt weld 	seam"""
+		...
+		
+class ToolPathFinder(GeometricFeatureDetector):
+	"""Class to detect tool path"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__(*args, **kwargs)
+		...
+		
+	def process(self, points):
+		"""specific method to process scans to find tool path"""
+		...
+		
+	def evaluate(self):
+		"""specific method to evaluate and localise tool path"""
+		...
+
+\end{lstlisting}
+%TODO: ask if comments in english or german
+
+\section{processit\textunderscore adapt}
+\subsection{Abstraktion des TaskAppliers}
+\begin{lstlisting}[language=Python, columns=fullflexible, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}]
+
+class TaskApplierBase:
+"""Abstract base class to be implemented by each of the different TaskAppliers"""
+
+	def __init__(self, mode, config):
+		"""Initialises base class and parameters
+		
+		Args:
+			mode: int signifying if running in simulated mode or on real hardware
+			config: dataclass containing configuration information
+		"""
+		...
+		
+	def taskInitialize(self, param):
+		""" Abstract method to initialise the task with necessary parameters
+		Args:
+			param: dataclass containing parameters for the process
+		"""
+		...
+		
+	def taskApproach(self):
+		"""Abstract method to make robot endeffector do first apporach to workpiece"""
+		...
+		
+	def taskMain(self):
+		"""Abstract method to start main task of robot"""
+		...
+		
+	def taskExit(self):
+		"""Abstract method to end task"""
+		...
+		
+class OnlineFollower(TaskApplierBase):
+	"""Concrete implementation of base class for online weld seam following"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def taskInitialize(self, param):
+		"""Implementation of abstract method to initialise online following task with process parameters"""
+		...
+		
+	def taskApproach(self):
+		"""Implementation of abstract method to approach workpiece and do initial measurement scan of weld seam"""
+		...
+		
+	def taskMain(self):
+		"""Implementation of abstract method to run the main task of robot while recognising contour of weld seam online"""
+		...
+		
+	def taskExit(self):
+		"""Implementation of abstract method to exit online following task"""
+		...
+		
+class ScanPlanner(TaskApplierBase):
+	"""Concrete implementation of base class for offline weld seam following"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def taskInitialize(self, param):
+		"""Implementation of abstract method to initalise offline weld seam following with process parameters"""
+		...
+	
+	def taskApproach(self):
+		"""Implementation of abstract method to scan and detect entire weld seam"""
+		...
+		
+	def taskMain(self):
+		"""Implementation of abstract method to run main task offline after localising weld seam"""
+		...
+		
+	def taskExit(self):
+		"""Implementation of abstract method to exit offline following task"""
+		...
+		
+class ToolPathFollower(TaskApplierBase):
+	"""Concrete implementation of base class to follow preset offline toolpath"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def taskInitialize(self, param):
+		"""Implementation of abstract method to initialise offline toolpath following with process parameters"""
+		...
+		
+	def taskApproach(self):
+		"""Implementation of abstract method to approach and localise offline toolpath"""
+		...
+		
+	def taskMain(self):
+		"""Implementation of abstract method to run main task after localising toolpath"""
+		...
+		
+	def taskExit(self):
+		"""Implementation of abstract method to exit toolpath following"""
+		...
+		
+class Calibrator(TaskApplierBase):
+	"""Concrete implementation of base class to calibrate laser sensor"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initialiser. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def taskInitialize(self, param):
+		"""Implementation of abstract method to intialise sensor calibration with process parameters"""
+		...
+		
+	def taskApproach(self):
+		"""Implementation of abstract method to perform plane calibration of sensor"""
+		...
+		
+	def taskMain(self):
+		"""Implementation of abstract method to perform sphere calibration of sensor"""
+		...
+		
+	def taskExit(self):
+		"""Implementation of abstract method to exit calibration task"""
+		...
+	
+\end{lstlisting}
+
+\subsection{Abstraktion des Bahngenerators}
+\begin{lstlisting}[language=Python, columns=fullflexible, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}]
+
+class PathGeneratorBase:
+	"""Abstract base class implemented by each variant of path generator"""
+	
+	def __init__(self, config):
+		"""Initialises base class and parameters
+
+		Args:
+			config: dataclass containing configuration information
+		"""
+		...
+	
+	def calculatePoses(self, position, orientations, **kwargs):
+		"""abstract method to calculate poses of points recognised by detectors
+		
+		Args:
+			position: array of position data of points
+			orientaton: array of orientation data of points
+		"""
+		...
+		
+class OnlinePathGenerator(PathGeneratorBase):
+	"""Concrete implementation of base class to calculate pose during online path following"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initializer. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def calculatePoses(self, positions, orientations, **kwargs):
+		"""Implementation of abstract method to calculate pose of points detected during online path following"""
+		...
+		
+Class OfflinePathGenerator(PathGeneratorBase):
+	"""Concrete implementation of base class to calculate of pose during offline path following"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initializer. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def calculatePoses(self, positions, orientations, **kwargs):
+		"""Implementation of abstract method to calculate pose of points after weld seam detection in offline path following"""
+		...
+		
+class ToolPathGenerator(PathGeneratorBase):
+	"""Concrete implementation of base class to calculate pose during offline tool path following"""
+	
+	def __init__(self, *args, **kwargs):
+		"""Class initializer. Inherits from parent class"""
+		super().__init__()
+		...
+		
+	def calculatePoses(self, positions, orientations, **kwargs):
+		"""Implementation of abstract method to calculate pose of points detected in tool path following"""
+		...
+
+\end{lstlisting}
+\chapter{Abbildungen}
+\section{Programmabläufe}
+
+\subsection{Detailablauf von processit} \label{a:processit_detailablauf}
+
+\begin{figure}[h!]
+	\includegraphics[width = \textwidth]{Abbildungen/architecture_detail.png}
+	\centering
+	\caption{Detaillierter Ablaufplan des processit-Programms}
+\end{figure}
+\subsection{Legende} \label{a:legende}
+
+\begin{figure}[h!]
+	\includegraphics{Abbildungen/legend.png}
+	\centering
+	\caption{Legende zur Interpretation der Programmablaufbilder}
+\end{figure}
