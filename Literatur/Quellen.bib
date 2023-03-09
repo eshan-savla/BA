@@ -1,628 +1,178 @@
 
-@book{maier2016grundlagen,
-	title={Grundlagen der Robotik},
-	author={Maier, Helmut},
-	year={2016},
-	isbn={9783800739448},
-	pages={36, 112},
-	publisher={VDE Verlag GmbH},
+@thesis{savla_intelligente_2022,
+	location = {Dortmund, Deutschland},
+	title = {Die intelligente Schweißrobotik},
+	abstract = {Industrieroboter finden bislang eine breite Anwendung in Großunternehmen, insbe-
+sondere in der Produktion. Herkömmliche Industrieroboter lohnen sich meistens
+nicht für kleine und mittelständische Unternehmen, da sie nur in kleinen Los-
+größen fertigen. Um die Anforderungen dieser Unternehmen zu erfüllen, müssen
+Robotersysteme flexibler und intelligenter werden, um Werkstücke schnell und kos-
+tengünstig fertigen zu können. Diese Arbeit hat das Ziel, die Anforderungen eines
+solchen Systems herauszufinden. Hierfür wird ein kollaborierendes, intelligentes
+Robotersystem für das sensorgestützte Schweißen in kleinen Losgrößen vorgestellt.
+Das System wird in seiner Hardware- und Softwarekomponenten zerlegt, sodass
+die Einzelteile genauer untersucht werden können. Neben einem kollaborierenden
+Schweißroboter werden die anderen Elemente - ein Laserliniensensor, Schweißgeräte
+und Sicherheitseinrichtungen vorgestellt und ihrer Funktionen klargelegt. Danach
+wird die Software zur automatischen Erkennung der Schweißnaht analysiert und
+ihr Funktionsprinzip erklärt. Letztlich wird über die Software- und Hardwarelimi-
+tationen, sowie künftige Einsatzmöglichkeiten sowie Verbesserungspotenziale dieses
+Systems diskutiert.},
+	pagetotal = {74},
+	institution = {Fachhochschule Dortmund},
+	type = {Belegarbeit},
+	author = {Savla, Eshan},
+	date = {2022-09-15},
+	file = {Savla - 2022 - Die intelligente Schweißrobotik.pdf:/home/eshan/Zotero/storage/DW2I93K3/Savla - 2022 - Die intelligente Schweißrobotik.pdf:application/pdf},
 }
 
-@article{Bierfreund+2008+135+140,
-	author = {Barbara Bierfreund},
-	doi = {doi:10.1515/arbeit-2008-0208},
-	url = {https://doi.org/10.1515/arbeit-2008-0208},
-	title = {Entlernen und Neulernen: Herausforderungen bei der Entwicklung einer neuen Generation von Industrierobotern für kleine und mittelständische Unternehmen (KMU)},
-	journal = {Arbeit},
-	number = {2},
-	volume = {17},
-	year = {2008},
-	pages = {135--140},
-	lastchecked = {2022-07-23},
+@article{bazazian_edc-net_2021,
+	title = {{EDC}-Net: Edge Detection Capsule Network for 3D Point Clouds},
+	volume = {11},
+	rights = {http://creativecommons.org/licenses/by/3.0/},
+	issn = {2076-3417},
+	url = {https://www.mdpi.com/2076-3417/11/4/1833},
+	doi = {10.3390/app11041833},
+	shorttitle = {{EDC}-Net},
+	abstract = {Edge features in point clouds are prominent due to the capability of describing an abstract shape of a set of points. Point clouds obtained by 3D scanner devices are often immense in terms of size. Edges are essential features in large scale point clouds since they are capable of describing the shapes in down-sampled point clouds while maintaining the principal information. In this paper, we tackle challenges of edge detection tasks in 3D point clouds. To this end, we propose a novel technique to detect edges of point clouds based on a capsule network architecture. In this approach, we define the edge detection task of point clouds as a semantic segmentation problem. We built a classifier through the capsules to predict edge and non-edge points in 3D point clouds. We applied a weakly-supervised learning approach in order to improve the performance of our proposed method and built in the capability of testing the technique in wider range of shapes. We provide several quantitative and qualitative experimental results to demonstrate the robustness of our proposed {EDC}-Net for edge detection in 3D point clouds. We performed a statistical analysis over the {ABC} and {ShapeNet} datasets. Our numerical results demonstrate the robust and efficient performance of {EDC}-Net.},
+	pages = {1833},
+	number = {4},
+	journaltitle = {Applied Sciences},
+	author = {Bazazian, Dena and Parés, M. Eulàlia},
+	urldate = {2023-03-07},
+	date = {2021-01},
+	langid = {english},
+	note = {Number: 4
+Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {capsule networks, edge detection, point clouds},
+	file = {Full Text PDF:/home/eshan/Zotero/storage/HDEBMGUZ/Bazazian and Parés - 2021 - EDC-Net Edge Detection Capsule Network for 3D Poi.pdf:application/pdf},
 }
 
-@book{glaser2008industrial,
-	title={Industrial Robotics},
-	author={Glaser, Andrew},
-	edition={1},
-	pages={3--10},
-	year={2008},
-	publisher={Industrial Press},
+@inproceedings{rachmadi_road_2017,
+	title = {Road edge detection on 3D point cloud data using Encoder-Decoder Convolutional Network},
+	doi = {10.1109/KCIC.2017.8228570},
+	abstract = {The demand of High Definition Maps ({HD}-Maps) has been increasing, especially for autonomous vehicle application. Usually, {HD}-Map is created by scanning the road using {LiDAR} sensor and reconstructing the road on 3D world to capture all aspects of road properties. One of the important properties of a road is its edge or boundary. In this paper, we propose end-to-end 3D Encoder-Decoder Convolutional Network (3D-{EDCN}) for road edge detection on 3D point cloud data produced by {LiDAR} sensor. Our 3D-{EDCN} classifier consists of nine convolutional layers and three deconvolutional layers. For simplification, we use 3D voxel format as input and output of the classifier. Our proposed method was tested using our own 3D point cloud dataset which taken from {LiDAR} equipment and consisting of 103 3D point cloud data with their respective road edge ground truth. In the training process, we use combinations of Cross-Entropy loss function and Euclidean loss function to help our model converged. As a preliminary result, our proposed 3D-{EDCN} classifier achieves Mean Square Error ({MSE}) of 2.738×10-5, precision of 0.37262, and recall of 0.14432.},
+	eventtitle = {2017 International Electronics Symposium on Knowledge Creation and Intelligent Computing ({IES}-{KCIC})},
+	pages = {95--100},
+	booktitle = {2017 International Electronics Symposium on Knowledge Creation and Intelligent Computing ({IES}-{KCIC})},
+	author = {Rachmadi, Reza Fuad and Uchimura, Keiichi and Koutaki, Gou and Ogata, Kohichi},
+	date = {2017-09},
+	keywords = {Autonomous automobiles, Convolutional codes, Image edge detection, Laser radar, Roads, Three-dimensional displays, Training},
+	file = {IEEE Xplore Abstract Record:/home/eshan/Zotero/storage/KDXD4HX9/8228570.html:text/html;IEEE Xplore Full Text PDF:/home/eshan/Zotero/storage/C5ZSJNU5/Rachmadi et al. - 2017 - Road edge detection on 3D point cloud data using E.pdf:application/pdf},
 }
 
-@article{MeyerChristian2007RaSd,
-	series = {Automation \& Drives: Vorsprung Automation. - München: Publish-Industry Verlag. - 1618-2898. - (2007) Select Robotik \& Automation},
-	abstract = {Roboter erschließen neue Märkte und Anwendungen. Sie werden ihre Rolle als Schrittmacher der Produktion aus der Großserienfertigung in neue Bereiche tragen, etwa in die Fertigung von KMUs. Die notwendigen Entwicklungen werden vorangetrieben: neue, intelligente Prozesse werden mit dem Roboter durchgeführt, Umsetzungen auch von Prozessen mit "Fingerspitzengefühl" werden mit den passenden Sensor-/Aktorregelkreisen prozesssicher aufgebaut. Die Flexibilität steigt mit neuen Methoden der Offline- und Online-Programmierung, etwa für Rapid-Prototyping-Anwendungen oder die intuitive Programmierung in der Kleinserienfertigung.},
-	volume = {Select Robotik \& Automation},
-	year = {2007},
-	title = {Roboter als Schrittmacher der Produktion : Aktuelle Entwicklungen der Industrierobotik für heute und morgen},
-	language = {Deutsch},
-	author = {Meyer, Christian and Hägele, Martin},
-	keywords = {Industrieroboter; Roboter; Markt; Automatisierung; Flexibilität; Kleine und mittlere Unternehmen KMU},
+@article{himeur_pcednet_2021,
+	title = {{PCEDNet}: A Lightweight Neural Network for Fast and Interactive Edge Detection in 3D Point Clouds},
+	volume = {41},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/3481804},
+	doi = {10.1145/3481804},
+	shorttitle = {{PCEDNet}},
+	abstract = {In recent years, Convolutional Neural Networks ({CNN}) have proven to be efficient analysis tools for processing point clouds, e.g., for reconstruction, segmentation, and classification. In this article, we focus on the classification of edges in point clouds, where both edges and their surrounding are described. We propose a new parameterization adding to each point a set of differential information on its surrounding shape reconstructed at different scales. These parameters, stored in a Scale-Space Matrix ({SSM}), provide a well-suited information from which an adequate neural network can learn the description of edges and use it to efficiently detect them in acquired point clouds. After successfully applying a multi-scale {CNN} on {SSMs} for the efficient classification of edges and their neighborhood, we propose a new lightweight neural network architecture outperforming the {CNN} in learning time, processing time, and classification capabilities. Our architecture is compact, requires small learning sets, is very fast to train, and classifies millions of points in seconds.},
+	pages = {10:1--10:21},
+	number = {1},
+	journaltitle = {{ACM} Transactions on Graphics},
+	shortjournal = {{ACM} Trans. Graph.},
+	author = {Himeur, Chems-Eddine and Lejemble, Thibault and Pellegrini, Thomas and Paulin, Mathias and Barthe, Loic and Mellado, Nicolas},
+	urldate = {2023-03-07},
+	date = {2021-11-10},
+	keywords = {edge detection, datasets, energy efficiency, low resource computing, neural networks, Point clouds processing},
+	file = {Full Text PDF:/home/eshan/Zotero/storage/GEC8FXJX/Himeur et al. - 2021 - PCEDNet A Lightweight Neural Network for Fast and.pdf:application/pdf},
 }
 
-@article{HägeleMartinFraunhoferIPA2016SfdP,
-	series = {IEE: Industrie Engineering Effizienz: Automatisierung. Wissen. Auf den Punkt.. - Heidelberg: Hüthig. - 1434-2898. - 61},
-	abstract = {Aufwendig gesicherte Industrieroboter für die Großserienproduktion? Kein unbedingtes Muss: Am Fraunhofer IPA entstehen Technologiebausteine und Anwendungen, mit denen auch kleine und mittelständische Unternehmen ihre Produktion flexibel automatisieren können.},
-	volume = {Nr. 7},
-	year = {2016},
-	title = {Schlüsselkomponente für die Produktion : Intelligente Roboter, auch für KMU},
-	language = {Deutsch},
-	author = {Hägele, Martin },
-	editor = {Fraunhofer IPA},
-	keywords = {Industrieroboter; Leichtbauroboter; Kleine und mittlere Unternehmen KMU; Sensorik; Cyber-Physisches System CPS; Industrie 4.0; Navigation; Mensch-Roboter-Kooperation MRK; Bin-Picking},
+@article{mineo_novel_2019,
+	title = {Novel algorithms for 3D surface point cloud boundary detection and edge reconstruction},
+	volume = {6},
+	issn = {2288-5048},
+	url = {https://doi.org/10.1016/j.jcde.2018.02.001},
+	doi = {10.1016/j.jcde.2018.02.001},
+	abstract = {Tessellated surfaces generated from point clouds typically show inaccurate and jagged boundaries. This can lead to tolerance errors and problems such as machine judder if the model is used for ongoing manufacturing applications. This paper introduces a novel boundary point detection algorithm and spatial {FFT}-based filtering approach, which together allow for direct generation of low noise tessellated surfaces from point cloud data, which are not based on pre-defined threshold values. Existing detection techniques are optimized to detect points belonging to sharp edges and creases. The new algorithm is targeted at the detection of boundary points and it is able to do this better than the existing methods. The {FFT}-based edge reconstruction eliminates the problem of defining a specific polynomial function order for optimum polynomial curve fitting. The algorithms were tested to analyse the results and measure the execution time for point clouds generated from laser scanned measurements on a turbofan engine turbine blade with varying numbers of member points. The reconstructed edges fit the boundary points with an improvement factor of 4.7 over a standard polynomial fitting approach. Furthermore, through adding artificial noise it has been demonstrated that the detection algorithm is very robust for out-of-plane noise lower than 25\% of the cloud resolution and it can produce satisfactory results when the noise is lower than 75\%.{HighlightsIntroducing} novel boundary point detection algorithm and spatial {FFT}-based filtering approach.Enabling reliable detection of boundary points and smooth boundary reconstruction.{FFT}-based edge reconstruction works better than polynomial curve fitting.Optimally smoothed edges facilitate the direct use of tessellated models for {CAM} tasks.The new detection algorithm tolerates out-of-plane noise.The reconstructed edges fit well the detected boundary points.},
+	pages = {81--91},
+	number = {1},
+	journaltitle = {Journal of Computational Design and Engineering},
+	shortjournal = {Journal of Computational Design and Engineering},
+	author = {Mineo, Carmelo and Pierce, Stephen Gareth and Summan, Rahul},
+	urldate = {2023-03-07},
+	date = {2019-01-01},
+	file = {Full Text PDF:/home/eshan/Zotero/storage/7QQNVDTF/Mineo et al. - 2019 - Novel algorithms for 3D surface point cloud bounda.pdf:application/pdf;Snapshot:/home/eshan/Zotero/storage/PSBJ7ZII/5715592.html:text/html},
 }
 
-@book {maier2022grundlagen, 
-	title = {Grundlagen der Robotik},
-	author = {Maier, Helmut},
-	isbn = {9783800757008},
-	year = {2022},
-	edition = {3},
-	pages={64-68, 113-117},
-	keywords = {Programmierung, Kinematik, Roboter, Sensor, Humanoide},
-	publisher = {VDE Verlag},
-	language = {ger},
+@misc{ahmed_edge_2018,
+	title = {Edge and Corner Detection for Unorganized 3D Point Clouds with Application to Robotic Welding},
+	url = {http://arxiv.org/abs/1809.10468},
+	abstract = {In this paper, we propose novel edge and corner detection algorithms for unorganized point clouds. Our edge detection method evaluates symmetry in a local neighborhood and uses an adaptive density based threshold to differentiate 3D edge points. We extend this algorithm to propose a novel corner detector that clusters curvature vectors and uses their geometrical statistics to classify a point as corner. We perform rigorous evaluation of the algorithms on {RGB}-D semantic segmentation and 3D washer models from the {ShapeNet} dataset and report higher precision and recall scores. Finally, we also demonstrate how our edge and corner detectors can be used as a novel approach towards automatic weld seam detection for robotic welding. We propose to generate weld seams directly from a point cloud as opposed to using 3D models for offline planning of welding paths. For this application, we show a comparison between Harris 3D and our proposed approach on a panel workpiece.},
+	number = {{arXiv}:1809.10468},
+	publisher = {{arXiv}},
+	author = {Ahmed, Syeda Mariam and Tan, Yan Zhi and Chew, Chee Meng and Mamun, Abdullah Al and Wong, Fook Seng},
+	urldate = {2023-03-07},
+	date = {2018-09-27},
+	eprinttype = {arxiv},
+	eprint = {1809.10468 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	file = {arXiv Fulltext PDF:/home/eshan/Zotero/storage/LTCYUHQV/Ahmed et al. - 2018 - Edge and Corner Detection for Unorganized 3D Point.pdf:application/pdf;arXiv.org Snapshot:/home/eshan/Zotero/storage/R8ICHNQF/1809.html:text/html},
 }
 
-@online{morris2022, 
-	title={Tesla could have a working humanoid robot by September 2022}, url={https://www.forbes.com/sites/jamesmorris/2022/06/04/tesla-could-have-a-working-humanoid-robot-by-september-2022/}, 
-	journal={Forbes}, 
-	publisher={Forbes Magazine}, 
-	author={Morris, James},
-	year={2022}, 
-	month={6},
-} 
-
-@book{HesseStefan2018SFDP,
-	publisher = {Springer Fachmedien Wiesbaden GmbH},
-	title = {Sensoren Für Die Prozess- und Fabrikautomation: Funktion - Ausführung - Anwendung},
-	year = {2018},
-	abstract = {Das inhaltlich erweiterte und in Praxis wie Ausbildung gut aufgenommene Buch bietet einen Uberblick uber physikalische Grundlagen und Funktionen von Sensoren in der Fabrikautomation. Es ist nach Aufgaben von Sensoren gegliedert und zeigt an vielen Beispielen Wirkungsweise und Anwendung, auch in der Robotik. Fur Begriffe der Sensorik wird die englische Ubersetzung angegeben. Im Minilexikon werden 264 Fachtermini erklart.},
-	author = {Hesse, Stefan and Schnell, Gerhard},
-	address = {Wiesbaden},
-	booktitle = {Sensoren Für Die Prozess- und Fabrikautomation},
-	copyright = {Springer Fachmedien Wiesbaden GmbH, ein Teil von Springer Nature 2018},
-	edition = {7., korr. und verb. Aufl. 2018},
-	isbn = {9783658211721},
-	keywords = {Automation ; Circuits and Systems ; Control, Robotics, Mechatronics ; Electronics and Microelectronics, Instrumentation ; Engineering ; Engineering design ; Industrial engineering},
-	language = {ger ; eng},
+@article{ni_edge_2016,
+	title = {Edge Detection and Feature Line Tracing in 3D-Point Clouds by Analyzing Geometric Properties of Neighborhoods},
+	volume = {8},
+	rights = {http://creativecommons.org/licenses/by/3.0/},
+	issn = {2072-4292},
+	url = {https://www.mdpi.com/2072-4292/8/9/710},
+	doi = {10.3390/rs8090710},
+	abstract = {This paper presents an automated and effective method for detecting 3D edges and tracing feature lines from 3D-point clouds. This method is named Analysis of Geometric Properties of Neighborhoods ({AGPN}), and it includes two main steps: edge detection and feature line tracing. In the edge detection step, {AGPN} analyzes geometric properties of each query point’s neighborhood, and then combines {RANdom} {SAmple} Consensus ({RANSAC}) and angular gap metric to detect edges. In the feature line tracing step, feature lines are traced by a hybrid method based on region growing and model fitting in the detected edges. Our approach is experimentally validated on complex man-made objects and large-scale urban scenes with millions of points. Comparative studies with state-of-the-art methods demonstrate that our method obtains a promising, reliable, and high performance in detecting edges and tracing feature lines in 3D-point clouds. Moreover, {AGPN} is insensitive to the point density of the input data.},
+	pages = {710},
+	number = {9},
+	journaltitle = {Remote Sensing},
+	author = {Ni, Huan and Lin, Xiangguo and Ning, Xiaogang and Zhang, Jixian},
+	urldate = {2023-03-07},
+	date = {2016-09},
+	langid = {english},
+	note = {Number: 9
+Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {3D edge, Angular gap, Edge detection, Feature line tracing, {RANdom} {SAmple} Consensus ({RANSAC})},
+	file = {Full Text PDF:/home/eshan/Zotero/storage/PBYQ4FLN/Ni et al. - 2016 - Edge Detection and Feature Line Tracing in 3D-Poin.pdf:application/pdf},
 }
 
-
-@inbook{DomingoGeorge2007,
-	
-	publisher = {John Wiley \& Sons, Ltd},
-	isbn = {9781119597124},
-	title = {Diode Applications},
-	booktitle = {Semiconductor Basics},
-	author = {Domingo, George},
-	chapter = {7},
-	pages = {105-116},
-	doi = {https://doi.org/10.1002/9781119597124.ch7},
-	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119597124.ch7},
-	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781119597124.ch7},
-	year = {2020},
-	keywords = {clamping circuit, current protection circuit, diode applications, half-wave voltage doubler, rectifiers, Schottky diodes, solar cells bypass diodes, voltage clipper, Zener diodes},
-	abstract = {Summary This chapter discusses a number of applications of diodes, starting from solar cells to rectifiers to a variety of other uses such as voltage doublers, surge protectors, and others. All these devices use only pn-junctions. Common uses of a diode include a reversed current protection circuit, clamping circuit, voltage doubler, and a voltage clipper which ensures that the voltage does not exceed a certain value. Solar panels are connected in series to increase their total voltage and in parallel to get more power; diodes are used to bypass damaged solar cells. Schottky diodes have the advantage of a very low turn-on voltage and very fast switching speeds, nanoseconds instead of microseconds for standard semiconductor diodes. The main advantage of Zener diodes over regular semiconductor diodes is that they can be designed to have a very specific, controlled reversed voltage and can operate in reversed breakdown mode without burning up.},
+@inproceedings{choi_rgb-d_2013,
+	title = {{RGB}-D edge detection and edge-based registration},
+	doi = {10.1109/IROS.2013.6696558},
+	abstract = {We present a 3D edge detection approach for {RGB}-D point clouds and its application in point cloud registration. Our approach detects several types of edges, and makes use of both 3D shape information and photometric texture information. Edges are categorized as occluding edges, occluded edges, boundary edges, high-curvature edges, and {RGB} edges. We exploit the organized structure of the {RGB}-D image to efficiently detect edges, enabling near real-time performance. We present two applications of these edge features: edge-based pair-wise registration and a pose-graph {SLAM} approach based on this registration, which we compare to state-of-the-art methods. Experimental results demonstrate the performance of edge detection and edge-based registration both quantitatively and qualitatively.},
+	eventtitle = {2013 {IEEE}/{RSJ} International Conference on Intelligent Robots and Systems},
+	pages = {1568--1575},
+	booktitle = {2013 {IEEE}/{RSJ} International Conference on Intelligent Robots and Systems},
+	author = {Choi, Changhyun and Trevor, Alexander J. B. and Christensen, Henrik I.},
+	date = {2013-11},
+	note = {{ISSN}: 2153-0866},
+	keywords = {Image edge detection, Three-dimensional displays, Computational modeling, Iterative closest point algorithm, Shape, Simultaneous localization and mapping},
+	file = {IEEE Xplore Abstract Record:/home/eshan/Zotero/storage/BUQLHD3L/6696558.html:text/html;IEEE Xplore Full Text PDF:/home/eshan/Zotero/storage/VGK9RWP6/Choi et al. - 2013 - RGB-D edge detection and edge-based registration.pdf:application/pdf},
 }
 
-@book{Hooshang2004,
-	Abstract = {Optical communications technology is growing increasingly in importance, with a rapid pace of development. Innovative optical devices have emerged from the integration of semiconductor laser diodes, amplifiers and filters with optical waveguide technology. This well-researched volume traces the evolution of semiconductor laser amplifiers (SLAs) from these technologies. Focusing on the principle applications of SLAs, the author illustrates the growing importance of these functional components in the future of optical communications systems.This book will provide engineering and science students with a basic understanding of laser diode and optical amplification through the analysis of the performance characteristics of these devices both in theory and application. Practising device engineers wishing to consolidate their knowledge in lightwave technology will also find this book an invaluable reference.},
-	Author = {Hooshang, Ghafouri-shiraz},
-	ISBN = {9781860943393},
-	Publisher = {Imperial College Press},
-	Title = {Principles Of Semiconductor Laser Diodes And Amplifiers: Analysis And Transmission Line Laser Modeling.},
-	URL = {https://widgets.ebscohost.com/prod/customerspecific/s9218820/vpn/vpn_fhdo.php?url=https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=105163&lang=de&site=eds-live&scope=site},
-	Year = {2004},
-}
-
-@inbook{PeterWEpperlein20013,
-	
-	publisher = {John Wiley \& Sons, Ltd},
-	isbn = {9781118481882},
-	title = {Basic Diode Laser Engineering Principles},
-	booktitle = {Semiconductor Laser Engineering, Reliability and Diagnostics},
-	author = {Epperlein, Peter W.},
-	chapter = {1},
-	pages = {3-100},
-	doi = {https://doi.org/10.1002/9781118481882.ch1},
-	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118481882.ch1},
-	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118481882.ch1},
-	year = {2013},
-	keywords = {diode laser engineering principles, electrical characteristics, laser fabrication technology, lasing wavelength-dependent applications, optical characteristics, optical output power, temperature characteristics},
-	abstract = {Summary This chapter on basic diode laser engineering principles starts with a brief recap of the fundamental aspects and elements of diode lasers, including relevant features of the standard device types, with an emphasis on the advantages of quantum heterostructures for their effective use as active regions in the lasers. Then, it discusses common laser material systems along with lasing wavelength-dependent applications and best output power levels achieved in each individual high-power diode laser category for illustration and comparison. The chapter also explains various aspects of high-power issues, including power-limiting factors and reliability tradeoffs. Key electrical, optical and thermal parameters and characteristics are described to develop a good understanding of diode laser operation. The chapter concludes with a description of the basic aspects of diode laser fabrication and packaging technologies including laser wafer growth, processing, and packaging. Controlled Vocabulary Terms diode lasers; electric variables; microfabrication; temperature control},
-}
-
-@Inbook{Hering2018,
-	author={Hering, Ekbert
-		and Sch{\"o}nfelder, Gert},
-	editor={Hering, Ekbert
-		and Sch{\"o}nfelder, Gert},
-	title={Geometrische Gr{\"o}{\ss}en},
-	bookTitle={Sensoren in Wissenschaft und Technik: Funktionsweise und Einsatzgebiete},
-	year={2018},
-	publisher={Springer Fachmedien Wiesbaden},
-	address={Wiesbaden},
-	pages={127--327},
-	abstract={In den folgenden Abschnitten werden Weg- und Abstandsensoren mit verschiedenen physikalischen Wirkprinzipien vorgestellt. Wegsensoren unterscheiden sich von Abstandsensoren dadurch, dass sie ein positionsgebendes Element besitzen. Dies kann beispielsweise ein Magnet sein, der fest mit dem bewegten Teil verbunden ist und dessen lineare Verschiebung gemessen werden soll. Abstandsensoren dagegen messen die Entfernung zwischen der aktiven Fl{\"a}che des Sensors und einem Target, das mit gewissen Einschr{\"a}nkungen beliebiger Natur sein kann. Man spricht hier von einem nicht kooperativen Target. Beispiele finden sich im Werkst{\"u}ck- Handling durch Roboter. Durch eine Abstandsmessung auf das zu greifende Teil k{\"o}nnen Zykluszeiten drastisch gesenkt werden. Die genaue Kenntnis des Abstands erlaubt ein Anfahren mit Maximalgeschwindigkeit und ein gezieltes Abbremsen kurz vor dem Teil.},
-	isbn={978-3-658-12562-2},
-	doi={10.1007/978-3-658-12562-2_3},
-	url={https://doi.org/10.1007/978-3-658-12562-2_3},
-}
-
-@book{QuigleyROS2015,
-	author = {Quigley, Morgan and Gerkey, Brian and Smart, William D.},
-	title = {Programming Robots with ROS: A Practical Introduction to the Robot Operating System},
-	year = {2015},
-	isbn = {1449323898},
-	publisher = {O'Reilly Media, Inc.},
-	edition = {1st},
-	abstract = {Want to develop novel robot applications, but dont know how to write a mapping or object-recognition system? Youre not alone, but youre certainly not without help. By combining real-world examples with valuable knowledge from the Robot Operating System (ROS) community, this practical book provides a set of motivating recipes for solving specific robotics use cases.Ideal for enthusiasts, from students in robotics clubs to professional robotics scientists and engineers, each recipe describes a complete solution using ROS open source libraries and tools. Youll learn how to complete tasks described in the recipes, as well as how to configure and recombine components for other tasks. If youre familiar with Python, youre ready to go.Learn fundamentals, including key ROS concepts, tools, and patternsProgram robots that perform an increasingly complex set of behaviors, using the powerful packages in ROSSee how to easily add perception and navigation abilities to your robotsIntegrate your own sensors, actuators, software libraries, and even a whole robot into the ROS ecosystemLearn tips and tricks for using ROS tools and community resources, debugging robot behavior, and using C++ in ROS},
-}
-
-@book{NewmanWyattS2018ASAt,
-	language = {eng},
-	publisher = {CRC Press},
-	title = {A Systematic Approach to Learning Robot Programming with ROS},
+@inproceedings{luo_artificial_2005,
+	location = {Montreal, {QC}, Canada},
+	title = {Artificial neural network computation on graphic process unit},
 	volume = {1},
-	year = {2017},
-	copyright = {2018 by Taylor \& Francis Group, LLC CRC Press is an imprint of Taylor \& Francis Group, an Informa business},
-	edition = {1},
-	isbn = {9781138096301},
-	abstract = {A Systematic Approach to Learning Robot Programming with ROS provides a comprehensive, introduction to the essential components of ROS through detailed explanations of simple code examples along with the corresponding theory of operation. The book explores the organization of ROS, how to understand ROS packages, how to use ROS tools, how to incorporate existing ROS packages into new applications, and how to develop new packages for robotics and automation. It also facilitates continuing education by preparing the reader to better understand the existing on-line documentation.
-		The book is organized into six parts. It begins with an introduction to ROS foundations, including writing ROS nodes and ROS tools. Messages, Classes, and Servers are also covered. The second part of the book features simulation and visualization with ROS, including coordinate transforms.
-		The next part of the book discusses perceptual processing in ROS. It includes coverage of using cameras in ROS, depth imaging and point clouds, and point cloud processing. Mobile robot control and navigation in ROS is featured in the fourth part of the book
-		The fifth section of the book contains coverage of robot arms in ROS. This section explores robot arm kinematics, arm motion planning, arm control with the Baxter Simulator, and an object-grabber package. The last part of the book focuses on system integration and higher-level control, including perception-based and mobile manipulation.
-		This accessible text includes examples throughout and C++ code examples are also provided at https://github.com/wsnewman/learning_ros},
-	author = {Newman, Wyatt S},
-	address = {Milton},
-	keywords = {Intelligent Systems ; Machine Learning ; Operating systems (Computers) ; Programming ; Robotics ; Robots},
+	doi = {10.1109/IJCNN.2005.1555903},
+	abstract = {Artificial neural network ({ANN}) is widely used in pattern recognition related area. In some case, the computational load is very heavy, in other case, real time process is required. So there is a need to apply a parallel algorithm on it, and usually the computation for {ANN} is inherently parallel. In this paper, graphic hardware is used to speed up the computation of {ANN}. In recent years, graphic processing unit ({GPU}) grows faster than {CPU}. Graphic hardware venders provide programmability on {GPU}. In this paper, application of commodity available {GPU} for two kinds of {ANN} models was explored. One is the self-organizing maps ({SOM}); the other is multi layer perceptron ({MLP}). The computation result shows that {ANN} computing on {GPU} is much faster than on standard {CPU} when the neural network is large. And some design rules for improve the efficiency on {GPU} are given.},
+	eventtitle = {Proceedings. 2005 {IEEE} International Joint Conference on Neural Networks, 2005.},
+	pages = {622--626 vol. 1},
+	booktitle = {Proceedings. 2005 {IEEE} International Joint Conference on Neural Networks, 2005.},
+	author = {Luo, Zhongwen and Liu, Hongzhi and Wu, Xincai},
+	date = {2005-07},
+	note = {{ISSN}: 2161-4407},
+	keywords = {Artificial neural networks, Central Processing Unit, Computer networks, Concurrent computing, Graphics, Hardware, Neural networks, Parallel algorithms, Pattern recognition, Self organizing feature maps},
+	file = {IEEE Xplore Abstract Record:/home/eshan/Zotero/storage/J9N46ZNE/1555903.html:text/html;IEEE Xplore Full Text PDF:/home/eshan/Zotero/storage/VVAGVNZU/Luo et al. - 2005 - Artificial neural network computation on graphic p.pdf:application/pdf},
 }
 
-@book{LentinMasteringROS2021,
-	Abstract = {Design, build, and simulate complex robots using the Robot Operating SystemKey FeaturesBecome proficient in ROS programming using C++ with this comprehensive guideBuild complex robot applications using the ROS Noetic Ninjemys release to interface robot manipulators with mobile robotsLearn to interact with aerial robots using ROSBook DescriptionThe Robot Operating System (ROS) is a software framework used for programming complex robots. ROS enables you to develop software for building complex robots without writing code from scratch, saving valuable development time. Mastering ROS for Robotics Programming provides complete coverage of the advanced concepts using easy-to-understand, practical examples and step-by-step explanations of essential concepts that you can apply to your ROS robotics projects. The book begins by helping you get to grips with the basic concepts necessary for programming robots with ROS. You'll then discover how to develop a robot simulation, as well as an actual },
-	Author = {Joseph, Lentin and Cacace, Jonathan},
-	ISBN = {9781801071024},
-	Publisher = {Packt Publishing},
-	Title = {Mastering ROS for Robotics Programming : Best Practices and Troubleshooting Solutions When Working with ROS.},
-	Volume = {Third edition},
-	URL = {https://widgets.ebscohost.com/prod/customerspecific/s9218820/vpn/vpn_fhdo.php?url=https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=3019439&lang=de&site=eds-live&scope=site},
-	Year = {2021},
-}
-
-@book{LentinMasteringROS2018,
-	author = {Joseph, Lentin and Cacace, Jonathan},
-	title = {Mastering ROS for Robotics Programming - Second Edition: Design, Build, and Simulate Complex Robots Using the Robot Operating System},
-	address = {München},
-	year = {2018},
-	isbn = {1788478959},
-	publisher = {Packt Publishing},
-	edition = {2nd},
-	abstract = {Discover best practices and troubleshooting solutions when working on ROS Key Features Develop complex robotic applications using ROS to interface robot manipulators and mobile robotsGain insight into autonomous navigation in mobile robots and motion planning in robot manipulatorsDiscover best practices and troubleshooting solutionsBook DescriptionIn this day and age, robotics has been gaining a lot of traction in various industries where consistency and perfection matter. Automation is achieved via robotic applications and various platforms that support robotics. The Robot Operating System (ROS) is a modular software platform to develop generic robotic applications. This book focuses on the most stable release of ROS (Kinetic Kame), discusses advanced concepts, and effectively teaches you programming using ROS. We begin with aninformative overview of the ROS framework, which will give you a clear idea of how ROS works. During the course of this book, you'll learn to build models of complex robots, and simulate and interface the robot using the ROS MoveIt! motion planning library and ROS navigation stacks. Learn to leverage several ROS packages to embrace your robot models. After covering robot manipulation and navigation, you'll get to grips with the interfacing I/O boards, sensors, and actuators of ROS. Vision sensors are a key component of robots, and an entire chapter is dedicated to the vision sensor and image elaboration, its interface in ROS and programming. You'll also understand the hardware interface and simulation of complex robots to ROS and ROS Industrial. At the end of this book, you'll discover the best practices to follow when programming using ROS. What you will learn Create a robot model with a seven-DOF robotic arm and a differential wheeled mobile robot Work with Gazebo and V-REP robotic simulator Implement autonomous navigation in differential drive robots using SLAM and AMCL packages Explore the ROS Pluginlib, ROS nodelets, and Gazebo plugins Interface I/O boards such as Arduino, robot sensors, and high-end actuators Simulate and motion plan an ABB and universal arm using ROS Industrial Explore the latest version of the ROS framework Work with the motion planning of a seven-DOF arm using MoveIt! Who This Book Is For If you are a robotics enthusiast or researcher who want to learn more about building robot applications using ROS, this book is for you. In order to learn from this book, you should have a basic knowledge of ROS, GNU/Linux, and C++ programming concepts. The book is also excellent for programmers who want to explore the advanced features of ROS.},
-}
-
-@article{DatteriSchiaffonati2019,
-	title={Robotic simulations, simulations of Robots}, 
-	volume={29}, 
-	DOI={10.1007/s11023-019-09490-x},
-	number={1}, 
-	journal={Minds and Machines}, 
-	author={Datteri, Edoardo and Schiaffonati, Viola}, 
-	year={2019}, month={1}, 
-	pages={109–125},
-} 
-
-@inbook{AnderlSimulations2018,
-	author = {Anderl, Reiner and Binde, Peter},
-	title = {Motion (Multibody Dynamics)},
-	booktitle = {Simulations with NX / Simcenter 3D},
-	publisher = {Carl Hanser Verlag GmbH \& Co.KG},
-	year = {2018},
-	edition = {2},
-	chapter = {2},
-	pages = {11-80},
-	doi = {10.3139/9781569907139.002},
-	URL = {https://www.hanser-elibrary.com/doi/abs/10.3139/9781569907139.002},
-	eprint = {https://www.hanser-elibrary.com/doi/pdf/10.3139/9781569907139.002},
-}
-
-@article{ore_vemula_hanson_wiktorsson_fagerström_2019,
-	title={Simulation methodology for performance and Safety Evaluation of Human–Industrial Robot Collaboration Workstation Design},
-	volume={3}, 
-	url={https://rdcu.be/cTxpa}, 
-	DOI={10.1007/s41315-019-00097-0}, 
-	number={3}, 
-	journal={International Journal of Intelligent Robotics and Applications}, 
-	author={Ore, Fredrik and Vemula, Bhanoday and Hanson, Lars and Wiktorsson, Magnus and Fagerström, Björn}, 
-	year={2019}, month={7}, 
-	pages={269–282},
-}
-
-@misc{foote_tf2_wiki_2019,
-	title={Wiki - tf2},
-	url={http://wiki.ros.org/tf2},
-	journal={wiki.ros.org},
-	publisher={Open Source Robotics Foundation, Inc.},
-	author={Foote, Tully},
-	year={2019}, month={3}, day={5},
-	urldate = {2022-08-17},
-	} 
-
-@inproceedings {Foote_tfPaper_2013,
-	title = {tf: The transform library},
-	booktitle = {Technologies for Practical Robot Applications (TePRA), 2013 IEEE International Conference on},
-	series = {Open-Source Software workshop},
-	year = {2013},
-	month={4}, 
-	pages={1-6}, 
-	author = {Foote, Tully},
-	doi={10.1109/TePRA.2013.6556373}, 
-	ISSN={2325-0526}
-}
-
-@book{FairchildROS2017,
-	Abstract = {Learning how to build and program your own robots with the most popular open source robotics programming frameworkAbout This BookGet to know the fundamentals of ROS and apply its concepts to real examplesLearn how to write robotics applications without getting bogged down in hardware problemsLearn to implement best practices in ROS developmentWho This Book Is ForThis book is for robotic enthusiasts, researchers and professional robotics engineers who would like to build robot applications using ROS. It gives the robotics beginner and the ROS newbie an immensely practical introduction to robot building and robotics application coding. Basic knowledge of GNU/Linux and the ability to write simple applications is assumed, but no robotics knowledge, practical or theoretical, is needed.What You Will LearnControl a robot without requiring a PhD in roboticsSimulate and control a robot armControl a flying robotSend your robot on an independent missionLearning how to control your own robots wit},
-	Author = {Fairchild, Carol and Harman, Dr. Thomas L.},
-	ISBN = {9781788479592},
-	Publisher = {Packt Publishing},
-	Title = {ROS Robotics By Example - Second Edition : Learning How to Build and Program Your Own Robots with the Most Popular Open Source Robotics Programming Framework.},
-	Edition = {2},
-	URL = {https://widgets.ebscohost.com/prod/customerspecific/s9218820/vpn/vpn_fhdo.php?url=https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=1643014&lang=de&site=eds-live&scope=site},
-	Year = {2017},
-}
-
-@book{MareczekRobKin2020,
-	Author = {Mareczek, Jörg},
-	ISBN = {9783662527597},
-	Publisher = {Springer Vieweg},
-	Address = {Berlin, Heidelberg},
-	Edition = {1},
-	Year = {2020},
-	Title = {Grundlagen der Roboter-Manipulatoren},
-	Subtitle = {Modellbildung von Kinematik und Dynamik},
-	Volume = {1},
-}
-
-@book{GandhinathanROSProjects2019,
-	Abstract = {Build exciting robotics projects such as mobile manipulators, self-driving cars, and industrial robots powered by ROS, machine learning, and virtual reality Key Features Create and program cool robotic projects using powerful ROS libraries Build industrial robots like mobile manipulators to handle complex tasks Learn how reinforcement learning and deep learning are used with ROS Book Description Nowadays, heavy industrial robots placed in workcells are being replaced by new age robots called cobots, which don't need workcells. They are used in manufacturing, retail, banks, energy, and healthcare, among other domains. One of the major reasons for this rapid growth in the robotics market is the introduction of an open source robotics framework called the Robot Operating System (ROS). This book covers projects in the latest ROS distribution, ROS Melodic Morenia with Ubuntu Bionic (18.04). Starting with the fundamentals, this updated edition of ROS Robotics Projects introduces you to ROS-},
-	Author = {Gandhinathan, Ramkumar and Joseph, Lentin},
-	ISBN = {9781838649326},
-	Publisher = {Packt Publishing},
-	Title = {ROS Robotics Projects : Build and Control Robots Powered by the Robot Operating System, Machine Learning, and Virtual Reality.},
-	Edition = {2},
-	URL = {https://widgets.ebscohost.com/prod/customerspecific/s9218820/vpn/vpn_fhdo.php?url=https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=2332842&lang=de&site=eds-live&scope=site},
-	Year = {2019},
-}
-
-@online{moveit_concepts_2021,
-	title={Concepts},
-	url={https://moveit.ros.org/documentation/concepts/},
-	journal={MoveIt},
-	publisher={PickNik Robotics},
-	year={2021},
-	month={11},
-	urldate={2022-08-19}
-}
-
-@book{Pires_WeldingRobots_2006,
-	title={Welding Robots: Technology, System Issues and Application},
-	author={Pires, J.Norberto and Loureiro, Altino and Bölmsjo, Gunnar},
-	isbn={9781852339531},
-	url={https://books.google.de/books?id=DFJAdDg-STYC},
-	year={2006},
-	Edition={1},
-	publisher={Springer-Verlag London Limited},
-	Address={London}
-}
-
-@Article{Abbasi2018,
-	author={Abbasi, Morteza
-	and Derakhshandeh-Haghighi, Reza},
-	title={The Role of Welding Parameters on Achieving a Combination of High Strength and Ductility in Gas Tungsten Arc Welding of Cu--7Al--3Fe Aluminum Bronze},
-	journal={Physics of Metals and Metallography},
-	year={2018},
-	month={5},
-	day={01},
-	volume={119},
-	number={5},
-	pages={497-503},
-	abstract={The weldability of aluminum bronze alloys lends it to fabrication of items such as pipes and pressure vessels. Thus, obtaining high strength along with good ductility is necessary. Gas tungsten arc welding of Cu--7Al--3Fe aluminum bronze alloy was performed by variation of some parameters such as shielding gas flow rate, preheat and post weld heat treatment. Optical and scanning electron microscopy along with EDX analysis was applied for different samples. Microhardness measurements and tensile tests were performed to see the effect of these parameters on ultimate tensile strength and ductility of samples.},
-	issn={1555-6190},
-	doi={10.1134/S0031918X18050022},
-	url={https://doi.org/10.1134/S0031918X18050022}
-}
-
-@Article{Tesfaw2022,
-	author={Tesfaw, Tadele
-	and Singh, Ajit Pal
-	and Gezahegn, Abebaw Mekonnen
-	and Garedew, Berhanu Tolosa},
-	title={Optimization of MAG welding process parameters using Taguchi design method on dead mild steel used in automotive industry},
-	journal={International Journal of System Assurance Engineering and Management},
-	year={2022},
-	month={2},
-	day={01},
-	volume={13},
-	number={1},
-	pages={79-89},
-	abstract={Welding is a basic manufacturing process for making components or assemblies. Recent welding economics research has focused on developing a reliable machinery database to ensure optimum production. Research on welding of materials like steel is still critical and ongoing. Welding input parameters play a very significant role in determining the quality of a weld joint. The metal active gas (MAG) welding parameters are the most important factors affecting the quality, productivity, and cost of welding in many industrial operations. The aim of this study is to investigate the optimization of process parameters for metal active gas welding for 60 mm{\thinspace}{\texttimes}{\thinspace}60 mm{\thinspace}{\texttimes}{\thinspace}5 mm dead mild steel plate work piece using the Taguchi method to formulate the statistical experimental design using a semi-automatic welding machine. An experimental study was conducted in the automotive industry, Bishoftu, Ethiopia. This study presents the influence of four welding parameters (control factors) like welding voltage (volt), welding current (ampere), wire-speed (m/min.), and gas (CO2) flow rate (Lt./min.) with three different levels for variability in the welding hardness. The objective functions have been chosen in relation to parameters of MAG welding i.e., welding hardness in final products. Nine experimental runs based on an L9 orthogonal array (OA) Taguchi method was performed. An OA, signal-to-noise (S/N) ratio and analysis of variance (ANOVA) are employed to investigate the welding characteristics of dead mild steel plate and used in order to obtain optimum levels for every input parameter at 95{\%} confidence level. The optimal parameters setting was found is welding voltage at 22 V, welding current at 125 amperes, wire speed at 2.15 m/min, and gas flow rate at 19 Lt./min. by using the Taguchi experimental design method within the constraints of the production process. Finally six conformations welding have been carried out to compare the existing values; predicted values with the experimental values confirm its effectiveness in the analysis of welding hardness (quality) in final products. It is found that welding current has a major influence on the quality of welded joints. Experimental results for optimum setting gave better hardness of welding condition than initial setting. This study is valuable for different material and thickness variation of welding plate for Ethiopian industries.},
-	issn={0976-4348},
-	doi={10.1007/s13198-021-01107-w},
-	url={https://doi.org/10.1007/s13198-021-01107-w}
-}
-
-@Article{Mvola2017,
-	author={Mvola, Belinga
-	and Kah, Paul},
-	title={Effects of shielding gas control: welded joint properties in GMAW process optimization},
-	journal={The International Journal of Advanced Manufacturing Technology},
-	year={2017},
-	month={2},
-	day={01},
-	volume={88},
-	number={9},
-	pages={2369-2387},
-	abstract={One function of shielding gases used in welding processes, such as hydrogen (H2), oxygen (O2), carbon dioxide (CO2), nitrogen (N2), helium (He), argon (Ar) and their mixtures, is protection of the weld pool against harmful contamination that could generate defects. In addition to this primary function, shielding gases significantly affect the shape of the weld, weld geometry, seam appearance, metallurgical and mechanical properties, welding speed, metal transfer, arc stability or beam and fume emissions. The shielding gas is thus a key factor in determining weld joint properties and welding process efficiency. As welding processes have become enhanced and welding research has advanced, different combinations of shielding gas mixtures have become available under a wide variety of trademarks, each claiming to offer the best efficiency. The shielding gas flow rate in GMAW welding is usually set according to empirical experiment. The flow generally remains unchanged throughout the entire welding process and is set at maximum values of the welding parameters so that there is sufficient gas cover. This setting means, however, that unnecessarily large quantities of shielding gas may be consumed in other phases of the welding process. In view of constantly increasing prices and shortfalls in helium supply, there is a need to optimize the use of shielding gas. Consequently, an ability to closely monitor the shielding gas blend and reduce waste can provide valuable cost savings. This paper examines the effects of shielding gas mixtures and their components, presents a cross-comparison of shielding effects in fusion welding and suggests guidelines for adaptive controllability of shielding gas in advanced adaptive fusion welding. The study reviews scientific case studies and experiments from the point of view of the effect of the shielding gas on the process efficiency and process outcome. The study considers shielding gases for welding of both ferrous metals (i.e. carbon steels, stainless steels, high-strength steels) and non-ferrous metals (i.e. aluminium and its alloys, nickel and its alloys and copper and its alloys). Appropriate choice of shielding gas and use of an optimum flow rate results in better quality in terms of increased productivity, reduced gas consumption and improved weld geometry properties, microstructure and mechanical properties. Although some blends can be used effectively in many different processes, other blends appear process-dependent; they produce far poorer results when utilized in non-appropriate processes. Particle image velocimetry (PIV) and Schlieren techniques can be used for visual sensing of gas flow during fusing welding. Moreover, an adaptive alternative gas supply can improve welding performance and weld quality and reduce harmful fume emission.},
-	issn={1433-3015},
-	doi={10.1007/s00170-016-8936-2},
-	url={https://doi.org/10.1007/s00170-016-8936-2}
-}
-
-@Article{Senthilkumar2017,
-	author={Senthilkumar, B.
-	and Kannan, T.
-	and Madesh, R.},
-	title={Optimization of flux-cored arc welding process parameters by using genetic algorithm},
-	journal={The International Journal of Advanced Manufacturing Technology},
-	year={2017},
-	month={10},
-	day={01},
-	volume={93},
-	number={1},
-	pages={35-41},
-	abstract={The effect of flux-cored arc welding (FCAW) process parameters on the quality of the super duplex stainless steel (SDSS) claddings can be studied using Taguchi L9 design of experiments. In this experimental investigation, deposits were made with 30 {\%} bead overlap. Establishing the optimum combination of process parameters is required to ensure better bead geometry and desired properties. The above objectives can be achieved by identifying the significant input process parameters as input to the mathematical models like welding voltage (X1), wire feed rate (X2), welding speed (X3), and nozzle-to-plate distance (X4). The identified responses governing the bead geometry are bead width (W) and height of the reinforcement (H). The mathematical models were constructed using the data collected from the experiments based on Taguchi L9 orthogonal array. Then, the responses were optimized using non-traditional nature-inspired technique like genetic algorithm (GA).},
-	issn={1433-3015},
-	doi={10.1007/s00170-015-7636-7},
-	url={https://doi.org/10.1007/s00170-015-7636-7}
-}
-
-@Article{Liu2022,
-	author={Liu, Yiwen
-	and Zhang, Xian
-	and Qu, Taiguo
-	and Yin, Dong
-	and Deng, Shaowei},
-	title={Intelligent robot motion trajectory planning based on machine vision},
-	journal={International Journal of System Assurance Engineering and Management},
-	year={2022},
-	month={1},
-	day={31},
-	abstract={In order to improve the effect of intelligent robot motion planning, this paper combines machine vision to conduct intelligent robot motion trajectory planning and analysis, and analyze the motion trajectory in complex environments. Aiming at the problem that the dynamic motion primitive algorithm is only suitable for an ideal and fixed motion environment during the demonstration and learning process, this paper proposes a robot motion trajectory control based on the ant colony algorithm, and proposes an ant colony optimization algorithm with self-adjusting the number of ants. The factors that affect the number of ants is the distance between the start point and the end point and the complexity of the map environment. After constructing an intelligent robot based on machine vision, based on the motion trajectory planning model, this paper collects data through machine vision, and realizes the intelligent planning and control of robot motion based on the motion planning algorithm. Through experimental research, it can be known that the intelligent robot system based on machine vision constructed in this paper can identify obstacles in complex environments and carry out reasonable trajectory planning.},
-	issn={0976-4348},
-	doi={10.1007/s13198-021-01559-0},
-	url={https://doi.org/10.1007/s13198-021-01559-0}
-}
-
-@ARTICLE{Luo2016,
-	author={Luo, Ren C. and Kuo, Chia-Wen},
-	journal={Proceedings of the IEEE},
-	title={Intelligent Seven-DoF Robot With Dynamic Obstacle Avoidance and 3-D Object Recognition for Industrial Cyber–Physical Systems in Manufacturing Automation},
-	year={2016},
-	month={3},
-	day={24},
-	volume={104},
-	number={5},
-	pages={1102-1113},
-	doi={10.1109/JPROC.2015.2508598}}
-
-@Article{Wang2012,
-	author={Wang, Ting
-	and Ramik, Dominik M.
-	and Sabourin, Christophe
-	and Madani, Kurosh},
-	title={Intelligent systems for industrial robotics: application in logistic field},
-	journal={Industrial Robot: An International Journal},
-	year={2012},
-	month={1},
-	day={01},
-	publisher={Emerald Group Publishing Limited},
-	volume={39},
-	number={3},
-	pages={251-259},
-	abstract={Purpose Different machines are already present in the human environment, easing human beings' daily life. In the future, this tendency will be accentuated by integration of numerous robots (e.g. wheeled robots, legged robots, humanoid robots, network sensors, etc.) in the human environment. A wide range of applications, such as those dealing with warehouse management, industrial assembling, military applications, daily‐life tasks, can benefit from multi‐robot systems. The purpose of this paper is to propose an intelligent system for industrial robotics in the logistic field, based on collaboration between heterogeneous robots. Design/methodology/approach The proposed infrastructure for this multi‐robot system is composed of a robots' network including one humanoid robot, wheeled robots, cameras, and remote computer. All devices can communicate between them by using wireless network. The goal of the humanoid robot is to lead the wheeled robots according to the environment and wheeled robots are used to carry a load. The camera allows providing complementary information about the environment; and thanks to machine learning, this control strategy allows complex tasks to be perormed for these logistic applications. Findings This concept is implemented on real robots within the frame of a demonstrator including the above‐mentioned kind of robots. The preliminary results, obtained during experimentations, prove the feasibility of the presented strategy for real applications. Originality/value The main originalities of this work are, on the one hand, the use of an heterogeneous multi‐robots system for logistic tasks, and on the other hand, the proposed machine learning allows a collaboration task between heterogeneous robots in an autonomous manner.},
-	issn={0143-991X},
-	doi={10.1108/01439911211217071},
-	url={https://doi.org/10.1108/01439911211217071}
-}
-
-@Article{Wang2018,
-	author={Wang, Tian-Miao
-	and Tao, Yong
-	and Liu, Hui},
-	title={Current Researches and Future Development Trend of Intelligent Robot: A Review},
-	journal={International Journal of Automation and Computing},
-	year={2018},
-	month={10},
-	day={01},
-	volume={15},
-	number={5},
-	pages={525-546},
-	abstract={With the advancing of industrialization and the advent of the information age, intelligent robots play an increasingly important role in intelligent manufacturing, intelligent transportation system, the Internet of things, medical health and intelligent services. Based on working experiences in and reviews on intelligent robot studies both in China and abroad, the authors summarized researches on key and leading technologies related to human-robot collaboration, driverless technology, emotion recognition, brain-computer interface, bionic software robot and cloud platform, big data network, etc. The development trend of intelligent robot was discussed, and reflections on and suggestions to intelligent robot development in China were proposed. The review is not only meant to overview leading technologies of intelligent robot all over the world, but also provide related theories, methods and technical guidance to the technological and industrial development of intelligent robot in China.},
-	issn={1751-8520},
-	doi={10.1007/s11633-018-1115-1},
-	url={https://doi.org/10.1007/s11633-018-1115-1}
-}
-
-@Inbook{Marguglio2022,
-	author={Marguglio, Angelo
-	and Cantore, Maria Francesca
-	and Caruso, Antonio},
-	editor={Aldinhas Ferreira, Maria Isabel
-	and Fletcher, Sarah R.},
-	title={Adapting Autonomy and Personalisation in Collaborative Human--Robot Systems},
-	bookTitle={The 21st Century Industrial Robot: When Tools Become Collaborators},
-	year={2022},
-	publisher={Springer International Publishing},
-	address={Cham},
-	edition={1},
-	pages={105-129},
-	abstract={Adaptability in manufacturing context is the ability of either the workplace topology defined by the combination of hardware and software components or any of the workplace's parts (i.e. hardware and software components and humans) to rapidly modify their characteristics and behaviours to cope with changing circumstances. Manufacturing systems need to be ``Adaptive'' to an ever-changing environment. This means also put together humans and automation taking advantage of each other's strengths to balance flexibility and productivity requirements in an easy and cost effective way. To achieve this challenge, companies need to re-design production systems. Enabling ``Adaptive and Smart Manufacturing Systems'' was indeed considered one of the challenges for Europe 2020 strategy to be addressed promoting market-oriented projects by bringing together private and public resources. This chapter aims to introduce Europe 2020 strategy for the manufacturing sector, the role of European Factories of the Future Research Association (EFFRA) as industry-driven association promoting the development of new and innovative production technologies and pre-competitive research by engaging in a public--private partnership with the European Union called `Factories of the Future'. Some success stories in the ``Adaptive and smart Manufacturing Systems'' research domain will be introduced and, in particular, the project A4BLUE (Grant ID 723,828) will be illustrated in more detail for its interesting results addressing the expected scientific challenge and scope of FOF-04-2016 (Continuous adaptation of work environments with changing levels of automation in evolving production systems).},
-	isbn={978-3-030-78513-0},
-	doi={10.1007/978-3-030-78513-0_7},
-	url={https://doi.org/10.1007/978-3-030-78513-0_7}
-}
-
- @online{automationspraxis_2021,
- 	title={Schweißcobots Intuitiv programmieren}, url={https://automationspraxis.industrie.de/industrie-4-0/schweisscobots-intuitiv-programmieren/},
- 	journal={Automationspraxis},
- 	publisher={Konradin Mediengruppe},
- 	year={2021}, month={2}, day={25},
- 	}
-
-@InProceedings{Wilmsmeyer_2018,
-	author={Wilmsmeyer, Hannes
-	and Flasskamp, Martin
-	and Schierenberg, Marc-Oliver},
-	editor={Jasperneite, J{\"u}rgen
-	and Lohweg, Volker},
-	title={Intelligente Korrektur eines Schwei{\ss}roboters},
-	booktitle={Kommunikation und Bildverarbeitung in der Automation},
-	year={2018},
-	publisher={Springer Berlin Heidelberg},
-	address={Berlin, Heidelberg},
-	pages={283-294},
-	abstract={Die Robotertechnik findet f{\"u}r viele Aufgaben in der Industrie selbstverst{\"a}ndlichen Einsatz. F{\"u}r diese Aufgaben werden die Roboter geteacht. Daf{\"u}r m{\"u}ssen die zu bearbeitenden Bauteile sowohl geringe Toleranzen, als auch eine hohe Positioniergenauigkeit vorweisen. Bei kleineren Bauteilen, wie beispielsweise in der Automobilindustrie, kann diese Genauigkeit durch Einspannvorrichtungen erreicht werden.},
-	isbn={978-3-662-55232-2}
-}
-
-@ARTICLE{Yang_2019,
-	author={Yang, Lei and Li, En and Long, Teng and Fan, Junfeng and Liang, Zize},  journal={IEEE Sensors Journal},   title={A Novel 3-D Path Extraction Method for Arc Welding Robot Based on Stereo Structured Light Sensor},   year={2019},  volume={19},  number={2},  pages={763-773},  doi={10.1109/JSEN.2018.2877976}}
-
-@Article{Geng2021,
-	author={Geng, Yusen
-	and Zhang, Yuankai
-	and Tian, Xincheng
-	and Shi, Xiaorui
-	and Wang, Xiujing
-	and Cui, Yigang},
-	title={A method of welding path planning of steel mesh based on point cloud for welding robot},
-	journal={The International Journal of Advanced Manufacturing Technology},
-	year={2021},
-	month={10},
-	day={01},
-	volume={116},
-	number={9},
-	pages={2943-2957},
-	abstract={At present, the operators needs to carry out complicated teaching and programming work on the welding path planning for the welding robot before welding the steel mesh. In this work, an automatic welding path planning method of steel mesh based on point cloud is proposed to simplify the complicated teaching and programming work in welding path planning. The point cloud model of steel mesh is obtained by three-dimensional vision structured light camera. Then, we use the relevant point cloud processing algorithm to calculate the welding path of the steel mesh, and obtain the 3D information of the welding path for the welding localization of the robot welding process. Experimental results show that the method can accurately realize the welding path planning of the steel mesh and accomplish the welding task without teaching and programming before welding, which improves the production efficiency.},
-	issn={1433-3015},
-	doi={10.1007/s00170-021-07601-6},
-	url={https://doi.org/10.1007/s00170-021-07601-6}
-}
-
-@Book{Schleicher2020,
-	author={Schleicher, Tim},
-	Title={Kollaborierende Roboter anweisen: Gestaltungsempfehlungen f{\"u}r ergonomische Mensch-Roboter-Schnittstellen},
-	year={2020},
-	publisher={Springer Fachmedien},
-	address={Wiesbaden},
-	abstract={Die Grundlage zur strukturierten Erarbeitung der Forschungsagenda bildet die Aufarbeitung des heute verf{\"u}gbaren Wissens und die sich daraus ergebenden, offenen Fragestellungen. Ziel der folgenden Abschnitte ist daher die systematische Analyse bestehender Forschung zur Gestaltung von Mensch-Roboter-Schnittstellen in instruktiven Mensch-Roboter-Systemen im Kontext der Industrie (= instruktive Mensch-Roboter-Kollaboration).},
-	isbn={978-3-658-29051-1},
-	doi={10.1007/978-3-658-29051-1},
-	url={https://doi.org/10.1007/978-3-658-29051-1}
-}
-
-@book{Glück2022,
-	author={Gl{\"u}ck, Markus},
-	Title={Mensch-Roboter-Kooperation erfolgreich einf{\"u}hren: Grundlagen, Leitfaden, Applikationen},
-	year={2022},
-	publisher={Springer Fachmedien},
-	address={Wiesbaden},
-	abstract={Seit {\"u}ber 50 Jahren versuchen Ingenieure, Roboter aus der reinen Industrieumgebung hinter Schutzz{\"a}unen zu befreien und sie in den Alltag der Menschen vordringen zu lassen. Der erste Roboter, dem dies ansatzweise gelang, war „Shakey``. 1965 von Wissenschaftlern des Stanford Research Institute in Menlo Park (Kalifornien) entwickelt, gilt er als der weltweit erste mobile teilautonome Roboter mit R{\"a}dern und batteriebetriebenem Antrieb.},
-	isbn={978-3-658-37612-3},
-	doi={10.1007/978-3-658-37612-3},
-	url={https://doi.org/10.1007/978-3-658-37612-3}
-}
-
-@Article{Health_and_safety_2011,
-	author="{Commission VIII "Health, Safety and Environment of the IIW"}",
-	title={Lung Cancer and Arc Welding of Steels},
-	journal={Welding in the World},
-	year={2011},
-	month={11},
-	day={01},
-	volume={55},
-	number={11},
-	pages={12-20},
-	abstract={Commission VIII (Health, Safety and Environment) of the International Institute of Welding (IIW) published a critical appraisal of the results of research on the excess risk of lung cancer in arc welders in 1992. Commission VIII agreed to an updated statement on the possible causes of this excess risk and made recommendations for preventive actions to assist in reducing the risk in 2003. This was provided to IIW Member Societies as a Commission VIII Document in 2004 and a published Consensus Statement in 2005. In the 2005 Consensus Statement the Commission remarked that the apparent link between lung cancer and welding as an occupation suggested that the work environment was likely to play a part in causation. The prime suspects identified from the evidence were fume from welding processes, tobacco smoke and asbestos dust --- acting alone or together. It was thought by some, that social factors other than occupation, but reflecting income may also play a part. The topic has been kept under review. The elevated risk of lung cancer among welders has persisted in the published medical literature. This 2010 report summarizes, makes comments on and draws conclusions from evidence from the published scientific literature on the topic. Commission VIII ratifies its 2003 Statement, concludes from the review that the prime suspects remain the same and that the cause of the elevated risk has yet to be resolved. Everyone in the industries concerned is exhorted to take effective action to protect welders and those who work with them. Special emphasis is placed on the need to control exposure to welding fumes, at least to national standards, to prevent all exposure to asbestos dust and to encourage and assist welders to avoid exposing themselves and others to tobacco smoke.},
-	issn={1878-6669},
-	doi={10.1007/BF03321538},
-	url={https://doi.org/10.1007/BF03321538}
-}
-
-@Book{Lahres2021,
-	author={Lahres, Bernhard
-	and Ra{\'y}man, Gregor
-	and Strich, Stefan},
-	title={Objektorientierte Programmierung : Das umfassende Handbuch},
-	year={2021},
-	edition={5},
-	publisher={Rheinwerk Verlag},
-	address={Bonn},
-	isbn={9783836283243},
-	url={http://ebookcentral.proquest.com/lib/fh-dortmund/detail.action?docID=6484819}
-}
-
-@book{Kaiser2022,
-	author={Kaiser, Richard},
-	title={C++ mit Visual Studio 2022 und Windows Forms-Anwendungen : C++17 f{\"u}r Studierende und erfahrene Programmierer -- Windows-Programme mit C++ entwickeln},
-	year={2022},
-	publisher={Springer Berlin Heidelberg},
-	edition={2},
-	address={Berlin, Heidelberg},
-	abstract={Bis ca. 1975 waren vordefinierte Datentypen wie int und double die {\"u}berwiegend verwendeten Datentypen. Im Lauf der Zeit hat sich dann aber die {\"U}berzeugung durchgesetzt, dass bei komplexeren Aufgaben problemangemessene Datentypen besser sind. Da der Datentyp einer Variablen festlegt, welche Operationen mit dieser Variablen m{\"o}glich sind, bietet ein problemangemessener Datentyp im Idealfall genau die Operationen, die f{\"u}r die L{\"o}sung des anstehenden Problems hilfreich sind.},
-	isbn={978-3-662-65257-2},
-	doi={10.1007/978-3-662-65257-2},
-	url={https://doi.org/10.1007/978-3-662-65257-2}
-}
-
-@INPROCEEDINGS{Hockkoon2010,  
-	author={Hock-koon, Anthony and Oussalah, Mourad},  
-	booktitle={2010 IEEE International Conference on Services Computing},   
-	title={Defining Metrics for Loose Coupling Evaluation in Service Composition},   
-	year={2010},   
-	address={Miami, FL, USA},
-	pages={362-369},  
-	abstract={Service Oriented Architectures (SOA) mainly rely on the service composition mechanism which supports the reusability. Numerous researches focus on this thematic in order to satisfy all the objectives of quality fixed by the SOA community. One of these objectives is the notion of loose coupling between the composition's services. However this notion is intuitively understood and tangible, its definition lacks formalism. This unclear picture of the loose coupling is reflected in limited metrics which do not allow for its quantitative and objective evaluation. In this paper, we propose a set of different metrics which are associated with a clear definition of the loose coupling notion. These metrics act as guidelines for architects to develop their composite service. They are gathered in a formula which allows for evaluating the global coupling of a composition of services. Moreover, they are also used as comparison criteria for classifying existing composition models.},  keywords={},  
-	doi={10.1109/SCC.2010.17},  
-	ISSN={},  
-	month={7},
-}
-
-@book{Noback2018,
-	author={Noback, Matthias},
-	Title={Principles of Package Design: Creating Reusable Software Components},
-	year={2018},
-	publisher={Apress},
-	edition={1},
-	address={Berkeley, CA},
-	abstract={The last of the SOLID principles of class design focuses on class dependencies. It tells you what kinds of things a class should depend on:},
-	isbn={978-1-4842-4119-6},
-	doi={10.1007/978-1-4842-4119-6},
-	url={https://doi.org/10.1007/978-1-4842-4119-6}
-}
-
-
-@book{Gregoire2021,
-	author={Gregoire, Marc},
-	publisher = {John Wiley \& Sons, Ltd},
-	isbn = {9781119695547},
-	title = {Professional C++},
-	edition={5},
-	doi = {https://doi.org/10.1002/9781119695547.ch6},
-	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119695547.ch6},
-	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781119695547.ch6},
-	year = {2021},
-	keywords = {abstraction, reusable code, reuse philosophy, SOLID principles, uncluttered interfaces},
-	abstract = {Summary This chapter helps the reader learn how they should design reusable code. The most important strategy for designing reusable code is abstraction. The chapter presents specific tips for structuring the readers' code: to avoid combining unrelated or logically separate concepts, to use templates for generic data structures and algorithms, to provide appropriate checks and safeguards, and to design for extensibility. It also presents six strategies for designing interfaces: to follow familiar ways of doing things, to not omit required functionality, to present uncluttered interfaces, to provide documentation, to provide multiple ways to perform the same functionality, and to provide customizability. The chapter discusses how to reconcile the often-conflicting demands of generality and ease of use. It concludes with SOLID, an easy-to-remember acronym that describes the most important design principles.}
+@thesis{svensson_performance_2021,
+	location = {Karlskrona, Schweden},
+	title = {Performance evaluation of {NumPy}, {SciPy}, {PyMEL} and {OpenMaya} compared to the C++ {API} in Autodesk Maya},
+	url = {http://urn.kb.se/resolve?urn=urn:nbn:se:bth-21664},
+	abstract = {Autodesk Maya allows scripting through both {MEL} and Python, and it is also possible to use different Python modules and a C++ {API} to perform the desired tasks. In theory, the C++ {API} is the fastest option in Maya, but there are no studies that support this claim. Other studies show that {PyMEL} is the slowest module in Maya to work with, but it is still the one used most frequently. This thesis has therefore made a speed measurement to determine which of the four selected Python modules and the C++ {API} is the fastest to use, regarding animation transfer between skeletal hierarchies with different numbers of data.},
+	pagetotal = {52},
+	institution = {Blekinge Institute of Technology},
+	type = {Bachelorthesis},
+	author = {Svensson, Patrik and Galfi, Fredrik},
+	urldate = {2023-03-08},
+	date = {2021},
+	file = {Full Text PDF:/home/eshan/Zotero/storage/6MPCFGDU/Svensson and Galfi - 2021 - Performance evaluation of NumPy, SciPy, PyMEL and .pdf:application/pdf},
 }
