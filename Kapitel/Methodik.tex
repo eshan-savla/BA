@@ -34,7 +34,7 @@ Bevor das Verfahren für den Einsatzzweck angepasst wurde, wurde es zuerst zweck
 \subsection{Verfahren zur Erkennung Randpunkte}
 Während Randelemente in zweidimensionale Bilder als eine klare Definition haben, fehlt eine solche Definition für Randelemente und Kanten in 3D-Punktwolken. In diesem Verfahren wurden die geometrischen Eigenschaften einer Kollektion von Punkten zur Erkennung Randpunkte berücksichtigt. Randpunkte weisen eine besondere geometrische Eigenschaft auf - der Winkelabstand zwischen benachbarten Randpunkte ist im Vergleich zu anderen benachbarten Punkten deutlich größer. Faltungen stellen den Grenzbereich zwischen zwei angrenzenden Ebenen dar, deren Normale in unterschiedlichen Richtungen zeigen. Diese geometrischen Eigenschaften wurden zur Erkennung Randpunkte verwendet. \autocite[1-2]{ni_edge_2016}
 
-Im folgenden wird das Verfahren zur Erkennung Randpunkte detaillierter erläutert. Für einen Punkt \textit{o} wurde eine Sammlung von \textit{K} benachbarten Punkten mittels eines kd-trees erstellt. Diese Sammlung wird als eine Nachbarschaft \textit{N\textsubscript{o}} referiert. Danach wurde mittels eines RANSAC-Algorithmus eine Ebene \textit{E\textsubscript{N\textsubscript{o}}} auf diese Nachbarschaft gefittet, um Ausreißer herauszufiltern und zwei angrenzenden Flächen innerhalb der Nachbarschaft voneinander zu trennen. Danach wurde Überprüft, ober der Punkt \textit{o} auf der RANSAC-Ebene lag. Falls dieser Punkt ein Ausreißer der Ebene \textit{E\textsubscript{N\textsubscript{o}}} war, wurde er nicht als einen Randpunkt markiert. Ansonsten wurden weiterhin die geometrischen Eigenschaften der Nachbarschaft überprüft. Abbildung \ref{RANSAC-Ebene} visualisiert die Trennung zwischen unterschiedlichen Flächen einer Punktwolke mittels des RANSAC-Verfahrens. 
+Im folgenden wird das Verfahren zur Erkennung Randpunkte detaillierter erläutert. Für einen Punkt \textit{o} wurde eine Sammlung von \textit{K} benachbarten Punkten mittels eines kd-trees erstellt. Diese Sammlung wird als eine Nachbarschaft \textit{N\textsubscript{o}} referiert. Danach wurde mittels eines RANSAC-Algorithmus eine Ebene \textit{E\textsubscript{N}} auf diese Nachbarschaft gefittet, um Ausreißer herauszufiltern und zwei angrenzenden Flächen innerhalb der Nachbarschaft voneinander zu trennen. Danach wurde Überprüft, ober der Punkt \textit{o} auf der RANSAC-Ebene lag. Falls dieser Punkt ein Ausreißer der Ebene \textit{E\textsubscript{N}} war, wurde er nicht als einen Randpunkt markiert. Ansonsten wurden weiterhin die geometrischen Eigenschaften der Nachbarschaft überprüft. Abbildung \ref{RANSAC-Ebene} visualisiert die Trennung zwischen unterschiedlichen Flächen einer Punktwolke mittels des RANSAC-Verfahrens. 
 
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/RANSAC-Ebene.png}
@@ -43,4 +43,39 @@ Im folgenden wird das Verfahren zur Erkennung Randpunkte detaillierter erläuter
 	\label{RANSAC-Ebene}
 \end{figure} 
 
-Im Falle, dass der Punkt \textit{o} ein Inlier war und zu der Ebene \textit{E\textsubscript{N\textsubscript{o}}} gehörte, fang die tatsächliche Überprüfung der geometrischen Eigenschaften der Nachbarschaft \textit{N\textsubscript{o}} an. Um die Ebenengleichung von \textit{E\textsubscript{N\textsubscript{o}}} näherungsweise zu schätzen, wurde zuerst die Normale der Ebene geschätzt. 
+Im Falle, dass der Punkt \textit{o} ein Inlier war und zu der Ebene \textit{E\textsubscript{N\textsubscript{o}}} gehörte, fang die tatsächliche Überprüfung der geometrischen Eigenschaften der Nachbarschaft \textit{N\textsubscript{o}} an. Um die Ebenengleichung von \textit{E\textsubscript{N}} näherungsweise zu schätzen, wurde zuerst die Normale \textit{$\vec{n}$} der Ebene geschätzt. In einer effizienten Weise wurde die Ebenengleichung durch das RANSAC-Verfahren näherungsweise geschätzt. Diese Gleichung wurde weiterhin auf die RANSAC-Inliers optimiert und daraus die Normale \textins{$\vec{n}$} ermittelt. Danach erfolgte die Errechnung des Winkelabstands zwischen den jeweiligen Punkten von \textit{N\textsubscript{o}}. Hierfür wurden für die Ebene die jeweiligen Eigenvektoren \textit{E\textsubscript{N}} $\vec{u}$ und $\vec{v}$ aus der Normale $\vec{n}$ errechnet. Das fertige Verfahren von PCL zur Ausrechnung der Eigenvektoren lieferte ungenaue Ergebnisse. Stattdessen wurden zur Ermittelung \textit{$\vec{u}$} zwei zufällig gewählte Punkten aus der Inliers verwendet. Es wurde dabei sichergestellt, dass keiner der Punkten den Punkt \textit{o} entsprachen. Zur Errechnung des Winkelabstands wurden zuerst die Winkel aller Punkte der lokalen Ebene \textit{E\textsubscript{N}} errechnet. Mit dem Punkt \textit{o} als Ursprung wurde für jeden Punkt \textit{p\textsubscript{i}}, aus \textit{N\textsubscript{r}} Punkten, der Winkel \textit{$\theta_i$} zu einer Nulllinie errechnet. Danach wurde die Differenz zwischen zwei konsekutiver Punktwinkel $\theta_i$ und $\theta_{i+1}$ errechnet, welcher den Winkelabstand \textit{G\textsubscript{$\theta$}} zwischen zwei Punkten \textit{p\textsubscript{i}} und \textit{p\textsubscript{i+1}} betrug. Abbildung \ref{edge_boundary} zeigt, wie der Winkelabstand zwischen Punkten am Rand der Punktwolke aussieht.
+
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{Abbildungen/angular_gap_boundary}
+	\centering
+	\caption{Der Winkelabstand \textit{G\textsubscript{$\theta$}} zwischen Punkten am Rand der Punktwolke. \textbf{\(a\)} zeigt ein interner Punkt \textit{o}und ein Nachbarpunkt \textit{p\textsubscript{i}}. Im Vergleich dazu zeigt \textbf{\(b\)} \textit{o} am Rand und den großen Winkelabstand \textit{G\textsubscript{$\theta$}} zwischen Punkte \textit{p\textsubscript{i}} und \textit{p\textsubscript{i + 1}}. \autocite{ni_edge_2016}}
+	\label{edge_boundary}
+\end{figure}
+
+Auch die Erkennung von Punkten in Innen- und Außenkanten war durch diese Berechnungen möglich. Wie bereits erwähnt, wurden zwei angrenzenden Flächen mittels das RANSAC-Verfahren voneinander getrennt. Falls der Punkt \textit{o} auf der Schnittlinie beider Flächen sowie auf der lokalen RANSAC-Ebene \textit{E\textsubscript{N}} liegt, dann gehört es zum lokalen Rand der Ebene. Falls der Punkt \textit{o} auf der Schnittlinie beider Flächen liegt, aber nicht zu der RANSAC-Ebene gehört, wird es automatisch nicht als einen Randpunkt gemerkt. \textit{E\textsubscript{N}}. Die Abbildung \ref{edge_fold} zeigt, wie der Winkelabstand zwischen Punkten auf einer Schnittlinie zwischen zwei Flächen der Punktwolke aussieht. Die Errechnungen des Winkelabstands erfolgte nach den Gleichungen \ref{first_equation} - \ref{last_equation}.
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{Abbildungen/angular_gap_fold}
+	\centering
+	\caption{Der Winkelabstand zwischen Punkten auf einer Schnittlinie zwei angrenzender Flächen. \textbf{\(a\)} zeigt ein interner Punkt \textit{o} der RANSAC-Ebene. \textbf{\(b\)} zeigt \textit{o} am lokalen Rand der RANSAC-Ebene und den Winkelabstand \textit{G\textsubscript{$\theta$}} zwischen Punkte \textit{p\textsubscript{i}} und \textit{p\textsubscript{i + 1}}. \textbf{\(c\)} zeigt \textit{o} als ein Ausreißer der RANSAC-Ebene. \autocite{ni_edge_2016}}
+	\label{edge_fold}
+\end{figure}
+
+\begin{equation}
+\label{first_equation}
+d_i^u = \vec{{op}_i} \cdot \vec{u}
+\end{equation}
+\begin{equation}
+d_i^v = \vec{{op}_i} \cdot \vec{v}
+\end{equation}
+\begin{equation}
+\theta_i = \arctan{\frac{d_i^u}{d_i^v}}
+\end{equation}
+\begin{equation}
+G_\theta = \max(\theta_{i + 1} - \theta_i), i \in \{1, \ldots, N_r\},
+\label{last_equation}
+\end{equation}
+
+
+
+Zur Korrekten Ausrechnung des maximalen Winkelabstands einer Nachbarschaft \textit{G\textsubscript{$\theta$}} war eine aufsteigende Sortierung der Winkel \textit{$\theta_i$} notwendig. Diese Sortierung entsprach eine Sortierung der Punkte \textit{p\textsubscript{i}} nach ihrer aufsteigenden polaren Entfernung von der Nulllinie. Die Abbildung \ref{} dient zur Visualisierung der Methode zur Ausrechnung von $\theta_i$.
