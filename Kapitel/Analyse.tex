@@ -1,7 +1,8 @@
-\chapter{Analyse des IEFD}
+\chapter{Ergebnisse}
 Das IEFD-Verfahren dieser Arbeit war noch in der Prototypenphase. Wie in Abschnitt \ref{label} erwähnt, sollte dieses Verfahren unter anderem, eine Anwendung bei der Online-Erkennung von Schweißnähten finden. Hierfür wurde das Verfahren unter bestimmten Kriterien evaluiert werden. Zur Evaluierung des Verfahrens wurden Anhand der Forschungsfrage sowie den drei Teilforschungsfragen Tests entworfen. Der erste Test sollte die Genauigkeit des IEFD-Verfahrens überprüfen. Mittels des zweiten Tests wurde der Einfluss der Punktdichte auf dem Verfahren überprüft. Der letzte Test überprüfte die Robustheit des IEFD-Verfahrens gegen Objekten mit unterschiedlichen geometrischen Eigenschaften.
 
-\section{Testdaten}
+\section{Vorbereitung der Grundvoraussetzungen}
+\subsection{Testdaten}\label{test_data}
 Für alle drei Tests wurden Testdaten erstellt. Nach Bedarf der Tests wurden hierzu Punktwolken künstlich entworfen oder mit einem Lasersensor aufgenommen. Bei der Aufnahme wurden unterschiedliche Werkstücke mit eindeutigen Kanten sowie Geometrien und/oder sichtbaren Knicken ausgesucht, um eine möglichst vielfältige Datenbasis zu erzeugen. Für das Scannen wurde der Laserliniensensor - \textit{scanControl 3000} verwendet, der auf dem Schweißroboter nach \textcite[39]{savla_intelligente_2022} montiert wurde. Obwohl die Entfernung des Lasersensors von der Werkstückoberfläche über die gesamte Abtastung möglichst konstant gehalten wurde, waren die Punktabstände der Punktwolke manchmal leicht unregelmäßig. Laut \textcite[9]{ni_edge_2016} hatte der Punktabstand den größten Einfluss auf die Leistung von AGPN. Es wurde behauptet, dass das \textit{UniformSampling} diese Verzerrungen der Punktabstände ausgleichen würde. 
 
 Die künstliche Punktwolke wurde auf Basis vorgegebener Parameter mittels eines Python-Skriptes erstellt. Der Zweck dieser Punktwolke war es, ein Objekt mit ein paar einfachen geometrischen Merkmalen zu simulieren. Dieses Objekt wurde dann als ein Ground-Truth verwendet. Unter Berücksichtigung des Einsatzzwecks wurde eine treppenförmige Oberfläche abgebildet, sodass es eine Innenkante sowie eine Außenkante vorhanden war. Diese Kanten sollten Schweißnähte nachahmen, entlang der durch den Schweißroboter geschweißt werden sollte. Das Weltkoordinatensystem wurde als Referenz für die Erstellung verwendet. Die \textit{x}, \textit{y} und \textit{z} Dimensionen entsprachen den Werten \textit{0,1m}, \textit{0,2m} beziehungsweise \textit{0,05m}. Als den Start wurde der Punkt $\left(\begin{smallmatrix}
@@ -43,12 +44,13 @@ Zur Evaluierung der Leistung des IEFD-Verfahrens wurden ein paar quantitative Me
 	\end{cases}
 \end{equation}
 
+\section{Testdurchläufe}
 \subsection{Überprüfung der Genauigkeit des IEFDs} \label{test_1}
 Die erste Forschungsfrage stellt die Genauigkeit des Verfahrens in Frage. Hierbei sollte geprüft werden wie viele Kanten durch das Verfahren richtig sowie falsch erkannt wurden, und wie viele davon korrekt oder inkorrekt segmentiert wurden. Es wurde postuliert, dass das IEFD-Verfahren zu einer hohen Genauigkeit dank der Einheitlichkeit der Testdatei alle Randpunkte erkennen würde. Für diesen Test wurden die beide Verfahren - das AGPN und IEFD - auf Basis des \testcloud geprüft. Hierzu wurde ein Punkteabstand von genau \textit{0,0001m} festgelegt. Somit hatte die Testdatei eine Dimension von $\left(\begin{smallmatrix}
 	0,1m & 0,2m & 0,05m
-\end{smallmatrix}\right)$. Die Überprüfung der Genauigkeit erfolgte durch zwei Methoden. Es wurde die Anzahl der, durch das Verfahren erkannten Randpunkte und Segmente gezählt und mit der Anzahl der tatsächlich vorhandenen Randpunkte beziehungsweise Segmente verglichen. Für die zweite Methode wurden die Metriken aus Abschnitt \ref{evaluations_metrics} verwendet, um die Verhältnisse der richtig sowie falsch erkannten Kanten sowie Segmente zu bestimmen. Bei der Festlegung der Parameter wurden die Erkenntnisse aus der Literaturquelle betrachtet. Es wurde erkannt, dass die Parameter \textit{K\textsubscript{1}} und \textit{K\textsubscript{2}} nahezu keinen großen Einfluss auf die Genauigkeit des AGPNs hatten. Der Schwellwert oder Glättungsfaktor $\phi$ bestimmte die maximale Abweichung zwischen zwei fugenlosen Segmente. Die Grenzwerte \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} für den Punkteabstand der RANSAC-Verfahren aus der Kantenerkennung und Kantensegmentierung, die die Bestimmung von Inliers der Verfahren regeln, hatten die größten Einflüsse auf die Genauigkeit. Es wurde wie in das Referenzwerk einen Wert für \textit{d\textsubscript{t1}} gleich dem durchschnittlichen Punkteabstand gewählt. Der Wert für \textit{d\textsubscript{t2}} wurde größer gewählt und betrug das fünffache des Punkteabstandes. \autocite[10-11]{ni_edge_2016}
+\end{smallmatrix}\right)$. Die Überprüfung der Genauigkeit erfolgte durch zwei Methoden. Es wurde die Anzahl der, durch das Verfahren erkannten Randpunkte und Segmente gezählt und mit der Anzahl der tatsächlich vorhandenen Randpunkte beziehungsweise Segmente verglichen. Für die zweite Methode wurden die Metriken aus Abschnitt \ref{evaluations_metrics} verwendet, um die Verhältnisse der richtig sowie falsch erkannten Kanten sowie Segmente zu bestimmen. Bei der Festlegung der Parameter wurden die Erkenntnisse aus der Literaturquelle betrachtet. Es wurde erkannt, dass die Parameter \textit{K\textsubscript{1}} und \textit{K\textsubscript{2}} nahezu keinen großen Einfluss auf die Genauigkeit des AGPNs hatten. Der Schwellwert oder Glättungsfaktor $\phi$ bestimmte die maximale Abweichung zwischen zwei fugenlosen Segmente. Die Grenzwerte \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} für den Punkteabstand der RANSAC-Verfahren aus der Kantenerkennung und Kantensegmentierung, die die Bestimmung von Inliers der Verfahren regeln, hatten die größten Einflüsse auf die Genauigkeit. Es wurde wie in das Referenzwerk einen Wert für \textit{d\textsubscript{t1}} gleich dem durchschnittlichen Punkteabstand gewählt. Der Wert für \textit{d\textsubscript{t2}} wurde größer gewählt und betrug das dreifache des Punkteabstandes. \autocite[10-11]{ni_edge_2016}
 
-Unterberücksichtigung der Erkenntnisse aus dem Referenzwerk wurden die restlichen Parameter für \testcloud festgelegt. Die Größe einer Iteration wurde auf 0,01m festgelegt. Die letzten 0,001m einer Iteration werden wiederholt sowie einen Bereich von 0,0002m zur Entfernung falscher Kanten festgelegt. Die Tabelle \ref{table: parameters_test1} listet die Parameter für das IEFD auf. Aufgrund der relativ hohen Punktdichte wurde festgelegt, dass Kanten und Randpunkte, die weniger als ein halber Millimeter von einander entfernt sind, zusammen segmentiert werden durften. Deswegen wurde ein \textit{d\textsubscript{t2}} von 0,0005m gewählt. Im Gegenzug wurde zwecks einer hohen Genauigkeitsanforderung ein \textit{d\textsubscript{t1}} von 0,0001m für die Kantenerkennung gewählt.
+Unterberücksichtigung der Erkenntnisse aus dem Referenzwerk wurden die restlichen Parameter für \testcloud festgelegt. Die Größe einer Iteration wurde auf 0,01m festgelegt. Die letzten 0,001m einer Iteration werden wiederholt sowie einen Bereich von 0,0002m zur Entfernung falscher Kanten festgelegt. Die Tabelle \ref{table: parameters_test1} listet die Parameter für das IEFD auf. Aufgrund der relativ hohen Punktdichte wurde festgelegt, dass Kanten und Randpunkte, die weniger als ein drittel Millimeter von einander entfernt sind, zusammen segmentiert werden durften. Deswegen wurde ein \textit{d\textsubscript{t2}} von 0,0003m gewählt. Im Gegenzug wurde zwecks einer hohen Genauigkeitsanforderung ein \textit{d\textsubscript{t1}} von 0,0001m für die Kantenerkennung gewählt.
 
 \begin{table}
 	\centering
@@ -57,7 +59,7 @@ Unterberücksichtigung der Erkenntnisse aus dem Referenzwerk wurden die restlich
 		\multirow{2}{*}{\textbf{Datei}}&\multirow{2}{*}{\textbf{Punktezahl}}&\multirow{2}{*}{\textbf{Punkteabstand}}&\multicolumn{6}{c}{\textbf{Parameter}}\\
 		& & & \textbf{K\textsubscript{1}} & \textbf{d\textsubscript{t1}} & \textbf{$\alpha$} & \textbf{K\textsubscript{2}} & \textbf{d\textsubscript{t2}} & \textbf{$\phi$} \\
 		\hline
-		\testcloud & 12000000 & 0,0001 & 200 & 0,0001 & $\frac{\pi}{2}$ & 30 & 0,0005 & 0,2 \\
+		\testcloud & 12000000 & 0,0001 & 200 & 0,0001 & $\frac{\pi}{2}$ & 30 & 0,0003 & 0,2 \\
 		\hline
 	\end{tabular}
 	\caption{Parameter für den Test auf die Testdatei}
@@ -111,28 +113,113 @@ Die Abbildung \ref{fig: segments_comparision_grnd_trth} visualisiert die Qualit�
 Somit ließ sich die erste Forschungsfrage beantworten - das IEFD-Verfahren bietet eine vergleichbare hohe Genauigkeit wie das AGPN-Verfahren und kann sogar Kanten besser erkennen. Um dieses Verfahren weiterhin auf seine Einsatzfähigkeit zu überprüfen erfolgten die nächsten Tests.
 
 \subsection{Überprüfung des Einflusses der Punktedichte} \label{test_2}
-Das Referenzwerk deutete auf den Einfluss der Punktedichte auf die Genauigkeit des Algorithmus hin. Die Punktedichte einer Punktwolke korreliert mit schärfer umrissenen Abbildungen, da es eine höhere Anzahl von Punkten auf die Kanten und andere geometrischen Merkmale vorhanden sind. Somit sollte diese Merkmale und Kanten einfacher erkannt werden. Deswegen wurde die Hypothese gestellt, dass sich die Genauigkeit des IEFD-Verfahrens proportional zu der Punktedichte verhalten würde - eine Abnahme der Punktdichte sollte eine Verringerung der Genauigkeit entsprechen. Um diese Hypothese auszutesten wurde auch das \testcloud verwendet. Um unterschiedlichen Punktedichten zu simulieren wurde der Punkteabstand der Testdatei zwischen einen Bereich von 0,00005m zu 0,005m um ein-viertel Schritte diskret variiert. Somit ergaben sich 9 unterschiedlichen Varianten der Testdatei mit verschiedenen Punktedichten. Die Dimensionen aller Varianten der Testdatei blieben dabei konstant. Die Größe der Iteration beziehungsweise die Anzahl der Scan-Linien in einer Iteration \textit{n} wurde dynamisch auf Basis des Punkteabstands ermittelt. Es wurde, womöglich, sichergestellt, dass es mindestens 100 Scan-Linien in einer Iteration gaben. Bei den Varianten mit einem relativ höheren Punkteabstand \(ab 0,001m\) wurde \textit{n} reduziert, da die Anzahl der Punkte in der y-Dimension nicht ausreichend war. Dabei wurde es versucht, dass mindestens fünf Iterationen stattgefunden sind. Auch die Anzahl \textit{k} der wiederholten Scan-Linien wurde so eingestellt, dass sie mindestens 10 betrug. Die Mindestanzahl von\textit{k} durfte auch für die Varianten mit höheren Punktabständen beibehalten werden, da keine der Iterationen weniger als 20 betrugen. Für die Entfernung falscher Kanten wurde einen Bereich definiert, der maximal zwei Scan-Linien am Anfang oder am Ende der Iteration umfassen durfte. Außer den Parametern \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden alle Parameter konstant gehalten und mit den gleichen Werten aus Abschnitt \ref{test_1} verwendet. Die Parameter \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden dynamisch auf Basis des Punkteabstandes gesetzt. \textit{d\textsubscript{t1}} wurde dem Punkteabstand gleich groß gewählt und \textit{d\textsubscript{t2}} betrug das fünffache von \textit{d\textsubscript{t1}}. Tabelle \ref{table: test_2_results} stellt die Ergebnisse dieses Tests dar.
+Das Referenzwerk deutete auf den Einfluss der Punktedichte auf die Genauigkeit des Algorithmus hin. Die Punktedichte einer Punktwolke korreliert mit schärfer umrissenen Abbildungen, da es eine höhere Anzahl von Punkten auf die Kanten und andere geometrischen Merkmale vorhanden sind. Somit sollte diese Merkmale und Kanten einfacher erkannt werden. Deswegen wurde die Hypothese gestellt, dass sich die Genauigkeit des IEFD-Verfahrens proportional zu der Punktedichte verhalten würde - eine Abnahme der Punktdichte sollte eine Verringerung der Genauigkeit entsprechen. Um diese Hypothese auszutesten wurde auch das \testcloud verwendet. Um unterschiedlichen Punktedichten zu simulieren wurde der Punkteabstand der Testdatei zwischen einen Bereich von 0,00005m zu 0,005m um ein-viertel Schritte diskret variiert. Somit ergaben sich 9 unterschiedlichen Varianten der Testdatei mit verschiedenen Punktedichten. Die Dimensionen aller Varianten der Testdatei blieben dabei konstant. Abbildung \ref{fig: testdata_pointdensity_comparision} zeigt den Unterschied der Punktedichte zwischen der ersten Variante der Testdatei mit einem Punkteabstand von 0,00005m und der neunten Variante der Testdatei mit einem Punkteabstand von 0,005m.
 
-\begin{table}[b]
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{Abbildungen/ground_truth_0,00005.png}
+		\centering
+		\caption{Die erste Variante der Testdatei mit Punkteabstand 0,00005m}
+		\label{fig: testdata_0,00005m}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{Abbildungen/ground_truth_0,005.png}
+		\centering
+		\caption{Die neunte Variante der Testdatei mit Punkteabstand 0,005m}
+		\label{fig: testdata_0,005m}
+	\end{subfigure}
+	\caption{Vergleich zwischen der Varianten der Testdatei mit der höchsten und niedrigsten Punktedichte}
+	\label{fig: testdata_pointdensity_comparision}
+\end{figure}
+
+Die Größe der Iteration beziehungsweise die Anzahl der Scan-Linien in einer Iteration \textit{n} wurde dynamisch auf Basis des Punkteabstands ermittelt. Es wurde, womöglich, sichergestellt, dass es mindestens 80 Scan-Linien in einer Iteration gaben. Bei den Varianten mit einem relativ höheren Punkteabstand \(ab 0,001m\) wurde \textit{n} reduziert, da die Anzahl der Punkte in der y-Dimension nicht ausreichend war. Dabei wurde es versucht, dass mindestens fünf Iterationen stattgefunden sind. Auch die Anzahl \textit{k} der wiederholten Scan-Linien wurde so eingestellt, dass sie mindestens 15 betrug. Die Mindestanzahl von\textit{k} durfte auch für die Varianten mit höheren Punktabständen beibehalten werden, da \textit{n} nie weniger als 15 betrug. Für die Entfernung falscher Kanten wurde einen Bereich definiert, der maximal zwei Scan-Linien am Anfang oder am Ende der Iteration umfassen durfte. Außer den Parametern \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden alle Parameter konstant gehalten und mit den gleichen Werten aus Abschnitt \ref{test_1} verwendet. Die Parameter \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden dynamisch auf Basis des Punkteabstandes gesetzt. \textit{d\textsubscript{t1}} wurde dem Punkteabstand gleich groß gewählt und \textit{d\textsubscript{t2}} betrug das dreifache von \textit{d\textsubscript{t1}}. Tabelle \ref{table: test_2_results} stellt die Ergebnisse dieses Tests dar.
+
+\begin{table}[t]
 	\centering
 	\begin{tabular}[width = \textwidth]{l *{8}{c}}
 		\hline
-		\multirow{2}{2em}{\textbf{Index}} & \multirow{2}{3em}{\textbf{Punkte-zahl}} & \multirow{2}{3em}{\textbf{Punkte-abstand}} & \multicolumn{2}{c}{\textbf{Parameter}} & \multirow{2}{*}{\textbf{p\textsubscript{dc}}} & \multirow{2}{*}{\textbf{p\textsubscript{mj}}} & \multirow{2}{*}{\textbf{p\textsubscript{dct}}} & \multirow{2}{*}{\textbf{p\textsubscript{mjt}}} \\
+		\multirow{2}{2em}{\textbf{Id.}} & \multirow{2}{3em}{\textbf{Punkte-zahl}} & \multirow{2}{3em}{\textbf{Punkte-abstand}} & \multicolumn{2}{c}{\textbf{Parameter}} & \multirow{2}{*}{\textbf{p\textsubscript{dc}}} & \multirow{2}{*}{\textbf{p\textsubscript{mj}}} & \multirow{2}{*}{\textbf{p\textsubscript{dct}}} & \multirow{2}{*}{\textbf{p\textsubscript{mjt}}} \\
 		& & & \textbf{d\textsubscript{t1}} &\textbf{d\textsubscript{t2}} & & & & \\
 		\hline
-		1 & 48.000.000 & 0,00005 & 0,00005 & 0,00025 & 0,8 & 0,2 & 1 & 0 \\
-		2 & 21.326.667 & 0,000075 & 0,000075 & 0,000375 & 1 & 0 & 1 & 0 \\
-		3 & 12.000.000 & 0,0001 & 0,0001 & 0,0005 & 1 & 0 & 1 & 0 \\
-		4 & 1.920.000 & 0,00025 & 0,00025 & 0,00125 & 1 & 0 & 1 & 0 \\
-		5 & 480.000 & 0,0005 & 0,0005 & 0,0025 & 1 & 0 & 1 & 0 \\
-		6 & 212.667 & 0,00075 & 0,00075 & 0,00375 & 1 & 0 & 1 & 0 \\
-		7 & 120.000 & 0,001	& 0,001 & 0,005 & 1 & 0 & 1 & 0 \\
-		8 & 19.200 & 0,0025 & 0,0025 & 0,0125 & 1 & 0 & 0,9 & 0,1 \\
-		9 & 4.800 & 0,005 & 0,005 & 0,025 & 0,8 & 0,2 & 0,75 & 0,25 \\
+		1 & 48.000.000 & 0,00005 & 0,00005 & 0,00015 & 0,8 & 0,2 & 1 & 0 \\
+		2 & 21.326.667 & 0,000075 & 0,000075 & 0,000225 & 1 & 0 & 1 & 0 \\
+		3 & 12.000.000 & 0,0001 & 0,0001 & 0,0003 & 1 & 0 & 1 & 0 \\
+		4 & 1.920.000 & 0,00025 & 0,00025 & 0,00075 & 1 & 0 & 1 & 0 \\
+		5 & 480.000 & 0,0005 & 0,0005 & 0,0015 & 1 & 0 & 1 & 0 \\
+		6 & 212.667 & 0,00075 & 0,00075 & 0,00225 & 1 & 0 & 1 & 0 \\
+		7 & 120.000 & 0,001	& 0,001 & 0,003 & 1 & 0 & 1 & 0 \\
+		8 & 19.200 & 0,0025 & 0,0025 & 0,0075 & 1 & 0 & 0,9 & 0,1 \\
+		9 & 4.800 & 0,005 & 0,005 & 0,015 & 0,7 & 0,3 & 0,71 & 0,29 \\
 		\hline 
 	\end{tabular}
 	\caption{Diese Tabelle fasst alle 9 Ergebnisse des zweiten Tests zusammen}
 	\label{table: test_2_results}
 \end{table}
 
-Die Varianten \textit{2-7} liefern perfekte Ergebnisse. Das IEFD-Verfahren leistet trotz einer absteigende Punktedichte für die Varianten eine sehr hohe Genauigkeit.
+Die Varianten \textit{2-7} liefern perfekte Ergebnisse. Das IEFD-Verfahren leistet trotz einer absteigende Punktedichte für die Varianten eine sehr hohe Genauigkeit. Bei der achten Variante wurden trotz der höheren Punktedichte alle Kanten der Testdatei richtig erkannt. Allerdings war die Kantensegmentierung nicht genau so erfolgreich. Die Außenkante, die in der y-Richtung und somit der Scan-Richtung zeigte, wurde nicht vollständig segmentiert. Stattdessen wurden durch das Verfahren zwei Segmente auf der Kante erzeugt. Somit erzielte der Testdurchlauf der achten Variante für \textit{p\textsubscript{dct}} eine Bewertung von \textit{0,9} sowie \textit{0,1} für die Metrik \textit{p\textsubscript{mjt}}. Bei der neunten Variante der Testdatei konnten weder die Kantenerkennung noch die Kantensegmentierung vergleichsweise gut abschneiden. Es wurden bei dieser Variante der Testdatei drei der sechs Seitenkanten nicht vollständig erkannt. Diese Kanten lagen auf der ersten sowie der dritten \textit{xy}-Ebene und zeigten in der x-Richtung. Die durch das Verfahren erkannten Kanten waren dürftig und erschienen nicht lückenlos. Aus diesem Grund erlangte der Testdurchlauf der neunten Variante einen \textit{p\textsubscript{dc}}-Wert von \textit{0,7} und sowie einen \textit{p\textsubscript{mj}}-Wert von \textit{0,3}. Die Kantensegmentierung konnte aus der sieben erkannten Kanten nur fünf richtig segmentieren. Hierbei wurde eine Seitenkante der dritten \textit{xy}-Ebene nicht von der Längskante unterschieden und wurde somit falsch segmentiert. Auch die Außenkante konnte nicht vollständig segmentiert werden, sondern wurden auf die Kante zwei Segmente erzeugt. Der Wert für \textit{p\textsubscript{dct}} betrug somit \textit{0,71} und \textit{0,29} für die Metrik \textit{p\textsubscript{mjt}}. Die erste Variante der Testdatei mit einem Punkteabstand von 0,00005m lieferte auch unerwartete Ergebnisse. Trotz der sehr hohen Punktedichte wurden die Innen- und Außenkanten von \testcloud durch das Verfahren nicht erkannt, weswegen dieser Testdurchlauf eine \textit{p\textsubscript{dc}} Bewertung von \textit{0,8} sowie eine \textit{p\textsubscript{mj}} Bewertung von \textit{0,2} erhielt. Diese acht Randelemente wurden korrekt und vollständig durch das Verfahren segmentiert und erhielten eine perfekte Bewertung \textit{1,0} für die Metrik \textit{p\textsubscript{dct}}. Abbildung \ref{fig: point_density_bar_chart} visualisiert die Leistung des IEFD-Verfahrens.
+
+\begin{figure}[t]
+	\includegraphics[width=\textwidth]{Abbildungen/point_density_influence_bar.png}
+	\centering
+	\caption{Diese Abbildung vergleicht die Leistung und Genauigkeit des IEFD-Verfahrens bei einer Änderung der Punktedichte}.
+	\label{fig: point_density_bar_chart}
+\end{figure}
+
+Nachdem der Einfluss der Punktedichte auf die Genauigkeit des Verfahrens überprüft wurde, wurde der nächste Test ausgeführt, um gezielt die Einsatzfähigkeit des Verfahrens unter reellen Bedingungen zu überprüfen.
+
+\subsection{Überprüfung der Robustheit}
+Wie in Abschnitt \ref{label} erwähnt, soll das Verfahren unter reellen Bedingungen verwendbar sein und soll verschiedenen Geometrien erkannt werden. Dieses verlangt eine hohe Robustheit des Verfahrens. Um die Robustheit des Verfahrens zu überprüfen wurden zwei Tests konzipiert. Da reelle Aufnahmen durch einen Lasersensor häufig sehr unregelmäßig sind, wurde für den ersten Test der Einfluss einer steigenden Unregelmäßigkeit des Punkteabstandes auf die Genauigkeit des Verfahrens überprüft. Bei dem zweiten Test wurde das IEFD-Verfahren auf verschiedene Aufnahmen von reellen Bauteilen angewendet und anhand der Metriken aus Abschnitt \ref{evaluations_metrics} bewertet.
+
+Für den ersten Test wurde die Testdatei \testcloud verwendet. Hierbei wurde einen Punkteabstand von 0,00025 festgelegt. Die Punkten aus reellen Scans, die mittels dem Lasersensor aus Abschnitt \ref{test_data} aufgenommen wurden, wiesen keinen regelmäßigen Punkteabstand auf. Um diese Unregelmäßigkeit nachzuahmen, wurde eine künstliche Verzerrung des Punktmusters der Testdatei implementiert. Hierfür wurde ein zufälliger Versatz \textit{d} auf dem Punkteabstand zwischen zwei Punkten aufaddiert. Zur Errechnung des Versatzes wurde eine zufällige reelle Zahl zwischen -1 und 1 gewählt und mit einer Amplitude \textit{\^{r}} multipliziert. Die Amplitude ließ sich errechnen, indem der konstante Punkteabstand \textit{r} mit einer Zahl \textit{k} zwischen 0 und 1,5 multipliziert wurde. Für jeden Punkt wurde ein unterschiedlicher Versatz \textit{d} in allen drei Richtungen des Koordinatensystems errechnet, um den Abstand zwischen Punkten möglichst unregelmäßig zu gestalten. Abbildung \ref{fig: point_pattern_comparision} zeigt die unterschiedlichen Mustern der Punkte in der Testdatei mit und ohne einer Verzerrung. 
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.75\textwidth}
+		\includegraphics[width=\textwidth]{Abbildungen/point_pattern_without_dist.png}
+		\centering
+		\caption{Punktmuster von \testcloud ohne Verzerrung}
+		\label{fig: point_pattern_without_dist}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.75\textwidth}
+		\includegraphics[width=\textwidth]{Abbildungen/point_pattern_with_dist.png}
+		\centering
+		\caption{Punktmuster von \testcloud mit Verzerrung und \textit{\^{r}=1,5}}
+		\label{fig: point_patter_with_dist}
+	\end{subfigure}
+	\caption{Vergleich der Punktmuster der Testdatei mit und ohne Verzerrung}
+	\label{fig: point_pattern_comparision}
+\end{figure}
+
+Für diesen Test wurden die Parameter außer \distthresha und \distthreshb des IEFD-Verfahrens konstant gehalten und aus Abschnitt \ref{test_1} übernommen. Zwecks der kürzeren gesamten Verarbeitungszeit wurde ein höherer Punktabstand von 0,00025, da es eine optimale Bilanz zwischen Punktedichte und Punktezahl angeboten hat sowie den durchschnittlichen Punkteabstand der Aufnahmen entsprochen hat, die mittels des Lasersensors genommen wurden. Dementsprechend wurde \distthresha auf den Wert 0,00025 und \distthreshb auf den Wert 0,00075 festgelegt. Um die Amplitude der Verzerrung zu manipulieren, wurde die Zahl \textit{k} diskret von der Untergrenze \textit{0} bis zur Obergrenze \textit{0,15} mit einer Schrittgröße \textit{0,1} inkrementiert. Die Größe der Iteration \textit{n} wurde ähnlich wie zuvor dynamisch mit einer Mindestzahl von 80 errechnet. Die Anzahl der wiederholten Scan-Linien \textit{k} betrugen wiederum mindestens 15. Zur Entfernung falscher Kanten wurde eine Region festgelegt, die maximal zwei Scan-Linien am Anfang oder am Ende einer Iteration umfasst wurden. Nach Festlegung dieser Parameter wurde der Test ausgeführt und die Ergebnisse wurden in Tabelle \ref{table: point_distortion_results} aufgelistet.
+
+\begin{table}[t]
+	\centering
+	\begin{tabular}[width=\textwidth]{l *{5}{c}}
+		\hline
+		\textbf{Id.} & \textbf{Amplitude \^{r}} & \textbf{p\textsubscript{dc}} & \textbf{p\textsubscript{mj}} & \textbf{p\textsubscript{dct}} & \textbf{p\textsubscript{mjt}} \\
+		\hline
+		1 & 0,1 & 1 & 0 & 1 & 0 \\
+		2 & 0,2 & 1 & 0 & 1 & 0 \\
+		3 & 0,3 & 1 & 0 & 1 & 0 \\
+		4 & 0,4 & 1 & 0 & 1 & 0 \\
+		5 & 0,5 & 1 & 0 & 1 & 0 \\
+		6 & 0,6 & 1 & 0 & 1 & 0 \\
+		7 & 0,7 & 1 & 0 & 1 & 0 \\
+		8 & 0,8 & 1 & 0 & 1 & 0 \\
+		9 & 0,9 & 1 & 0 & 1 & 0 \\
+		10 & 1,0 & 1 & 0 & 1 & 0 \\
+		11 & 1,1 & 1 & 0 & 0,9 & 0,1 \\
+		12 & 1,2 & 1 & 0 & 0,9 & 0,1 \\
+		13 & 1,3 & 0,8 & 0,2 & 1 & 0 \\
+		14 & 1,4 & 0,8 & 0,2 & 1 & 0 \\
+		15 & 1,5 & 0,8 & 0,2 & 1 & 0 \\
+		\hline
+	\end{tabular}
+	\caption{Diese Tabelle listet die Genauigkeit des Verfahrens gegen steigender Verzerrung der Punkte}
+	\label{table: point_distortion_results}
+\end{table}
+
+Die Ausführungen \textit{1-10} lieferten perfekte Ergebnisse, wo das IEFD-Verfahren trotz steigender Verzerrung der Punkte alle zehn Kanten der Testdatei erkennen sowie vollständig segmentieren konnte. 
