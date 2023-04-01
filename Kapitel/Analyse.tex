@@ -21,7 +21,7 @@ Die künstliche Punktwolke wurde auf Basis vorgegebener Parameter mittels eines 
 \end{figure}
 
 \subsection{Evaluierungsmetriken} \label{evaluations_metrics}
-Zur Evaluierung der Leistung des IEFD-Verfahrens wurden ein paar quantitative Metriken nach \textcite[10]{ni_edge_2016} entwickelt. Diese sollten die Genauigkeit der Kantenerkennung sowie die Genauigkeit der Segmentierung überprüfen. Wie in Abschnitt \ref{edge_detection_reprod} betont, sollte die Differenz der Winkelabstände \textit{G\textsubscript{$\theta$}} Randpunkte zu einem anderen Randpunkt größer oder gleich dem Schwellwert $\alpha$ sein, welcher für diesen Test $\frac{\pi}{2}$ betrug. Die Metrik \textit{p\textsubscript{dc}} wurde zur Angabe der Genauigkeit des IEFD-Verfahrens bei der Kantenerkennung verwendet. Es wurden die Anzahl der erkannten Kanten \textit{N\textsubscript{dc}} mit der Anzahl der tatsächlich vorhanden Kanten \textit{N\textsubscript{gc}} verglichen. Gleichzeitig wurde auch die Ungenauigkeit \textit{p\textsubscript{mj}} des Verfahrens geprüft, indem die Anzahl der fälschlicherweise markierten Kanten mit der Anzahl der tatsächlich vorhanden Kanten verglichen wurden. Wie in Abschnitt \ref{edge_segmentation} ertönt, durften die Kanten zusammen gruppiert werden, deren Randpunkte in unmittelbarer Nähe zu einander stehen und deren Richtungsvektoren nicht ruckartig voneinander abweichen. Die Metrik \textit{p\textsubscript{dct}} wurde zur Überprüfung der Genauigkeit der Kantensegmentierung entworfen. Hierbei wurde die Anzahl der korrekt segmentierten Kanten \textit{N\textsubscript{tc}} mit der Anzahl der korrekt erkannten Kanten \textit{N\textsubscript{dc}} sowie der Anzahl der fälschlicherweise erkannten Kanten \textit{N\textsubscript{mj}} verglichen. Gleichzeitig wurde auch die Ungenauigkeit \textit{p\textsubscript{mjt}} überprüft, indem die Anzahl der falsch segmentierten Kanten \textit{N\textsubscript{mjt}} mit der Anzahl der korrekt erkannten Kanten \textit{N\textsubscript{dc}} sowie der Anzahl der fälschlicherweise erkannten Kanten \textit{N\textsubscript{mj}} verglichen wurde. Falls \textit{N\textsubscript{mjt}} größer als \textit{N\textsubscript{dc}} und \textit{N\textsubscript{mj}} summiert betrug, wurde \textit{N\textsubscript{mjt}} mit der gesamten Anzahl der erkannten Segmente $\textit{N\textsubscript{mjt}} + \textit{N\textsubscript{tc}}$ verglichen. Die fälschlicherweise erkannten Kanten durch die \textit{FindEdgePoints}-Methode wurden bei der Metrik \textit{p\textsubscript{mj}} auch mitbetrachtet, da diese vor der Kantensegmentierung nicht verworfen werden. Die Gleichungen \ref{pdc} bis \ref{pmjt} zeigen die vier Metriken.
+Zur Evaluierung der Leistung des IEFD-Verfahrens wurden ein paar quantitative Metriken nach \textcite[10]{ni_edge_2016} entwickelt. Diese sollten die Genauigkeit der Kantenerkennung sowie die Genauigkeit der Segmentierung überprüfen. Wie in Abschnitt \ref{edge_detection_reprod} betont, sollte die Differenz der Winkelabstände \textit{G\textsubscript{$\theta$}} Randpunkte zu einem anderen Randpunkt größer oder gleich dem Schwellwert $\alpha$ sein, welcher für diesen Test $\frac{\pi}{2}$ betrug. Die Metrik \textit{p\textsubscript{dc}} wurde zur Angabe der Genauigkeit des IEFD-Verfahrens bei der Kantenerkennung verwendet. Es wurden die Anzahl der korrekt erkannten Kanten \textit{N\textsubscript{dc}} mit der Anzahl der tatsächlich vorhanden Kanten \textit{N\textsubscript{gc}} verglichen. Gleichzeitig wurde auch die Ungenauigkeit \textit{p\textsubscript{mj}} des Verfahrens geprüft, indem die Anzahl der fälschlicherweise markierten Kanten \textit{N\textsubscript{mj}} mit der Anzahl der tatsächlich vorhanden Kanten \textit{N\textsubscript{gc}} verglichen wurden. Wie in Abschnitt \ref{edge_segmentation} ertönt, durften die Kanten zusammen gruppiert werden, deren Randpunkte in unmittelbarer Nähe zu einander stehen und deren Richtungsvektoren nicht ruckartig voneinander abweichen. Die Metrik \textit{p\textsubscript{dct}} wurde zur Überprüfung der Genauigkeit der Kantensegmentierung entworfen. Hierbei wurde die Anzahl der korrekt erzeugten Segmente \textit{N\textsubscript{tc}} mit der Anzahl der korrekt erkannten Kanten \textit{N\textsubscript{dc}} sowie der Anzahl der fälschlicherweise erkannten Kanten \textit{N\textsubscript{mj}} verglichen. Gleichzeitig wurde auch die Ungenauigkeit \textit{p\textsubscript{mjt}} überprüft, indem die Anzahl der fälschlicherweise erzeugten Segmente \textit{N\textsubscript{mjt}} mit der Anzahl der korrekt erkannten Kanten \textit{N\textsubscript{dc}} sowie der Anzahl der fälschlicherweise erkannten Kanten \textit{N\textsubscript{mj}} verglichen wurde. Falls \textit{N\textsubscript{mjt}} größer als \textit{N\textsubscript{dc}} und \textit{N\textsubscript{mj}} summiert betrug, wurde \textit{N\textsubscript{mjt}} mit der gesamten Anzahl der erkannten Segmente $\textit{N\textsubscript{mjt}} + \textit{N\textsubscript{tc}}$ verglichen. Die fälschlicherweise erkannten Kanten durch die \textit{FindEdgePoints}-Methode wurden bei der Metrik \textit{p\textsubscript{dct}} sowie \textit{p\textsubscript{mj}} auch mitbetrachtet, da diese vor der Kantensegmentierung nicht verworfen werden. Die Gleichungen \ref{pdc} bis \ref{pmjt} zeigen die vier Metriken.
 
 \begin{equation}
 	\label{pdc}
@@ -81,10 +81,10 @@ Die Ergebnisse aus der sechs Ausführungen wurden für die Auswertung nach Absch
 		\textbf{Verfahren} & \textbf{N\textsubscript{dc}} & \textbf{N\textsubscript{mj}} & \textbf{N\textsubscript{gc}} & \textbf{p\textsubscript{dc}} & \textbf{p\textsubscript{mj}} & \textbf{N\textsubscript{tc}} & \textbf{N\textsubscript{mjt}} & \textbf{p\textsubscript{dct}} & \textbf{p\textsubscript{mjt}} \\
 		\hline
 		AGPN & 8 & 0 & 10 & 0,80 & 0 & 8 & 0 & 1,00 & 0 \\
-		IEFD & 10 & 0 & 10 & 1,00 & 0 & 9,83 & 0,17 & 0,98 & 0,02 \\
+		IEFD & 10 & 0 & 10 & 1,00 & 0 & 9 & 2 & 0,9 & 0,2 \\
 		\hline
 	\end{tabular}
-	\caption{Diese Tabelle stellt die durchschnittlichen Werte der jeweiligen Metriken und zusammengehörigen Werte dar}
+	\caption{Diese Tabelle stellt die schlechtesten Werte der jeweiligen Metriken und zusammengehörigen Werte für jedes Verfahren dar}
 	\label{table: metric_values}
 \end{table}
 
@@ -143,7 +143,7 @@ Die Größe der Iteration beziehungsweise die Anzahl der Scan-Linien in einer It
 		\multirow{2}{2em}{\textbf{Id.}} & \multirow{2}{3em}{\textbf{Punkte-zahl}} & \multirow{2}{3em}{\textbf{Punkte-abstand}} & \multicolumn{2}{c}{\textbf{Parameter}} & \multirow{2}{*}{\textbf{p\textsubscript{dc}}} & \multirow{2}{*}{\textbf{p\textsubscript{mj}}} & \multirow{2}{*}{\textbf{p\textsubscript{dct}}} & \multirow{2}{*}{\textbf{p\textsubscript{mjt}}} \\
 		& & & \textbf{d\textsubscript{t1}} &\textbf{d\textsubscript{t2}} & & & & \\
 		\hline
-		1 & 48.000.000 & 0,00005 & 0,00005 & 0,00015 & 0,8 & 0,2 & 1 & 0 \\
+		1 & 48.000.000 & 0,00005 & 0,00005 & 0,00015 & 0,8 & 0 & 1 & 0 \\
 		2 & 21.326.667 & 0,000075 & 0,000075 & 0,000225 & 1 & 0 & 1 & 0 \\
 		3 & 12.000.000 & 0,0001 & 0,0001 & 0,0003 & 1 & 0 & 1 & 0 \\
 		4 & 1.920.000 & 0,00025 & 0,00025 & 0,00075 & 1 & 0 & 1 & 0 \\
@@ -151,14 +151,14 @@ Die Größe der Iteration beziehungsweise die Anzahl der Scan-Linien in einer It
 		6 & 212.667 & 0,00075 & 0,00075 & 0,00225 & 1 & 0 & 1 & 0 \\
 		7 & 120.000 & 0,001	& 0,001 & 0,003 & 1 & 0 & 1 & 0 \\
 		8 & 19.200 & 0,0025 & 0,0025 & 0,0075 & 1 & 0 & 0,9 & 0,1 \\
-		9 & 4.800 & 0,005 & 0,005 & 0,015 & 0,7 & 0,3 & 0,71 & 0,29 \\
+		9 & 4.800 & 0,005 & 0,005 & 0,015 & 0,7 & 0 & 0,86 & 0,14 \\
 		\hline 
 	\end{tabular}
 	\caption{Diese Tabelle fasst alle 9 Ergebnisse des zweiten Tests zusammen}
 	\label{table: test_2_results}
 \end{table}
 
-Die Varianten \textit{2-7} liefern perfekte Ergebnisse. Das IEFD-Verfahren leistet trotz einer absteigende Punktedichte für die Varianten eine sehr hohe Genauigkeit. Bei der achten Variante wurden trotz der höheren Punktedichte alle Kanten der Testdatei richtig erkannt. Allerdings war die Kantensegmentierung nicht genau so erfolgreich. Die Außenkante, die in der y-Richtung und somit der Scan-Richtung zeigte, wurde nicht vollständig segmentiert. Stattdessen wurden durch das Verfahren zwei Segmente auf der Kante erzeugt. Somit erzielte der Testdurchlauf der achten Variante für \textit{p\textsubscript{dct}} eine Bewertung von \textit{0,9} sowie \textit{0,1} für die Metrik \textit{p\textsubscript{mjt}}. Bei der neunten Variante der Testdatei konnten weder die Kantenerkennung noch die Kantensegmentierung vergleichsweise gut abschneiden. Es wurden bei dieser Variante der Testdatei drei der sechs Seitenkanten nicht vollständig erkannt. Diese Kanten lagen auf der ersten sowie der dritten \textit{xy}-Ebene und zeigten in der x-Richtung. Die durch das Verfahren erkannten Kanten waren dürftig und erschienen nicht lückenlos. Aus diesem Grund erlangte der Testdurchlauf der neunten Variante einen \textit{p\textsubscript{dc}}-Wert von \textit{0,7} und sowie einen \textit{p\textsubscript{mj}}-Wert von \textit{0,3}. Die Kantensegmentierung konnte aus der sieben erkannten Kanten nur fünf richtig segmentieren. Hierbei wurde eine Seitenkante der dritten \textit{xy}-Ebene nicht von der Längskante unterschieden und wurde somit falsch segmentiert. Auch die Außenkante konnte nicht vollständig segmentiert werden, sondern wurden auf die Kante zwei Segmente erzeugt. Der Wert für \textit{p\textsubscript{dct}} betrug somit \textit{0,71} und \textit{0,29} für die Metrik \textit{p\textsubscript{mjt}}. Die erste Variante der Testdatei mit einem Punkteabstand von 0,00005m lieferte auch unerwartete Ergebnisse. Trotz der sehr hohen Punktedichte wurden die Innen- und Außenkanten von \testcloud durch das Verfahren nicht erkannt, weswegen dieser Testdurchlauf eine \textit{p\textsubscript{dc}} Bewertung von \textit{0,8} sowie eine \textit{p\textsubscript{mj}} Bewertung von \textit{0,2} erhielt. Diese acht Randelemente wurden korrekt und vollständig durch das Verfahren segmentiert und erhielten eine perfekte Bewertung \textit{1,0} für die Metrik \textit{p\textsubscript{dct}}. Abbildung \ref{fig: point_density_bar_chart} visualisiert die Leistung des IEFD-Verfahrens.
+Die Varianten \textit{2-7} liefern perfekte Ergebnisse. Das IEFD-Verfahren leistet trotz einer absteigende Punktedichte für die Varianten eine sehr hohe Genauigkeit. Bei der achten Variante wurden trotz der höheren Punktedichte alle Kanten der Testdatei richtig erkannt. Allerdings war die Kantensegmentierung nicht genau so erfolgreich. Die Außenkante, die in der y-Richtung und somit der Scan-Richtung zeigte, wurde nicht vollständig segmentiert. Stattdessen wurden durch das Verfahren zwei Segmente auf der Kante erzeugt. Somit erzielte der Testdurchlauf der achten Variante für \textit{p\textsubscript{dct}} eine Bewertung von \textit{0,9} sowie \textit{0,1} für die Metrik \textit{p\textsubscript{mjt}}. Bei der neunten Variante der Testdatei konnten weder die Kantenerkennung noch die Kantensegmentierung vergleichsweise gut abschneiden. Es wurden bei dieser Variante der Testdatei drei der sechs Seitenkanten nicht vollständig erkannt. Diese Kanten lagen auf der ersten sowie der dritten \textit{xy}-Ebene und zeigten in der x-Richtung. Die durch das Verfahren erkannten Kanten waren dürftig und erschienen nicht lückenlos. Allerdings wurden keine zusätzliche falsche Kanten durch as Verfahren erkannt. Aus diesem Grund erlangte der Testdurchlauf der neunten Variante einen \textit{p\textsubscript{dc}}-Wert von \textit{0,7} und sowie einen \textit{p\textsubscript{mj}}-Wert von \textit{0}. Die Kantensegmentierung konnte aus der sieben erkannten Kanten nur fünf richtig segmentieren. Hierbei wurde eine Seitenkante der dritten \textit{xy}-Ebene nicht von der Längskante unterschieden und wurde somit falsch segmentiert. Auch die Außenkante konnte nicht vollständig segmentiert werden, sondern wurden auf die Kante zwei Segmente erzeugt. Der Wert für \textit{p\textsubscript{dct}} betrug somit \textit{0,86} und \textit{0,14} für die Metrik \textit{p\textsubscript{mjt}}. Die erste Variante der Testdatei mit einem Punkteabstand von 0,00005m lieferte auch unerwartete Ergebnisse. Trotz der sehr hohen Punktedichte wurden die Innen- und Außenkanten von \testcloud durch das Verfahren nicht erkannt, weswegen dieser Testdurchlauf eine \textit{p\textsubscript{dc}} Bewertung von \textit{0,8} sowie eine \textit{p\textsubscript{mj}} Bewertung von \textit{0,2} erhielt. Diese acht Randelemente wurden korrekt und vollständig durch das Verfahren segmentiert und erhielten eine perfekte Bewertung \textit{1,0} für die Metrik \textit{p\textsubscript{dct}}. Abbildung \ref{fig: point_density_bar_chart} visualisiert die Leistung des IEFD-Verfahrens.
 
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/point_density_influence_bar.png}
@@ -209,17 +209,44 @@ Für diesen Test wurden die Parameter außer \distthresha und \distthreshb des I
 		6 & 0,6 & 1 & 0 & 1 & 0 \\
 		7 & 0,7 & 1 & 0 & 1 & 0 \\
 		8 & 0,8 & 1 & 0 & 1 & 0 \\
-		9 & 0,9 & 1 & 0 & 1 & 0 \\
-		10 & 1,0 & 1 & 0 & 1 & 0 \\
-		11 & 1,1 & 1 & 0 & 0,9 & 0,1 \\
-		12 & 1,2 & 1 & 0 & 0,9 & 0,1 \\
-		13 & 1,3 & 0,8 & 0,2 & 1 & 0 \\
-		14 & 1,4 & 0,8 & 0,2 & 1 & 0 \\
-		15 & 1,5 & 0,8 & 0,2 & 1 & 0 \\
+		9 & 0,9 & 1 & 0,2 & 0,92 & 0,25 \\
+		10 & 1,0 & 1 & 0,8 & 0,67 & 0,17 \\
+		11 & 1,1 & 1 & 1 & 0,6 & 0,35 \\
+		12 & 1,2 & 1 & 1,3 & 0,53 & 0,43 \\
+		13 & 1,3 & 1 & 1,6 & 0,39 & 0,34 \\
+		14 & 1,4 & 1 & 1,5 & 0,4 & 0,36 \\
+		15 & 1,5 & 0,8 & 1,4 & 0,42 & 0,33 \\
 		\hline
 	\end{tabular}
 	\caption{Diese Tabelle listet die Genauigkeit des Verfahrens gegen steigender Verzerrung der Punkte}
 	\label{table: point_distortion_results}
 \end{table}
 
-Die Ausführungen \textit{1-10} lieferten perfekte Ergebnisse, wo das IEFD-Verfahren trotz steigender Verzerrung der Punkte alle zehn Kanten der Testdatei erkennen sowie vollständig segmentieren konnte. 
+Die Ausführungen \textit{1-8} lieferten perfekte Ergebnisse, wo das IEFD-Verfahren trotz steigender Verzerrung der Punkte alle zehn Kanten der Testdatei erkennen sowie vollständig segmentieren konnte. Als die Verzerrung der Punkte erhöht wurde, wurden neben allen Kanten auch weitere Einzelpunkte als Randpunkte erkannt. Diese Einzelpunkte \(Störpunkte\) lagen zufällig gestreut und es wurde weder eine linienartige Kante noch ein anderes geometrisches Muster visuell erkannt. Ab der neunten Ausführung konnten Spuren der falschen Kanten aus Abschnitt \ref{false_edges} erkannt werden. Neben den zehn Kanten der Testdatei zwei falsche Kanten leicht erkennbar, weswegen der Test 9. eine \textit{p\textsubscript{dc}} und \textit{p\textsubscript{mj}} Bewertung von \textit{1,0} beziehungsweise \textit{0,2} erhalten hat. Aufgrund der Dürftigkeit der falschen Kanten konnte eine dieser Kanten nicht vollständig segmentiert wurden. Stattdessen wurden an der Stelle zwei Segmente erzeugt. Darüber hinaus wurde die Innenkante der Testdatei auch nicht vollständig segmentiert. An den Stellen, wo die falschen Kanten die Innenkante geschnitten haben, wurde ein neues Segment erzeugt. Somit erhielt diese Variante eine Bewertung von \textit{0,92} und \textit{0,25} für die Metriken \textit{p\textsubscript{dct}} beziehungsweise \textit{p\textsubscript{mjt}}. Ab einer Amplitude \textit{\^{r}} von \textit{1,0} der Verzerrung konnten mehr falschen Kanten zwischen jeder Iteration erkannt werden. Diese waren allerdings ähnlich dürftig und undeutlich definiert.  Dieser Trend der steigenden Verzerrung wurde bis zu der 23. Ausführung bemerkt, wo es seine  Höchstpunkt erreicht hat. Relativ zur früheren Ausführungen gab es die meisten Störpunkte und sowie die meisten falschen Kanten, die nicht entfernt wurden. Ab dieser Stelle wurde ein Plateau erreicht. Als die Verzerrung der Punkte erhöht wurde, wurden ungefähr die gleichen Anzahl an falschen Kanten erkannt. Gleichzeitig stiegen die Anzahl der Störpunkte, die durch die Kantenerkennung erkannt wurden. Trotzdem wurden alle Randelemente sowie die Innen- und Außenkante der Testdatei durch das Verfahren richtig erkannt. Aufgrund der hohen Anzahl an Störpunkte waren allerdings die Innen- und Außenkanten leicht dürftig. Insgesamt erzielten die Ausführungen 23 bis 26 einen \textit{p\textsubscript{dc}} Wert von 1.0, allerdings waren die Werte für \textit{p\textsubscript{mj}} deutlich höher. Die höheren Anzahl der falschen Kanten fuhr dazu, dass die Randelemente in der y-Richtung teilweise nicht vollständig segmentiert wurden, sondern wurden bis zu zwei zusätzlichen Segmente erzeugt. Darüber hinaus fuhr die hohe Anzahl der Störpunkte dazu, dass weder die Innenkante noch die Außenkante vollständig segmentiert wurde. Stattdessen wurde in jeder Iteration ein neues Segment gestartet. Dadurch erhielten beide Metriken \textit{p\textsubscript{dct}} und \textit{p\textsubscript{mjt}} nahezu die gleichen Werte von ca. 0,4 beziehungsweise 0,34. Abbildung \ref{fig: point_distortion_comparision} visualisiert den Trend der Metriken.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.75]{Abbildungen/point_distortion_influence_line.png}
+	\centering
+	\caption{Das Verhältnis zwischen der Genauigkeit des Verfahrens und der Amplitude der Punktverzerrung.}
+	\label{fig: point_distortion_comparision}
+\end{figure}
+
+Nach der Überprüfung der Genauigkeit bei einer Änderung der Punktverzerrung wurde die Robustheit des IEFD-Verfahrens gegen unterschiedlichen Geometrien überprüft, indem es reelle 3D-Aufnahmen von verschiedenen Bauteilen verwendet wurde. Ähnlich wie zuvor wurden alle Parameter außer \distthresha und \distthreshb aus Abschnitt \ref{test_1} übernommen. Zur Festlegung dieser Parameter war noch einen Schritt nötig. Die Punktedichte der Aufnahmen war an manchen Stellen der Punktwolke deutlich höher als den Durchschnitt. Diese waren die Stellen, wo der Lasersensor im Vergleich zu anderen Stellen länger aufhielt, wodurch mehrere Scan-Linien an den Stellen generiert wurden. Abbildung \ref{fig: point_density_before} visualisiert diese Anomalie. 
+
+\begin{figure}[t]
+\includegraphics[width=0.9\textwidth]{Abbildungen/point_density_distribution_blech_before.png}
+\centering
+\caption{Die Anzahl der Nachbarpunkte jedes Punktes vor dem Downsampling im Umfang von einem Millimeter}
+\label{fig: point_density_before}
+\end{figure}
+
+Diese lokalisierten Fällen der hohen Punktedichte hatten eine schlechte Auswirkung auf der Kantensegmentierung und fuhr dazu, dass diese Kanten nicht vollständig segmentiert wurden. Durch die Anwendung der \textit{UniformSampling} Methode konnte dieses Problem gelöst werden und eine einheitlichere Punktedichte sichergestellt werden. Es wurde bei diesem Verfahren eine \textit{Leaf-Size} von 0,0001 festgelegt. Damit betrug im Durchschnitt der Punkteabstand auch 0,0001m. Dieses wird in Abbildung \ref{fig: point_density_after} Dieser Wert wurde für das Parameter \distthresha festgelegt. Aufgrund der engeren geometrischen Verhältnisse der Bauteile, beispielsweise schmale Nuten und Schlitze, wurde für \distthreshb auch der Wert 0,0001m festgelegt.
+
+\begin{figure}[t]
+	\includegraphics[width=0.9\textwidth]{Abbildungen/point_density_distribution_blech_after.png}
+	\centering
+	\caption{Die Anzahl der Nachbarpunkte jedes Punktes nach dem Downsampling}
+	\label{fig: point_density_after}
+\end{figure}
+
+Nachdem die Parameter des Verfahrens festgelegt wurden, wurde jedes Scan drei Mal durch das Verfahren verarbeitet und die Ergebnisse davon wurden gemittelt, um den Einfluss von Ausreißer zu mildern. Diese Scans enthielten Bauteile mit kreisförmigen Löchern, Innenkanten, Nuten, Schlitze und weiteren geometrischen Merkmalen. Für jeden Scan wurden auch die folgenden Details gemerkt - die Anzahl der Punkte sowie die Anzahl der erkennbaren Kanten \textit{N\textsubscript{gc}}. Die Tabelle \ref{label} fasst diese Erkenntnisse zusammen.
