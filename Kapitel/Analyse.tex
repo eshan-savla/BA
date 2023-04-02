@@ -234,7 +234,7 @@ Die Ausführungen \textit{1-8} lieferten perfekte Ergebnisse, wo das IEFD-Verfah
 Nach der Überprüfung der Genauigkeit bei einer Änderung der Punktverzerrung wurde die Robustheit des IEFD-Verfahrens gegen unterschiedlichen Geometrien überprüft, indem es reelle 3D-Aufnahmen von verschiedenen Bauteilen verwendet wurde. Ähnlich wie zuvor wurden alle Parameter außer \distthresha und \distthreshb aus Abschnitt \ref{test_1} übernommen. Zur Festlegung dieser Parameter war noch einen Schritt nötig. Die Punktedichte der Aufnahmen war an manchen Stellen der Punktwolke deutlich höher als den Durchschnitt. Diese waren die Stellen, wo der Lasersensor im Vergleich zu anderen Stellen länger aufhielt, wodurch mehrere Scan-Linien an den Stellen generiert wurden. Abbildung \ref{fig: point_density_before} visualisiert diese Anomalie. 
 
 \begin{figure}[t]
-\includegraphics[width=0.9\textwidth]{Abbildungen/point_density_distribution_blech_before.png}
+\includegraphics[width=1\textwidth]{Abbildungen/point_density_distribution_blech_before.png}
 \centering
 \caption{Die Anzahl der Nachbarpunkte jedes Punktes vor dem Downsampling im Umfang von einem Millimeter}
 \label{fig: point_density_before}
@@ -243,10 +243,12 @@ Nach der Überprüfung der Genauigkeit bei einer Änderung der Punktverzerrung w
 Diese lokalisierten Fällen der hohen Punktedichte hatten eine schlechte Auswirkung auf der Kantensegmentierung und fuhr dazu, dass diese Kanten nicht vollständig segmentiert wurden. Durch die Anwendung der \textit{UniformSampling} Methode konnte dieses Problem gelöst werden und eine einheitlichere Punktedichte sichergestellt werden. Es wurde bei diesem Verfahren eine \textit{Leaf-Size} von 0,0001 festgelegt. Damit betrug im Durchschnitt der Punkteabstand auch 0,0001m. Dieses wird in Abbildung \ref{fig: point_density_after} Dieser Wert wurde für das Parameter \distthresha festgelegt. Aufgrund der engeren geometrischen Verhältnisse der Bauteile, beispielsweise schmale Nuten und Schlitze, wurde für \distthreshb auch der Wert 0,0001m festgelegt.
 
 \begin{figure}[t]
-	\includegraphics[width=0.9\textwidth]{Abbildungen/point_density_distribution_blech_after.png}
+	\includegraphics[width=\textwidth]{Abbildungen/point_density_distribution_blech_after.png}
 	\centering
 	\caption{Die Anzahl der Nachbarpunkte jedes Punktes nach dem Downsampling}
 	\label{fig: point_density_after}
 \end{figure}
 
 Nachdem die Parameter des Verfahrens festgelegt wurden, wurde jedes Scan drei Mal durch das Verfahren verarbeitet und die Ergebnisse davon wurden gemittelt, um den Einfluss von Ausreißer zu mildern. Diese Scans enthielten Bauteile mit kreisförmigen Löchern, Innenkanten, Nuten, Schlitze und weiteren geometrischen Merkmalen. Für jeden Scan wurden auch die folgenden Details gemerkt - die Anzahl der Punkte sowie die Anzahl der erkennbaren Kanten \textit{N\textsubscript{gc}}. Die Tabelle \ref{label} fasst diese Erkenntnisse zusammen.
+
+%Es folgen gleich die Ergebnisse des Tests
