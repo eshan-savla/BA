@@ -44,8 +44,8 @@ Zur Evaluierung der Leistung des IEFD-Verfahrens wurden ein paar quantitative Me
 	\end{cases}
 \end{equation}
 
-\section{Testdurchläufe}
-\subsection{Überprüfung der Genauigkeit des IEFDs} \label{test_1}
+\section{Erprobung des Verfahrens}
+\subsection{Überprüfung der allgemeinen Genauigkeit} \label{test_1}
 Die erste Forschungsfrage stellt die Genauigkeit des Verfahrens in Frage. Hierbei sollte geprüft werden wie viele Kanten durch das Verfahren richtig sowie falsch erkannt wurden, und wie viele davon korrekt oder inkorrekt segmentiert wurden. Es wurde postuliert, dass das IEFD-Verfahren zu einer hohen Genauigkeit dank der Einheitlichkeit der Testdatei alle Randpunkte erkennen würde. Für diesen Test wurden die beide Verfahren - das AGPN und IEFD - auf Basis des \testcloud geprüft. Hierzu wurde ein Punkteabstand von genau \textit{0,0001m} festgelegt. Somit hatte die Testdatei eine Dimension von $\left(\begin{smallmatrix}
 	0,1m & 0,2m & 0,05m
 \end{smallmatrix}\right)$. Die Überprüfung der Genauigkeit erfolgte durch zwei Methoden. Es wurde die Anzahl der, durch das Verfahren erkannten Randpunkte und Segmente gezählt und mit der Anzahl der tatsächlich vorhandenen Randpunkte beziehungsweise Segmente verglichen. Für die zweite Methode wurden die Metriken aus Abschnitt \ref{evaluations_metrics} verwendet, um die Verhältnisse der richtig sowie falsch erkannten Kanten sowie Segmente zu bestimmen. Bei der Festlegung der Parameter wurden die Erkenntnisse aus der Literaturquelle betrachtet. Es wurde erkannt, dass die Parameter \textit{K\textsubscript{1}} und \textit{K\textsubscript{2}} nahezu keinen großen Einfluss auf die Genauigkeit des AGPNs hatten. Der Schwellwert oder Glättungsfaktor $\phi$ bestimmte die maximale Abweichung zwischen zwei fugenlosen Segmente. Die Grenzwerte \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} für den Punkteabstand der RANSAC-Verfahren aus der Kantenerkennung und Kantensegmentierung, die die Bestimmung von Inliers der Verfahren regeln, hatten die größten Einflüsse auf die Genauigkeit. Es wurde wie in das Referenzwerk einen Wert für \textit{d\textsubscript{t1}} gleich dem durchschnittlichen Punkteabstand gewählt. Der Wert für \textit{d\textsubscript{t2}} wurde größer gewählt und betrug das dreifache des Punkteabstandes. \autocite[10-11]{ni_edge_2016}
@@ -136,7 +136,7 @@ Das Referenzwerk deutete auf den Einfluss der Punktedichte auf die Genauigkeit d
 
 Die Größe der Iteration beziehungsweise die Anzahl der Scan-Linien in einer Iteration \textit{n} wurde dynamisch auf Basis des Punkteabstands ermittelt. Es wurde, womöglich, sichergestellt, dass es mindestens 80 Scan-Linien in einer Iteration gaben. Bei den Varianten mit einem relativ höheren Punkteabstand \(ab 0,001m\) wurde \textit{n} reduziert, da die Anzahl der Punkte in der y-Dimension nicht ausreichend war. Dabei wurde es versucht, dass mindestens fünf Iterationen stattgefunden sind. Auch die Anzahl \textit{k} der wiederholten Scan-Linien wurde so eingestellt, dass sie mindestens 15 betrug. Die Mindestanzahl von\textit{k} durfte auch für die Varianten mit höheren Punktabständen beibehalten werden, da \textit{n} nie weniger als 15 betrug. Für die Entfernung falscher Kanten wurde einen Bereich definiert, der maximal zwei Scan-Linien am Anfang oder am Ende der Iteration umfassen durfte. Außer den Parametern \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden alle Parameter konstant gehalten und mit den gleichen Werten aus Abschnitt \ref{test_1} verwendet. Die Parameter \textit{d\textsubscript{t1}} und \textit{d\textsubscript{t2}} wurden dynamisch auf Basis des Punkteabstandes gesetzt. \textit{d\textsubscript{t1}} wurde dem Punkteabstand gleich groß gewählt und \textit{d\textsubscript{t2}} betrug das dreifache von \textit{d\textsubscript{t1}}. Tabelle \ref{table: test_2_results} stellt die Ergebnisse dieses Tests dar.
 
-\begin{table}[t]
+\begin{table}[b]
 	\centering
 	\begin{tabular}[width = \textwidth]{l *{8}{c}}
 		\hline
@@ -163,7 +163,7 @@ Die Varianten \textit{2-7} liefern perfekte Ergebnisse. Das IEFD-Verfahren leist
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/point_density_influence_bar.png}
 	\centering
-	\caption{Diese Abbildung vergleicht die Leistung und Genauigkeit des IEFD-Verfahrens bei einer Änderung der Punktedichte}.
+	\caption{Diese Abbildung vergleicht die Leistung und Genauigkeit des IEFD-Verfahrens bei einer Änderung der Punktedichte}
 	\label{fig: point_density_bar_chart}
 \end{figure}
 
