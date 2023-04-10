@@ -1,7 +1,36 @@
+%Datenstrukturen und Algorithmen
+%	Was sind Algorithmen und Datenstrukturen
+% 	Arten von Basis Datenstrukturen
+%		Vector/Liste
+%		Queue(Warteschlange)
+%		Stack??
+%		map und hash tabellen
+%	besondere Datenstruktur - PCL Punktwolke
+%	
+%	Komplexität und Notation von Algorithmen
+%	Arten von Basis Algorithmen
+%		
+% 		
+%	besondere Algorithmen:
+%		kd-tree
+%		octree(vielleicht)
+%		RANSAC
+%		Segmentierung
+
 \chapter{Theorie}
-\section{Algorithmen und Datenstrukturen}
 Im Kern dieser Arbeit steht eine Rechenaufgabe vor. Die positionellen Informationen über Objekte und Bauteile müssen sinnvoll verarbeitet werden, um die Lage und Form der geometrischen Merkmale des Objektes zu bestimmen. Bei der Entwicklung eines allgemeinen Verfahrens zur Erkennung der geometrischen Merkmale in Abschnitt~\ref{Methodik} werden Algorithmen und Datenstrukturen verwendet. 
 
-Ein Algorithmus ist ein Verfahren, welches zur Bestimmung einer oder mehreren Lösungen eines bestimmten Rechenproblems verwendet wird \autocite[1]{knebl_algorithmen_2021}. In einem Algorithmus wird ein Lösungsansatz möglichst präzise ausformuliert, indem kleine, isolierte und klar definierte Verarbeitungsschritte definiert werden. Auch ein simples Verfahren zur Summierung zwei Zahlen lässt sich als ein Algorithmus nennen. 
+\section{Datenstrukturen}
 
-Datenstrukturen 
+Datenstrukturen dienen der Organisation und Speicherung von Daten so, dass die Beziehung zwischen einzelnen Elemente auch aufbewahren wird. In einer Datenstruktur werden darüber hinaus auch Zugriffsmethoden für den Zugriff auf die gespeicherten Daten definiert sowie Angaben über Möglichkeiten zur Verarbeitung der Daten gemacht. Eine gute Datenstruktur setzt voraus, dass die Beziehung zwischen der Daten aufbewahren und gut definiert wird sowie die Verarbeitung der Daten leicht gemacht wird. Eine Datenstruktur soll auch bestimmte Operationen auf die Daten ermögliche, beispielsweise die Hinzufügung oder Entfernung von Datenpunkte, die Zusammenführung oder Sortierung der Daten sowie das Durchqueren der Datenstruktur und die Suche nach bestimmten Daten. In der Informatik gibt es bereits etablierte Datenstrukturen, die sich nach unterschiedlichen Einsatzzwecken richten und eine sehr breite Anwendung finden. Diese lassen sich nach Abbildung \ref{fig: datastructures} nach lineare und nichtlineare Datenstrukturen unterteilen. \autocite[1-2]{mohanty_data_2021}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{Abbildungen/Datenstruktur_arten.png}
+	\centering
+	\caption{Die unterschiedlichen Arten von linearen und nichtlinearen Datenstrukturen nach \textcite[2]{mohanty_data_2021}}
+	\label{fig: datastructures}
+\end{figure}
+
+\section{Algorithmen}
+
+Ein Algorithmus ist ein Verfahren, welches zur Bestimmung einer oder mehreren Lösungen eines bestimmten Rechenproblems verwendet wird \autocite[1]{knebl_algorithmen_2021}. In einem Algorithmus wird ein Lösungsansatz möglichst präzise ausformuliert, indem kleine, isolierte und klar definierte Verarbeitungsschritte definiert werden. Auch ein simples Verfahren zur Summierung zwei Zahlen lässt sich als ein Algorithmus nennen. \autocite[9-10]{hubwieser_fundamente_2015}
