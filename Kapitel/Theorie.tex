@@ -38,7 +38,7 @@ Die Operationen, die auf einer linearen Datenstruktur ausgeführt werden können
 
 Die Implementierung einer linearen Datenstruktur kann je nach Anforderungen und verfügbaren Ressourcen variieren. Es ist jedoch wichtig sicherzustellen, dass die Datenstruktur korrekt implementiert ist und dass alle Operationen den Zustand der Datenstruktur ordnungsgemäß ändern. \autocite[314-315]{hoffmann_einfuhrung_2011}
 
-Unter der linearen Datenstrukturen finden hauptsächlich drei Datenstrukturen eine breite Anwendung, nämlich Felder (Arrays), Schlangen (Queues) und Keller (Stacks).
+Unter der linearen Datenstrukturen finden hauptsächlich drei Datenstrukturen eine breite Anwendung, nämlich Felder (Arrays), Schlangen (Queues) und Stapel (Stacks).
 
 \subsubsection{Felder}
 
@@ -54,13 +54,47 @@ Verketteten linearen Listen sind eine bestimmte Art der Implementierung von line
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/Verkettete_lineare_liste.png}
 	\centering
-	\caption{Die Struktur und Operationen einer linearen Liste. Die Großbuchstaben deuten auf die Elemente der Liste während die \textit{z}-Buchstaben die Zeiger repräsentieren. Der Anker wird durch den Kopf abgebildet \autocite[611]{ernst_grundkurs_2020}}
+	\caption{Die Struktur und Operationen einer linearen Liste. Die Großbuchstaben deuten auf die Elemente der Liste während die \textit{z}-Buchstaben die Zeiger repräsentieren. Die Kopfzelle steht in dieser Abbildung für den Anker.\autocite[611]{ernst_grundkurs_2020}}
 \end{figure}
 
 Für alle gängigen Implementierungen von linearen Listen ist die Implementierung einer sequentiellen Zugriffsfunktion, die das nächste Element in der Liste ausgehend von einem bestimmten Element bereitstellt, einfach. Die Implementierung einer direkten Zugriffsfunktion, die das \textit{i}-te Element in der Liste bereitstellt, ist zwar ebenfalls einfach, aber die benötigte Zeit hängt von der Position des Elements in der Liste ab und nimmt mit zunehmender Länge der Liste zu.\autocite[45]{ollmert_datenstrukturen_2020}
 
 \subsubsection{Schlangen}
-Schlangen sind besondere Datenstrukturen, die Daten nur in einer bestimmten Reihenfolge speichern. Dadurch wird auch die Entnahme und Einfügung der Daten geregelt. Schlangen folgen das Prinzip nach \textit{First-In-First-Out} (FIFO), also werden die Elemente zur Verfügung gestellt, die zuerst zu der Datenstruktur hinzugefügt wurden. Elemente dürfen in der Regel nur am Ende der Schlange eingefügt und vom Anfang der Schlange entnommen werden. \autocite[371]{gumm_band_2016}
+Schlangen sind besondere sequentielle Datenstrukturen, die Daten nur in einer bestimmten Reihenfolge speichern. Dadurch wird auch die Entnahme und Einfügung der Daten geregelt. Schlangen folgen das Prinzip nach \textit{First-In-First-Out} (FIFO), also werden die Elemente zur Verfügung gestellt, die zuerst zu der Datenstruktur hinzugefügt wurden. Elemente dürfen in der Regel nur am Ende der Schlange eingefügt und vom Anfang der Schlange entnommen werden. \autocite[371]{gumm_band_2016}
+
+Das Prinzip nach \textit{FIFO} wird üblicherweise mittels verketteten linearen Listen ermöglicht. Der Anfang sowie das Ende der Schlange werden mittels Zeiger gekennzeichnet. Jedes Element, welches zu der Schlange hinzugefügt wird, erhält je nach Art der verketteten Liste einen Zeiger zu dem Element davor oder danach. Im Falle des ersten oder letzten Elements wird ihm ein besonderer Zeiger - der Nullzeiger - zugewiesen. Dieses deutet darauf hin, dass es keine weiteren Elemente zu finden sind. Der Zeiger \textit{anfang} deutet somit auf das vorderste und älteste Element der Schlange während der Zeiger \textit{ende} auf das hinterste und neuste Element deutet. Sobald der erste Eintrag der Schlange gelesen oder entnommen wird, wird der Zeiger \textit{anfang} inkrementiert, sodass es auf das nächste Element zeigt. Wenn ein neues Element zu der Schlange hinzugefügt wird, wird der Zeiger \textit{ende} inkrementiert, sodass es auf den letzten Eintrag der Schlange deutet. \autocite[48-49]{ollmert_datenstrukturen_2020} \autocite[371]{gumm_band_2016}
+
+Schlangen bieten ähnliche Operationen wie Felder und Listen an. Im Gegensatz zu Listen oder Felder, wo Elemente mittels einem bestimmten Funktionsaufruf an beliebigen Positionen innerhalb der Datenstruktur platziert werden dürfen, dürfen Elemente aus einer Schlange nur am Ende eingefügt werden. Abhängig von der Implementierung wird eine Methode bereitgestellt, die das Einfügen eines Elements ermöglicht. Allgemein wird das Einfügen einer Datei in einer Schlange als \textit{enqueue} benannt.Felder und Liste ermöglichen mittels bestimmter Funktionen einen Zugriff auf beliebige Elemente innerhalb der Datenstruktur in einer beliebigen Reihenfolge. Bei Schlangen darf nur das erste Element aus der Datenstruktur entnommen werden, welches am längsten in der Datenstruktur enthalten wurde. Auch wird der Zugriff auf dieses Element abhängig von der Implementierung durch eine bestimmte Methode ermöglicht. Allgemein wird das entfernen oder auslesen eines Elements einer Schlange als \textit{dequeue} bezeichnet. Die Anzahl der Elemente \textit{count} in einer Schlange lässt sich bestimmen, indem die Differenz zwischen den Zeigern \textit{anfang} und \textit{ende} berechnet wird. In den meisten Implementierungen werden diese Schritte innerhalb einer Methode zur Bestimmung der Länge eingekapselt. Diese Operationen zusammen mit den zur Erstellung und Vernichtung von Schlangen sind die Einzigen Methoden, die für diese Datenstruktur in der Regel bereitgestellt werden. \autocite[71-72]{hubwieser_fundamente_2015} \autocite[371]{gumm_band_2016}
+
+Die Ausführung der Prozeduren enqueue und dequeue erfordert bei einer Schlange einen konstanten Zeitaufwand, der unabhängig von der Anzahl der Elemente in der Datenstruktur ist. Die Suche nach einem Bestimmten Element in einer Schlange erfordert jedoch einen Zeitaufwand, der linear von der Anzahl der aktuellen Elemente in der Datenstruktur abhängt. Zur Überprüfung, ob ein bestimmtes Element in einer Schlange vorhanden ist, muss im Durchschnitt die Hälfte der Schlange durchsucht werden. \autocite[318]{hoffmann_einfuhrung_2011}
+
+\begin{figure}[t]
+	\includegraphics[width=\linewidth]{Abbildungen/Queue.png}
+	\centering
+	\caption{Eine Schlange mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
+	\label{fig: queue}
+\end{figure}
+
+\subsubsection{Stapel}
+Die Datenstruktur des Stapels, auch bekannt als Keller oder Stack, ist eine homogene, sequentielle Struktur, die nur das Einfügen und Lesen von Elementen am Anfang der Struktur erlaubt. Beim Lesen eines Elements wird dieses gleichzeitig entfernt, so dass das folgende Element an den Anfang rückt. Stapeln folgen das Prinzip nach \textit{First-In-Last-Out (FILO)} oder \textit{zuerst-rein-zuletzt-raus}. Die Anzahl der Speicherplätze des Stacks ist einseitig potenziell unbegrenzt, so dass der Stack dynamisch wachsen und schrumpfen kann. \autocite[614]{ernst_grundkurs_2020}
+
+Stapel werden üblicherweise als verketteten linearen Listen implementiert, die nur in eine Richtung expandieren oder reduzieren dürfen. Somit erfolgt die Einfügung sowie die Entnahme von Elementen im Gegensatz zu Schlangen nur am einen Ende des Stapels. Bei der Einfügung jedes neuen Elements werden die Vorhandenen Elemente des Stapels zurückgeschoben und dem neuen Element wird einen Zeiger zum vorigen Element beigegeben. Im Falle des ersten Elements wird ihm ähnlich wie zuvor einen Nullzeiger zugewiesen, der auf dem Ende des Stapels hinweist. Elemente des Stapels dürfen nur in der umgekehrten Reihenfolge ausgelesen werden, in der Sie eingefügt wurden. Somit dürfte das allererste Element nur als allerletztes Element ausgelesen werden. \autocite[363]{gumm_band_2016}
+
+Ähnlich wie Schlangen bieten Stapeln im Vergleich zu Felder und Listen nur begrenzte Funktionalitäten an. Elemente eines Stapels dürfen nicht an beliebigen Stellen zwischen vorhandenen Elementen des Stapels platziert werden, sondern nur am \textit{Kopf} des Stapels. Dieses wird durch die Operation \textit{push} ermöglicht, welches ein neues Element an der obersten Ebene platziert und den Zeiger für den Kopf nach oben nachrückt. Genau wie das Einspeichern darf das Auslesen eines Elementes nicht an einer beliebigen Stelle des Stapels erfolgen, sondern nur am Kopf des Stapels geschehen. Die Operation \textit{pop} ist dafür zuständig, das erste oder oberste Element des Stapels zu entfernen und für das Auslesen bereitzustellen. Gleichzeitig wird der Zeiger für den Kopf nach hinter gerückt, sodass es zu dem vorigen Element zeigt. Neben dieser Operationen werden auch für Stapeln zusätzliche Operationen bereitgestellt, die Stapeln erzeugen, vernichten oder seine Größe bestimmen. Wie diese Operationen definiert werden, hängt allerdings von der Implementierung ab. \autocite[614]{ernst_grundkurs_2020} \autocite[45-46]{ollmert_datenstrukturen_2020}
+
+Im Prinzip funktioniert ein Stapel ähnlich zu einer Schlange, indem er das Auslesen oder Einfügen von Elementen nur an bestimmten Stellen erlaubt. \textit{Push} und \textit{pop} sind beide Operationen, die ähnlich wie \textit{enqueue} und \textit{dequeue} funktionieren und unabhängig von der Größe der Datenstruktur sind. Somit sollte der Zeitaufwand dieser Operationen auch konstant bleiben. Die Suche nach einem bestimmten Element in einem Stapel sollte ähnlich wie bei Schlangen direkt von der Anzahl der Elemente abhängen.
+
+\begin{figure}[t]
+	\includegraphics[width=\textwidth]{Abbildungen/Stack.png}
+	\centering
+	\caption{Ein Stapel mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
+	\label{fig: stack}
+\end{figure}
+
+\subsection{Nichtlineare Datenstrukturen}
+Bei nichtlinearen Datenstrukturen werden Gegensatz zu linearen Datenstrukturen die einzelnen Elemente nicht in einer sequentiellen Reihenfolge zu einander stehen \autocite[321]{hoffmann_einfuhrung_2011}. 
+
+Die Funktionsweise sowie die Operationen nichtlinearer Datenstrukturen lassen sich nicht verallgemeinern, sondern können von Implementierung zu Implementierung abweichen. Unter nichtlinearen Datenstrukturen finden hauptsächlich vier eine breite Anwendung, nämlich Bäume (Tree), Graphen (Graph), Tabellen (Tables) und Mengen (Sets). Im Rahmen dieser Arbeit werden nur Bäume und Tabellen ausführlich behandelt.
 
 \section{Algorithmen}
 
