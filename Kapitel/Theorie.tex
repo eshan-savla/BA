@@ -96,6 +96,26 @@ Bei nichtlinearen Datenstrukturen werden Gegensatz zu linearen Datenstrukturen d
 
 Die Funktionsweise sowie die Operationen nichtlinearer Datenstrukturen lassen sich nicht verallgemeinern, sondern können von Implementierung zu Implementierung abweichen. Unter nichtlinearen Datenstrukturen finden hauptsächlich vier eine breite Anwendung, nämlich Bäume (Tree), Graphen (Graph), Tabellen (Tables) und Mengen (Sets). Im Rahmen dieser Arbeit werden nur Bäume und Tabellen ausführlich behandelt.
 
+\subsubsection{Bäume}
+Bäume stellen eine grundlegende Datenstruktur in der Informatik dar, die eine zweidimensionale Verallgemeinerung von Listen darstellen. Im Gegensatz zu Listen erlauben Bäume die Speicherung von Daten sowie die relevanten Beziehungen zwischen diesen Daten, wie beispielsweise Ordnungs- oder hierarchische Beziehungen. Daher sind Bäume besonders gut geeignet, um gesuchte Daten schnell wiederzufinden. Ein Baum besteht aus einer Menge von Knoten, die miteinander durch Kanten verbunden sind. Wenn eine Kante von Knoten A zu Knoten B führt, wird dies als A$\rightarrow$B notiert und A wird als Vater von B oder B als Kind von A bezeichnet. Ein Knoten ohne Kinder wird als Blatt bezeichnet, während alle anderen Knoten als innere Knoten bezeichnet werden. \autocite[389]{gumm_band_2016}
+
+Ein Pfad von A nach B führt als Folge von Knoten und Pfeilen von A nach B, wobei die Knoten durch Pfeile verbunden sind. Dieser Pfad wird als A $\rightarrow$ X1 $\rightarrow$ X2 $\rightarrow$ $\cdot$ $\rightarrow$ B notiert, wobei die Länge des Pfades durch die Anzahl der Knoten bestimmt wird. Diese Anzahl kann 0 oder mehr betragen. Wenn es einen Pfad von A nach B gibt, so gilt B als Nachkomme von A, während A als Vorfahre von B bezeichnet wird. \autocite[389]{gumm_band_2016}
+
+Ein Baum erfüllt verschiedene Axiome, die ihn von anderen Datenstrukturen unterscheiden. So gibt es genau einen Knoten, der als Wurzel bezeichnet wird und keinen Vater hat. Jeder andere Knoten hat genau einen Vater und ist ein Nachkomme der Wurzel. Zudem darf es keine zyklischen Pfade im Baum geben, da dies zu Widersprüchen führen würde. Ein weiteres Axiom besagt, dass es von der Wurzel zu jedem anderen Knoten genau einen Pfad gibt. Das bedeutet, dass jeder Knoten eindeutig bestimmt werden kann und es keine mehrdeutigen Wege durch den Baum gibt. Schließlich bilden die Nachkommen eines beliebigen Knotens K zusammen mit allen ererbten Kanten einen zusätzlichen Baum mit K als Wurzel. Dieser Baum wird als Unterbaum mit Wurzel K bezeichnet und erfüllt ebenfalls alle Axiome eines Baumes. Aufgrund dieser Eigenschaften sind Bäume besonders nützlich, hierarchische Strukturen abzubilden und Daten effizient abzuspeichern und wiederzufinden. \autocite[389]{gumm_band_2016}
+
+Aufgrund der hierarchischen Aufbau und Form dieser Datenstruktur besitzt sie eine besondere Eigenschaft - die Tiefe. Die Tiefe wird anhand der Anzahl der Ebenen eines Baums bestimmt. Zur Bestimmung der Tiefe eines Baums wird der kürzeste Pfad zu der tiefsten Ebene des Baums verfolgt und dabei die Anzahl der Knoten aufgezählt. Diese Anzahl repräsentiert die Tiefe eines Baums. \autocite[390]{gumm_band_2016}
+
+Eine exemplarische Abbildung eines Baums ist in Abbildung~\ref{fig: tree} zu sehen.
+
+\begin{figure}[t]
+	\includegraphics[width=\linewidth]{Abbildungen/Tree.png}
+	\centering
+	\caption{Ein Baum mit einer Tiefe von Fünf sowie die Darstellung der Beziehungen zwischen einzelner Knoten \autocite[390]{gumm_band_2016}}-
+	\label{fig: tree}
+\end{figure}
+
+\textit{Binärer Baum} ist die Bezeichnung einer spezifischen Implementierung dieser Datenstruktur. Sie dient als einer der wichtigsten dynamischen Datenstrukturen. Binärer Bäume ermöglichen das Einfügen und Entfernen von Elementen zu der gleichen Geschwindigkeit wie Felder und einfachen linearen Listen. Darüber hinaus bieten Sie auch eine Möglichkeit an, die Suche nach bestimmten Elementen sowie das Durchsuchen innerhalb der Datenstruktur im Vergleich zu konventionellen sequentiellen Datenstrukturen zu beschleunigen. \autocite[617]{ernst_grundkurs_2020}
+
 \section{Algorithmen}
 
 Ein Algorithmus ist ein Verfahren, welches zur Bestimmung einer oder mehreren Lösungen eines bestimmten Rechenproblems verwendet wird \autocite[1]{knebl_algorithmen_2021}. In einem Algorithmus wird ein Lösungsansatz möglichst präzise ausformuliert, indem kleine, isolierte und klar definierte Verarbeitungsschritte definiert werden. Auch ein simples Verfahren zur Summierung zwei Zahlen lässt sich als ein Algorithmus nennen. \autocite[9-10]{hubwieser_fundamente_2015}
