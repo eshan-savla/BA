@@ -298,6 +298,8 @@ Eine universelle Hashfunktion ist eine spezielle Art von Hashfunktion, die so ko
 Je nach Auswahl einer Hashfunktion besteht die Gefahr, dass für zwei unterschiedliche Schlüssel der gleiche Wert zurückgegeben wird. Dies fordert eine Methode zur Kollisionsbehandlung auf. Dieses Gefahr besteht insbesondere beim Einfügen eines neuen Elements in der Hashtabelle. Hierzu schlagen \textcite[568-572]{ernst_grundkurs_2020} Methoden vor, die zur Behebung dieser Konflikte verwendet werden. 
 
 \subsection{Verfahren zur datenbasierte Anpassung eines Models}
+
+\subsubsection{RANSAC}
 Der RANSAC-Algorithmus ist eine Methode zur Schätzung von Parametern eines mathematischen Modells aus einer Menge von beobachteten Datenpunkten, die durch Rauschen beeinträchtigt sind. Der Name steht für "Random Sample Consensus", was auf die Tatsache zurückzuführen ist, dass der Algorithmus zufällige Stichproben aus den Daten verwendet, um ein Modell zu schätzen, das am besten zu den Daten passt. Das Ziel des RANSAC-Algorithmus besteht darin, ein Modell zu finden, das die meisten Datenpunkte erklären kann, wobei die Ausreißer berücksichtigt werden. Ausreißer sind Datenpunkte, die nicht zum Modell passen und aufgrund von Fehlern in der Messung, unerwarteten Ereignissen oder anderen Faktoren auftreten können. \autocite[381-383]{fischler_random_1981}
 
 Der Algorithmus beginnt damit, eine zufällige Stichprobe von Datenpunkten aus der Gesamtmenge auszuwählen. Diese zufällige Teilmenge wird verwendet, um eine vorläufige Schätzung der Parameter zu erstellen, die die Daten am besten beschreiben. Als nächstes wird jeder Datenpunkt in der Gesamtmenge überprüft, um festzustellen, ob er innerhalb einer vordefinierten Toleranzgrenze der vorläufigen Schätzung liegt. Wenn ein Datenpunkt innerhalb dieser Toleranzgrenze liegt, wird er als \textit{konsistent} oder \textit{Inlier} betrachtet. Andernfalls wird er als \textit{inkonsistent} oder \textit{Ausreißer} betrachtet. Die konsistenten Datenpunkte werden verwendet, um eine neue Schätzung der Parameter zu erstellen. Dieser Prozess wird iterativ wiederholt, indem in jeder Iteration eine neue zufällige Stichprobe von Datenpunkten ausgewählt wird. Dadurch gelingt es dem Verfahren, eine neue vorläufige Schätzung der Parameter zu erstellen. Die Anzahl der zufälligen Stichproben und die Toleranzgrenze werden so gewählt, dass eine hinreichende Wahrscheinlichkeit besteht, dass der Algorithmus ein sinnvolles Modell findet. Am Ende des Algorithmus wird die Schätzung mit den meisten konsistenten Datenpunkten als endgültige Schätzung der Parameter verwendet. Diese endgültige Schätzung minimiert die Auswirkungen von Rauschen und Ausreißern und ist daher robust gegenüber unvorhergesehenen Störungen in den Daten. \autocite[383-384]{fischler_random_1981} \autocite[3]{martinez-otzeta_ransac_2023}
@@ -306,14 +308,14 @@ Die Funktionsweise des Verfahrens lässt sich besser anhand eines Beispiels vers
 
 \begin{figure}[!b]
 	\centering
-	\begin{subfigure}{0.45\textwidth}
+	\begin{subfigure}{0.43\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/Line_with_outliers.png}
 		\centering
 		\caption{Punkte auf einer zwei dimensionalen Ebene mit Ausreißer}
 		\label{fig: line_with_outliers}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}{0.45\textwidth}
+	\begin{subfigure}{0.43\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/Fitted_line.png}
 		\centering
 		\caption{Ein angepasstes Linienmodell auf die Punkte}
@@ -324,3 +326,12 @@ Die Funktionsweise des Verfahrens lässt sich besser anhand eines Beispiels vers
 \end{figure}
 
 Insgesamt ist der RANSAC-Algorithmus eine robuste Methode zur Schätzung von Parametern aus beobachteten Datenpunkten, die durch Rauschen beeinträchtigt sind. Aufbauend auf dem nach \textcite{fischler_random_1981} wurden zusätzliche Abzweigungen des Verfahrens konzipiert, die die Robustheit oder Leistung des Verfahrens verbessern. Das RANSAC Verfahren findet in diversen Bereichen wie maschinelles Sehen (Computer Vision), Robotik und Geodäsie eine sehr breite Anwendung \autocite[2]{martinez-otzeta_ransac_2023}.
+
+\subsubsection{Region-Growing}
+Region-Growing-Segmentierung ist ein Verfahren der Bildsegmentierung, welches auf der Idee basiert, dass Pixel, die ähnliche Eigenschaften aufweisen, zu einer zusammenhängenden Region zusammengefasst werden können. Das Ziel dabei ist es, die relevanten Objekte im Bild zu identifizieren und von der Hintergrundinformation zu trennen. \autocite[641]{adams_seeded_1994}
+
+Das Verfahren beginnt mit einem ausgewählten Startpixel, welches als Samen oder Seed bezeichnet wird. Anschließend werden benachbarte Pixel des Seeds analysiert und geprüft, ob sie ähnliche Eigenschaften aufweisen wie der Seed. Wenn dies der Fall ist, werden diese Pixel zur wachsenden Region hinzugefügt. Der Prozess wird wiederholt, bis keine weiteren Pixel gefunden werden, die zur wachsenden Region hinzugefügt werden können.\autocite[641-642]{adams_seeded_1994}
+
+Ein wichtiger Faktor bei der Region-Growing-Segmentierung ist die Wahl der Kriterien für die Ähnlichkeit von Pixeln. Es gibt verschiedene Methoden zur Bestimmung von Ähnlichkeitskriterien, darunter Intensität, Farbe, Textur und Form. Die Wahl hängt von der Art des zu segmentierenden Bildes und den gewünschten Ergebnissen ab. Darüber hinaus spielt die Wahl des Seeds auch eine wichtige Rolle. In Daten mit wenigen Ausreißern hat eine falsche Wahl des Seeds keinen wesentlichen Effekt auf die Korrektheit des Algorithmus, allerdings können viele Ausreißer das Algorithmus stören. In diesem Fall ist es wichtig, dass kein Ausreißer als Seed gewählt wird, um die Erzeugung falscher Segmente zu vermeiden. \autocite[641-643]{adams_seeded_1994}
+
+Region-Growing-Segmentierung lässt sich auf eine breite Auswahl an Bildern anwenden. Dies ermöglicht zahlreiche Anwendungen dieses Algorithmus in der medizinischen Bildgebung, z.B. bei der Segmentierung von Tumoren oder Organen. Diese hohe Anwendbarkeit des Algorithmus lässt auch seine Anwendung in der industriellen Bildverarbeitung und der Robotik zu.\autocite[646]{adams_seeded_1994}
