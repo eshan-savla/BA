@@ -22,12 +22,12 @@ Im Kern dieser Arbeit steht eine Rechenaufgabe vor. Die positionellen Informatio
 
 \section{Datenstrukturen} \label{Datenstrukturen}
 
-Datenstrukturen dienen der Organisation und Speicherung von Daten so, dass die Beziehung zwischen einzelnen Elemente auch aufbewahren wird. In einer Datenstruktur werden darüber hinaus auch Zugriffsmethoden für den Zugriff auf die gespeicherten Daten definiert sowie Angaben über Möglichkeiten zur Verarbeitung der Daten gemacht. Eine gute Datenstruktur setzt voraus, dass die Beziehung zwischen der Daten aufbewahren und gut definiert wird sowie die Verarbeitung der Daten leicht gemacht wird. Eine Datenstruktur soll auch bestimmte Operationen auf die Daten ermögliche, beispielsweise die Hinzufügung oder Entfernung von Datenpunkte, die Zusammenführung oder Sortierung der Daten sowie das Durchqueren der Datenstruktur und die Suche nach bestimmten Daten. In der Informatik gibt es bereits etablierte Datenstrukturen, die sich nach unterschiedlichen Einsatzzwecken richten und eine sehr breite Anwendung finden. Diese lassen sich nach Abbildung ~\ref{fig: datastructures} nach lineare und nichtlineare Datenstrukturen unterteilen. \autocite[1-2]{mohanty_data_2021}
+Datenstrukturen dienen der Organisation und Speicherung von Daten so, dass die Beziehung zwischen einzelnen Elemente auch aufbewahren wird. In einer Datenstruktur werden darüber hinaus auch Zugriffsmethoden für den Zugriff auf die gespeicherten Daten definiert sowie Angaben über Möglichkeiten zur Verarbeitung der Daten gemacht. Eine gute Datenstruktur setzt voraus, dass die Beziehung zwischen der Daten aufbewahren und gut definiert wird sowie die Verarbeitung der Daten leicht gemacht wird. Eine Datenstruktur soll auch bestimmte Operationen auf die Daten ermögliche, beispielsweise die Hinzufügung oder Entfernung von Datenpunkte, die Zusammenführung oder Sortierung der Daten sowie das Durchqueren der Datenstruktur und die Suche nach bestimmten Daten. In der Informatik gibt es bereits etablierte Datenstrukturen, die sich nach unterschiedlichen Einsatzzwecken richten und eine sehr breite Anwendung finden. Diese lassen sich nach Abbildung~\ref{fig: datastructures} nach lineare und nichtlineare Datenstrukturen unterteilen. \autocite[1-2]{mohanty_data_2021}
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{Abbildungen/Datenstruktur_arten.png}
 	\centering
-	\caption{Die unterschiedlichen Arten von linearen und nichtlinearen Datenstrukturen nach \textcite[2]{mohanty_data_2021}}
+	\caption[Datenstrukturarten]{Die unterschiedlichen Arten von linearen und nichtlinearen Datenstrukturen nach \textcite[2]{mohanty_data_2021}}
 	\label{fig: datastructures}
 \end{figure}
 
@@ -49,12 +49,12 @@ Eine andere Variante der Felder ist die sogenannte lineare Liste. Diese Liste un
 Lineare Listen bieten viele ähnlichen Operationen wie die von Feldern an, um mit den eingespeicherten Elementen zu interagieren. Dazu gehört das Abrufen eines bestimmten Elements, das Einfügen eines neuen Elements zwischen zwei benachbarten Element (sowie Spezialfälle für das Hinzufügen eines neuen ersten oder letzten Elements), das Entfernen eines bestimmten Elements, das Bestimmen der aktuellen Länge der Liste anhand der Elementanzahl, die Suche nach einem Element mit einem bestimmten Wert, das Zusammenführen von zwei linearen Listen und das Aufteilen einer Liste in zwei Teillisten.\autocite[42-43]{ollmert_datenstrukturen_2020}
 
 
-Verketteten linearen Listen sind eine bestimmte Art der Implementierung von linearen Listen. Eine solche Kette unterscheidet sich grundsätzlich nach ihrem Aufbau und Speicherverfahren von gewöhnlichen Listen und Feldern. Die Elemente einer verketteten linearen Liste werden nicht aufeinanderfolgend gespeichert. Stattdessen wird mit jedem Element dieser Liste auch ein Zeiger beigegeben, der entweder die Speicheradresse des nächsten Elements angibt oder auf das Ende der Liste hinweist. Der Anker ist ein besonderer Zeiger, der auf den Anfang der Liste deutet. Die Struktur und Operationen einer linearen Liste ist in Abbildung ~\ref{label} abgebildet. Bei der doppel-verketteten linearen Listen werden mit jedem Element nicht nur einen Zeiger zu dem nächsten Element beigegeben, sondern auch einen Zeiger zu dem vorigen Element. Bei dieser Art der verketteten Liste werden zwei Anker geliefert - der Vorwärtsanker für den Anfang und der Rückwärtsanker für das Ende der Liste. Die Verarbeitung mancher linearen Listen stellt eine Herausforderung dar, insbesondere wenn sie gleichzeitig durch mehrere Programme verarbeitet werden. In solchen Fällen könnte es beispielsweise dazu führen, dass ein Programm auf ein bestimmtes Element mittels seines Index zugreift, während ein anderes Programm ein Element davor hinzufügt oder entfernt. \autocite[43-44]{ollmert_datenstrukturen_2020}
+Verketteten linearen Listen sind eine bestimmte Art der Implementierung von linearen Listen. Eine solche Kette unterscheidet sich grundsätzlich nach ihrem Aufbau und Speicherverfahren von gewöhnlichen Listen und Feldern. Die Elemente einer verketteten linearen Liste werden nicht aufeinanderfolgend gespeichert. Stattdessen wird mit jedem Element dieser Liste auch ein Zeiger beigegeben, der entweder die Speicheradresse des nächsten Elements angibt oder auf das Ende der Liste hinweist. Der Anker ist ein besonderer Zeiger, der auf den Anfang der Liste deutet. Die Struktur und Operationen einer linearen Liste ist in Abbildung~\ref{label} abgebildet. Bei der doppel-verketteten linearen Listen werden mit jedem Element nicht nur einen Zeiger zu dem nächsten Element beigegeben, sondern auch einen Zeiger zu dem vorigen Element. Bei dieser Art der verketteten Liste werden zwei Anker geliefert - der Vorwärtsanker für den Anfang und der Rückwärtsanker für das Ende der Liste. Die Verarbeitung mancher linearen Listen stellt eine Herausforderung dar, insbesondere wenn sie gleichzeitig durch mehrere Programme verarbeitet werden. In solchen Fällen könnte es beispielsweise dazu führen, dass ein Programm auf ein bestimmtes Element mittels seines Index zugreift, während ein anderes Programm ein Element davor hinzufügt oder entfernt. \autocite[43-44]{ollmert_datenstrukturen_2020}
 
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/Verkettete_lineare_liste.png}
 	\centering
-	\caption{Die Struktur und Operationen einer linearen Liste. Die Großbuchstaben deuten auf die Elemente der Liste während die \textit{z}-Buchstaben die Zeiger repräsentieren. Die Kopfzelle steht in dieser Abbildung für den Anker.\autocite[611]{ernst_grundkurs_2020}}
+	\caption[Lineare Liste]{Die Struktur und Operationen einer linearen Liste. Die Großbuchstaben deuten auf die Elemente der Liste während die \textit{z}-Buchstaben die Zeiger repräsentieren. Die Kopfzelle steht in dieser Abbildung für den Anker.\autocite[611]{ernst_grundkurs_2020}}
 \end{figure}
 
 Für alle gängigen Implementierungen von linearen Listen ist die Implementierung einer sequentiellen Zugriffsfunktion, die das nächste Element in der Liste ausgehend von einem bestimmten Element bereitstellt, einfach. Die Implementierung einer direkten Zugriffsfunktion, die das \textit{i}-te Element in der Liste bereitstellt, ist zwar ebenfalls einfach, aber die benötigte Zeit hängt von der Position des Elements in der Liste ab und nimmt mit zunehmender Länge der Liste zu.\autocite[45]{ollmert_datenstrukturen_2020}
@@ -71,7 +71,7 @@ Die Ausführung der Prozeduren enqueue und dequeue erfordert bei einer Queue ein
 \begin{figure}[t]
 	\includegraphics[width=\linewidth]{Abbildungen/Queue.png}
 	\centering
-	\caption{Eine Queue mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
+	\caption[Queue]{Eine Queue mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
 	\label{fig: queue}
 \end{figure}
 
@@ -87,7 +87,7 @@ Im Prinzip funktioniert ein Stapel ähnlich zu einer Queue, indem er das Auslese
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{Abbildungen/Stack.png}
 	\centering
-	\caption{Ein Stapel mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
+	\caption[Stapel]{Ein Stapel mit den Operationen zur Einfügung und Entfernung von Elementen dargestellt \autocite[371]{gumm_band_2016}}
 	\label{fig: stack}
 \end{figure}
 
@@ -110,7 +110,7 @@ Eine exemplarische Abbildung eines Baums ist in Abbildung~\ref{fig: tree} zu seh
 \begin{figure}[t]
 	\includegraphics[width=\linewidth]{Abbildungen/Tree.png}
 	\centering
-	\caption{Ein Baum mit einer Tiefe von Fünf sowie die Darstellung der Beziehungen zwischen einzelner Knoten \autocite[390]{gumm_band_2016}}-
+	\caption[Binärbaum]{Ein Baum mit einer Tiefe von Fünf sowie die Darstellung der Beziehungen zwischen einzelner Knoten \autocite[390]{gumm_band_2016}}-
 	\label{fig: tree}
 \end{figure}
 
@@ -127,7 +127,7 @@ Beim Löschen eines Elements wird der gleiche erst Schritt wie beim Einfügen ve
 \begin{figure}[!b]
 	\includegraphics[width=\linewidth]{Abbildungen/tree_delete.png}
 	\centering
-	\caption{Eine Veranschaulichung des Löschvorgangs in einem binären Suchbaum \autocite[140]{knebl_algorithmen_2021}}
+	\caption[Löschvorgang binären Baums]{Eine Veranschaulichung des Löschvorgangs in einem binären Suchbaum \autocite[140]{knebl_algorithmen_2021}}
 	\label{fig: tree_delete}
 \end{figure}
 
@@ -147,17 +147,17 @@ Bei der Tiefensuche (Depth-First Search, DFS) wird der Graph hingegen rekursiv d
 	\begin{subfigure}[h]{0.49\textwidth}
 		\includegraphics[width=\linewidth]{Abbildungen/Breitensuche.png}
 		\centering
-		\caption{Eine Visualisierung der Breitensuche nach \textcite[228]{knebl_algorithmen_2021}}
+		\caption[Breitensuche in Graphen]{Eine Visualisierung der Breitensuche nach \textcite[228]{knebl_algorithmen_2021}}
 		\label{fig: breitensuche}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[h]{0.49\textwidth}
 		\includegraphics[width=\linewidth]{Abbildungen/Tiefensuche.png}
 		\centering
-		\caption{Eine Visualisierung der Tiefensuche nach \textcite[232]{knebl_algorithmen_2021}}
+		\caption[Tiefensuche in Graphen]{Eine Visualisierung der Tiefensuche nach \textcite[232]{knebl_algorithmen_2021}}
 		\label{fig: tiefensuche}
 	\end{subfigure}
-	\caption{Eine Visualisierung beider Suchverfahren für Graphen}
+	\caption[Suchverfahren von Graphen]{Eine Visualisierung beider Suchverfahren für Graphen}
 	\label{fig: graph_search_functions}
 \end{figure}
 
@@ -169,14 +169,14 @@ Ein k-dimensionaler Baum , der auch als kd-Baum bekannt ist, ist eine geometrisc
 
 Der KD-Baum ist die gängigste räumliche Datenstruktur für die Durchführung von Bereichs- und nächsten Nachbarschafts-Suchanfragen. In jeder Ebene des Baums werden alle Kinder entlang einer bestimmten Dimension partitioniert. Danach wird in der nächsten Ebene diese Dimension über eine Hyperebene gedreht, die senkrecht zur Betrachtungsachse steht. Zu Beginn des Baums werden alle Punkte basierend auf der ersten Koordinate des Wurzelknotens partitioniert, so dass alle Punkte des rechten Teilbaums größere erste Koordinaten haben als die Wurzel. Im Umkehrschluss ist der Wert der ersten Dimension oder Koordinate aller Punkte im linken Teilbaum kleiner. Jede Ebene des Baums partitioniert den Suchraum basierend auf der nächsten Dimension und kehrt periodisch zur ersten Dimension zurück, wenn die letzte abgeschlossen ist. Der effizienteste Weg zur Erstellung eines statischen KD-Baums besteht darin, eine Partitionierungsmethode zu verwenden, die den Medianwert der Raumpunkte verwendet. Dabei bewegen sich Daten mit kleineren eindimensionalen Werten nach links und Daten mit größeren Werten nach rechts. Dieser Vorgang wird dann rekursiv auf beide Teilbäume wiederholt, bis nur noch ein Element übrig bleibt. Dieses Element wird als Blatt des Baumes gespeichert. \autocite[92]{saha_advanced_2019}
 
-Die Erstellung eines statischen kd-Baums für \textit{n} Raumpunkte in \textit{d} Dimensionen erfolgt nach den folgenden Schritten. Zuerst wird der Median der Randpunkte ermittelt und in dem Wurzel des Baums platziert. Danach wird die erste Dimension der \textit{d} Dimensionen verwendet, um eine Hyperebene zu erstellen. Falls \textit{d} gleich zwei ist, wird eine Linie erstellt. Falls \textit{d} drei beträgt, wird eine zweidimensionale Ebene erstellt. Diese Hyperebene teilt die Raumpunkte gleichmäßig auf. Alle Punkte mit einer kleineren ersten Dimension befinden sich somit links zur Hyperebene und Punkte mir einer größeren ersten Dimensionen an der rechten Seite. Die linken und rechten Seiten der Hyperebenen werden in Teilbäume aufgespeichert. Danach werden die Medianwerte der Punkte der jeweiligen Teilbäume ermittelt und auf Basis der nächsten Dimension wieder mittels einer Hyperebene aufgeteilt. Diese Schritte werden rekursive für Teilbäume wiederholt, wobei die Dimension zur Erstellung der Hyperebene für jede sukzessive Ebene zyklisch gewechselt wird. Bis zum Ende dieses Zyklus werden alle Punkte so partitioniert, dass am Ende des Baums nur Blätter vorhanden sind. Abbildung ~\ref{fig: kd-tree_creation} bildet einen kd-Baum ab und visualisiert seine Erstellung. \autocite[93-94]{saha_advanced_2019} 
+Die Erstellung eines statischen kd-Baums für \textit{n} Raumpunkte in \textit{d} Dimensionen erfolgt nach den folgenden Schritten. Zuerst wird der Median der Randpunkte ermittelt und in dem Wurzel des Baums platziert. Danach wird die erste Dimension der \textit{d} Dimensionen verwendet, um eine Hyperebene zu erstellen. Falls \textit{d} gleich zwei ist, wird eine Linie erstellt. Falls \textit{d} drei beträgt, wird eine zweidimensionale Ebene erstellt. Diese Hyperebene teilt die Raumpunkte gleichmäßig auf. Alle Punkte mit einer kleineren ersten Dimension befinden sich somit links zur Hyperebene und Punkte mir einer größeren ersten Dimensionen an der rechten Seite. Die linken und rechten Seiten der Hyperebenen werden in Teilbäume aufgespeichert. Danach werden die Medianwerte der Punkte der jeweiligen Teilbäume ermittelt und auf Basis der nächsten Dimension wieder mittels einer Hyperebene aufgeteilt. Diese Schritte werden rekursive für Teilbäume wiederholt, wobei die Dimension zur Erstellung der Hyperebene für jede sukzessive Ebene zyklisch gewechselt wird. Bis zum Ende dieses Zyklus werden alle Punkte so partitioniert, dass am Ende des Baums nur Blätter vorhanden sind. Abbildung~\ref{fig: kd-tree_creation} bildet einen kd-Baum ab und visualisiert seine Erstellung. \autocite[93-94]{saha_advanced_2019} 
 
 % Die Erstellung eines kd-Baums erfolgt mit einer Komplexität von $O(n\log n)$, wobei \textit{n} die Anzahl der Punkte beträgt.
 
 \begin{figure}[!b]
 	\includegraphics[width=\textwidth]{Abbildungen/2d_kd-tree.png}
 	\centering
-	\caption{Visualisierung eines zweidimensionalen kd-Baums sowie des Prozesses zur Erstellung dieses Baums \autocite[60]{garcia-garcia_alberto_towards_2015}}
+	\caption[kd-Baum]{Ein zweidimensionaler kd-Baums sowie der Prozesses zur Erstellung dieses Baums \autocite[60]{garcia-garcia_alberto_towards_2015}}
 	\label{fig: kd-tree_creation}
 \end{figure}
 
@@ -212,7 +212,7 @@ Aus diesen Gründen werden in der Asymptotischen Analyse Techniken verwendet, di
 
 Es hat sich bei der asymptotischen Analyse etabliert, drei verschiedenen Maße für die Zeitkomplexität zu verwenden. Bei dem besten Fall (englisch: best case) \textit{T\textsubscript{best}} wird der Fall des Algorithmus betrachtet, der am schnellsten gelaufen ist. Bei dem schlimmsten Fall (englisch: worst case) \textit{T\textsubscript{worst}} wird die langsamste Berechnungsdauer eines Algorithmus ins Betracht gezogen. Um die durchschnittliche Dauer der Berechnung anzugeben, wird der Durchschnittsfall (englisch: average case) \textit{T\textsubscript{avg}} verwendet. Der beste Fall eines Algorithmus ist in den meisten Fällen irrelevant, da Programme meistens gegen dem schlimmsten Fall gesichert werden müssen. Hier sind die Maße \textit{T\textsubscript{worst}} oder \textit{T\textsubscript{avg}} von höherer Bedeutung. \autocite[202]{hubwieser_fundamente_2015}
 
-Die Angabe der Zeitkomplexität mittels Einheiten der Zeit wie Sekunden lässt das Treffen einer allgemeinen Aussage über die Effizienz des Algorithmus nicht zu. Vielmehr hilft die Modellierung der Zeitkomplexität als eine Funktion der Eingabegröße, da sie eine Abstrahierung der Effizienz ohne den Einfluss von Faktoren wie Hardware ermöglicht. Zur Angabe der Zeitkomplexität wird am gängigsten das Landau-Symbol oder die \textit{O-Notation} verwendet. Das Wachstumsverhalten der benötigten Berechnungsdauer eines Algorithmus wird gegen eine unendliche große Eingabegröße aufgezeichnet, indem die Eingabegröße möglichst hohe Werte annimmt. Zeigt die Zeitkomplexität eine polynomialen Trend, wird zur Darstellung der Zeitkomplexität der höchste Grad der Funktion verwendet. Konstante werden bei der O-Notation auch nie berücksichtigt. Der Verlauf der Zeitkomplexität gegen steigender Eingabegröße kann auch einen logarithmischen Trend aufweisen. Die Tabelle ~\ref{table: o-notation} fasst alle gängige Komplexitätsgrade, die häufig verwendet werden. \autocite[203]{hubwieser_fundamente_2015}
+Die Angabe der Zeitkomplexität mittels Einheiten der Zeit wie Sekunden lässt das Treffen einer allgemeinen Aussage über die Effizienz des Algorithmus nicht zu. Vielmehr hilft die Modellierung der Zeitkomplexität als eine Funktion der Eingabegröße, da sie eine Abstrahierung der Effizienz ohne den Einfluss von Faktoren wie Hardware ermöglicht. Zur Angabe der Zeitkomplexität wird am gängigsten das Landau-Symbol oder die \textit{O-Notation} verwendet. Das Wachstumsverhalten der benötigten Berechnungsdauer eines Algorithmus wird gegen eine unendliche große Eingabegröße aufgezeichnet, indem die Eingabegröße möglichst hohe Werte annimmt. Zeigt die Zeitkomplexität eine polynomialen Trend, wird zur Darstellung der Zeitkomplexität der höchste Grad der Funktion verwendet. Konstante werden bei der O-Notation auch nie berücksichtigt. Der Verlauf der Zeitkomplexität gegen steigender Eingabegröße kann auch einen logarithmischen Trend aufweisen. Die Tabelle~\ref{table: o-notation} fasst alle gängige Komplexitätsgrade, die häufig verwendet werden. \autocite[203]{hubwieser_fundamente_2015}
 
 \begin{table}[t]
 	\centering
@@ -236,7 +236,7 @@ Die Angabe der Zeitkomplexität mittels Einheiten der Zeit wie Sekunden lässt d
 \begin{figure}[!b]
 	\includegraphics[scale=0.17]{Abbildungen/Time_complexities.jpg}
 	\centering
-	\caption{Visualisierung der unterschiedlichen Größen der Zeitkomplexität}
+	\caption[Zeitkomplexität von Algorithmen]{Visualisierung der unterschiedlichen Größen der Zeitkomplexität}
 	\label{fig: time_complexity}
 \end{figure}
 
@@ -275,7 +275,7 @@ Zur Bestimmung der Zeitkomplexität des Quicksort Algorithmus hilft die Vorstell
 \Textcite[213-214]{hubwieser_fundamente_2015} und \textcite[582-585]{ernst_grundkurs_2020} beschreiben ein weiteres Algorithmus namens Bubblesort. Allerdings wird im Umfang dieser Arbeit dieses Algorithmus nicht detaillierter behandelt, da es zugunsten einer niedrigeren Zeitkomplexität eine inferiore Korrektheit anbietet. Sortieralgorithmen wie Heapsort oder Shellsort können auch laut den Autoren eine hohe Korrektheit mit einer ähnlichen oder niedrigeren Zeitkomplexität leisten, indem sie besondere Datenstrukturen verwenden. Da es in diesem Abschnitt um elementare Algorithmen handelt, die Datenstrukturen aus Abschnitt~\ref{Datenstrukturen} verwenden, werden sie nicht detailliertet behandelt. 
 
 \subsubsection{Suchen}
-Beim Suchen handelt es sich um das Finden eines bestimmten Elements innerhalb einer Datenstruktur. Hierzu wurden bereits ein paar Verfahren in Abschnitt ~\ref{Datenstrukturen} erwähnt. In diesem Abschnitt werden sie zusammengefasst und ihre Zeitkomplexität ermittelt. 
+Beim Suchen handelt es sich um das Finden eines bestimmten Elements innerhalb einer Datenstruktur. Hierzu wurden bereits ein paar Verfahren in Abschnitt~\ref{Datenstrukturen} erwähnt. In diesem Abschnitt werden sie zusammengefasst und ihre Zeitkomplexität ermittelt. 
 
 Die sequentielle Suche ist das einfachste Verfahren, das zum Finden eines Elements in linearen Datenstrukturen verwendet werden kann. Bei der sequentiellen Suche wird durch die lineare Datenstruktur iteriert und der Wert jedes Elements mit dem des angefragten Elements verglichen. Wird das Element gefunden, liefert das Verfahren eine positive Rückmeldung. Im konversen Fall gelangt die Suche zum Ende der Datenstruktur und findet das angefragte Element nicht. In diesem Fall liefert das Algorithmus eine negative Rückmeldung. Da es bei diesem Verfahren durch die Datenstruktur durchquert wird, müssen in der Regel \textit{n} Elemente verglichen werden. Somit beträgt die Zeitkomplexität der sequentiellen Suche $O(n)$. \autocite[224]{hubwieser_fundamente_2015}
 
@@ -311,17 +311,17 @@ Die Funktionsweise des Verfahrens lässt sich besser anhand eines Beispiels vers
 	\begin{subfigure}{0.43\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/Line_with_outliers.png}
 		\centering
-		\caption{Punkte auf einer zwei dimensionalen Ebene mit Ausreißer}
+		\caption[Linie mit Ausreißer]{Punkte auf einer zwei dimensionalen Linie mit Ausreißer}
 		\label{fig: line_with_outliers}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.43\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/Fitted_line.png}
 		\centering
-		\caption{Ein angepasstes Linienmodell auf die Punkte}
+		\caption[Linienmodell für eine Linie]{Ein angepasstes Linienmodell auf die Punkte}
 		\label{fig: fitted_line}
 	\end{subfigure}
-	\caption{Eine durch RANSAC erkannte Gerade durch Punkte. Die blauen Punkte stellen Inliers und roten Punkte die Outliers dar.}
+	\caption[Visualisierung des RANSAC-Verfahrens]{Eine durch RANSAC erkannte Gerade durch Punkte. Die blauen Punkte stellen Inliers und roten Punkte die Outliers dar.}
 	\label{fig: ransac_line}
 \end{figure}
 

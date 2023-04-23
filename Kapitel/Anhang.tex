@@ -1,4 +1,303 @@
 \appendix
 \chapter{Algorithmen} \label{Algorithmen}
+\begin{algorithm}
+	\caption{Ablauf des IEFD-Verfahrens}
+	\label{alg: IEFD_Ablauf}
+	\begin{algorithmic}[1]
+		\State $\textbf{Input: } \textit{Point cloud with scan lines} = \{P\}, \text{Parameter: } K_1, d_{t1}, \alpha, K_2, d_{t2}, \phi$
+		\State $point gap \gets CalculateAvgGap(P)$
+		\State $n \gets 0,004/\text{point gap}$
+		\State $k \gets 0,0008/\text{point gap}$
+		\State $f \gets 0,00004/\text{point gap}$
+		\State \textit{raw points \{R\}} $\gets$ \{\}
+		\State \textit{reused points \{RE\}} $\gets$ \{\}
+		\State $\textit{false edge start \{FS\}} \gets \{\}$
+		\State $\textit{false edge end \{FE\}} \gets\{\}$
+		\State \textit{Edge Points \{E\}} $\gets$ \{\}
+		\State \textit{segments \{S\}} $\gets$ \{\}
+		\State \textit{previous reused edge points \{ER\textsubscript{p}\}} $\gets \{\}$
+		\For{Scan line S\textsubscript{i} \textbf{in} \{P\}}
+		\State $\textit{R} \gets \textit{R} + P[S_i]$
+		\If{$\textit{\textbf{size(}R\textbf{)}} \geq n - k$}
+		\State$\text{RE} \gets \textit{RE} + P[S_i]$
+		\EndIf
+		\If{$\textbf{size}(\textit{R}) \leq f$}
+		\State $\textit{FS} \gets \textit{FS} + P[S_i]$
+		\ElsIf{$\textbf{size}(\textit{R}) \geq n - f$}
+		\State $\textit{FE} \gets \textit{FE} + P[S_i]$
+		\EndIf	
+		\If{$\textit{\textbf{size(}R\textbf{)}}\geq n$}
+		\State \textit{Adjusted reused edge points \{ER\}} $\gets$ \{\}
+		\State \textit{E, ER} $\gets$ \textit{\hyperref[alg:find_edge_points]{FindEdgePoints}}(\textit{R, RE, FS, FE, K\textsubscript{1}, d\textsubscript{t1},}$\alpha$)
+		
+		\State \textit{neighbours map \{N\}} $\gets$ \{\}
+		\State \textit{vectors map \{V\}} $\gets$ \{\}
+		\State \textit{N, V} $\gets$ \textit{\hyperref[alg:compute_vectors]{ComputeVectors}}(\textit{E, ER\textsubscript{p},} $K_2$, $d_{t2}$)
+		
+		\State \textit{\{S\}} $\gets$ \textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}(\textit{E, RE\textsubscript{p}, S, N, V, } $K_2, \phi$)
+		
+		\State $R \gets \{\}$
+		\State $R \gets \{RE\}$
+		\State $RE \gets \{\}$
+		\State $ER\textsubscript{p} \gets \{ER\}$
+		\State $FS \gets \{\}$
+		\State $FE \gets \{\}$
+		\EndIf
+		\EndFor
+		
+		
+	\end{algorithmic}
+\end{algorithm}
 
-\chapter{Bilder}
+\begin{algorithm}
+	\caption{Ablauf der \textit{\hyperref[alg:find_edge_points]{FindEdgePoints}} Funktion}
+	\label{alg:find_edge_points}
+	\begin{algorithmic}[1]
+		\Function{\textit{\hyperref[alg:find_edge_points]{FindEdgePoints}}}{\textit{R, RE, FS, FE, K\textsubscript{1}, d\textsubscript{t1},} $\alpha$}
+		\State \textit{removed indices \{RI\}} $\gets$ \{\}
+		\State \textit{(R, RI)} $\gets$ \textit{UniformSampling(R, d\textsubscript{t1})}
+		\State \textit{removed indices map \{RM\}} $\gets$ \{\}
+		\State \textit{point shifts \{PS\}} $\gets$ \{\}
+		\State \textit{(RM, PS)} $\gets$ \textit{MarkPoints(RI)}
+		\State \textit{FS\textsubscript{copy}} $\gets$ \textit{CorrectPoints(FS, RM, PS)}
+		\State \textit{FE\textsubscript{copy}} $\gets$ \textit{CorrectPoints(FE, RM, PS)}
+		\State \textit{RE\textsubscript{copy}} $\gets$ \textit{CorrectPoints(RE, RM, PS)}
+		\State $\{E\} \gets \{\}$
+		\For{$point\  o = 0 \textbf{ to size}(\{P\})$}
+		\State $\textit{Nearest neighbours} \{N_o\} \gets \{\}$
+		\State $N_o \gets$ \textit{NearestNeighbourSearch(P, o, K\textsubscript{1})}
+		\State \textit{normal vector $\vec{n\textsubscript{o}}$} $\gets$ \{0, 0, 0\}
+		\State \textit{Inliers \{I\textsubscript{N\textsubscript{o}}\}} $\gets$ \{\}
+		\State \textit{I\textsubscript{N\textsubscript{o}}} $\gets$ \textit{ApplyRansacPlane(N\textsubscript{o}, d\textsubscript{t1})}
+		\State $\vec{n\textsubscript{o}}$ $\gets$ \textit{OptimizeNormal(I\textsubscript{N\textsubscript{o}})}
+		\If{$o \notin I\textsubscript{N\textsubscript{o}} \textbf{or size}(I\textsubscript{N\textsubscript{o}}) < 3$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State $(\vec{u}, \vec{v}) \gets$ \textit{GetFrame($\vec{n\textsubscript{o}}$)}
+		\State G\textsubscript{$\theta$} $\gets$ \textit{ComputeAngularGap(o, I\textsubscript{N\textsubscript{o}}, $\vec{u}$, $\vec{v}$)}
+		\If{G\textsubscript{$\theta$} $\geq \frac{\pi}{2}$}
+		\State $E \gets o$
+		\EndIf
+		\EndFor
+		\State $E \gets \textit{RemoveFalseEdges(E, FS\textsubscript{copy}, FE\textsubscript{copy})}$
+		\State \textit{ER} $\gets$ \textit{ReusedEdgePoints(E, RE\textsubscript{copy})}
+		
+		\State \Return $(E, ER)$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Ablauf der \textit{\hyperref[alg:compute_vectors]{ComputeVectors}} Funktion}
+	\label{alg:compute_vectors}
+	\begin{algorithmic}[1]
+		\Function{\textit{\hyperref[alg:compute_vectors]{ComputeVectors}}}{\textit{E, ER\textsubscript{P}, }$K\_2$, $d_{t2}$}
+		\State \textit{first reused point r\textsubscript{1}} $\gets$ \{ER\textsubscript{P}\}[0]
+		\State \textit{neighbours map \{N\}} $\gets$ \{\}
+		\State \textit{vectors map \{V\}} $\gets$ \{\}
+		\For{\textit{point p = r\textsubscript{1}} \textbf{to size}(\{E\})}
+		\State \textit{nearest neighbour \{N\textsubscript{p}\}} $\gets \{\}$
+		\State \textit{N\textsubscript{p}} $\gets$ \textit{NearestNeighbourSearch(E, p, K\textsubscript{2})}
+		\If{$\textbf{size}(\textit{text}) < 3$}
+		\State $\{N\}[p] \gets \{N\textsubscript{p}\}$
+		\State $\{V\}[p] \gets \textit{CalculateVector(N\textsubscript{p})}$
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State \textit{Inliers \{I\textsubscript{N\textsubscript{p}}\}} $\gets \{\}$
+		\State \textit{I\textsubscript{N\textsubscript{p}}} $\gets$ \textit{ApplyRansacLine(N\textsubscript{p}, d\textsubscript{t2})}
+		\While{\textit{p} \textbf{not in} \textit{I\textsubscript{N\textsubscript{p}}}}
+		\State \textit{remove I\textsubscript{N\textsubscript{p}} from N\textsubscript{p}}
+		\State \textit{I\textsubscript{N\textsubscript{p}}} $\gets$ \textit{ApplyRansacLine(N\textsubscript{p}, d\textsubscript{t2})}
+		\EndWhile
+		\State \textit{Direction vector $\vec{p_{p}}$} $\gets$ \textit{OptimizeVector(I\textsubscript{N\textsubscript{p}})}
+		\State $\{N\}[p] \gets I_{N_p}$
+		\State $\{V\}[p] \gets \vec{a_p}$
+		\EndFor
+		\State \Return (N, V)
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Ablauf der \textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}} Funktion}
+	\label{alg:apply_region_growing}
+	\begin{algorithmic}[1]
+		\Function{\textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}}{\textit{E, RE\textsubscript{p}, S, N, V, K\textsubscript{2}}, $\phi$}
+		\State \textit{seed counter $x$} $\gets 0$
+		\State \textit{point labels \{PL\}} $\gets$ \textbf{size}\textit{\{E\}}
+		\State \textit{All unlabeled points \textbf{in} PL get value }$-1$
+		\State \textit{point residuals \{PR\}} $\gets$ \textit{E}
+		\State \textbf{sort} \textit{PR by no. of neighbours}
+		\State \textit{number of segmented points n\textsubscript{pts}} $\gets$ \textit{no. of labels} $\neq -1$
+		\State \textit{No. of segments n\textsubscript{segs}} $\gets \textbf{max}\textit{(PL)} + 1$
+		\State \textit{n\textsubscript{pts}} $\gets$ \textit{\hyperref[alg: extend_segments]{ExtendSegment}(S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2})}
+		\State \textit{initial seed point s\textsubscript{i}} $\gets$ \textit{first point i \textbf{in} PR with \{PL\}[i]}$= -1$
+		\While{$\textit{n\textsubscript{pts}} < \textbf{size}\textit{E}$}
+		\State \textit{segment id C} $\gets$ \textit{n\textsubscript{segs}}
+		\State \textit{new points new\textsubscript{pts}} $\gets$ \textit{\hyperref[alg:grow_segment]{GrowSegment}(s\textsubscript{i}, C, PL, N, V,  K\textsubscript{2}, $\phi$)}
+		\State \textit{\{S\}[C]} $\gets$ \textit{new\textsubscript{pts}}
+		\State $n_{pts} \gets new_{pts}$
+		\State \textit{n\textsubscript{segs}} $\gets + 1$
+		\For{$\textit{seed i}= x + 1 \textbf{to size}(PR)$}
+		\If{$\{PL\}[i] = -1$}
+		\State $s_i = \{PR\}[i]$
+		\State $x = i$
+		\State \textit{\textbf{break}}
+		\EndIf
+		\EndFor
+		\EndWhile
+		\State \Return \textit{S}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Ablauf der \textit{\hyperref[alg: extend_segments]{ExtendSegment}} Funktion}
+	\label{alg: extend_segments}
+	\begin{algorithmic}[1]
+		\Function{\textit{\hyperref[alg: extend_segments]{ExtendSegment}}}{\textit{S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2}}}
+		\State \textit{number of segmented points n\textsubscript{prev}} $\gets$ \textbf{size}\textit{(\{PL\}), for labels $\neq -1$ }
+		\State \textit{number of new points added n\textsubscript{add}} $\gets 0$
+		\State \textit{point labels copy \{PL\textsubscript{copy}\}} $\gets$ \{PL\}
+		\State \textit{reset indices map \{RI\}} $\gets \{\}$
+		\For{\textit{index i \textbf{in} \{ER\textsubscript{p}\}}}
+		\For{\textit{neighbour n in \{N\}[i]}}
+		\State \textit{label} $\gets \{PL\}[n]$
+		\If{\textit{label }\textbf{in }\textit{\{RI\}}}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State \textit{\{PL\}[n]} $\gets -1$
+		\State \textit{\{S\}[label]} $\gets\textit{ \{S\}[label]} - 1$
+		\State $RM \gets n$
+		\EndFor
+		\EndFor
+		\For{\textit{point/seed index s\textsubscript{i} }\textbf{in } \textit{\{ER\textsubscript{p}\}}}
+		\If{$\textit{\{PL\}[s\textsubscript{i}]} > -1$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\If{$\textit{\{PL\textsubscript{copy}\}[s\textsubscript{i}]} < 0$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State $C \gets \{PL\textsubscript{copy}\}[s\textsubscript{i}]$
+		\State \textit{additional points in segment new\textsubscript{add}} $\gets$ \textit{\hyperref[alg:grow_segment]{GrowSegment}(s\textsubscript{i},C,PL,N,V,K\textsubscript{2},$\phi$)}
+		\State \textit{\{S\}[C]} $\gets new_{add}$
+		\State \textit{n\textsubscript{add}} $\gets$ \textit{new\textsubscript{add}}
+		\EndFor
+		\For{\textit{index i \textbf{in} \{ER\textsubscript{p}\}}}
+		\For{\textit{neighbour n in \{N\}[i]}}
+		\If{$\textit{\{PL\}[p\textsubscript{i}]} > -1$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\If{$\textit{\{PL\textsubscript{copy}\}[p\textsubscript{i}]} < 0$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State $C \gets \{PL\textsubscript{copy}\}[n]$
+		\State \textit{\{PL\}[n]} $\gets$ \textit{C}
+		\State \textit{\{S\}[C]} $\gets + 1$
+		\State $n_{add} \gets + 1$
+		\EndFor
+		\EndFor
+		\State \Return $n_{add} - n_{prev}$
+		\EndFunction
+		
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Ablauf der \textit{\hyperref[alg:grow_segment]{GrowSegment}} Funktion}
+	\label{alg:grow_segment}
+	\begin{algorithmic}[1]
+		\Function{\textit{\hyperref[alg:grow_segment]{GrowSegment}}}{\textit{s\textsubscript{i}, C, PL, N, V, K\textsubscript{2}, $\phi$}}
+		\State \textit{Queue of seeds \{S\}} $\gets$ \textit{s\textsubscript{i}}
+		\State \textit{\{PL\}[s\textsubscript{i}]} $\gets$ \textit{C}
+		\State \textit{number of points in segment n\textsubscript{C}} $\gets 1$
+		\While{$\textbf{size}\textit{(S)}\geq 0$}
+		\State \textit{current seed s\textsubscript{C}} $\gets$ \textbf{dequeue}\textit{(S)}
+		\For{$\textit{neighbour n}= 0 \textbf{to size}\textit{(\{N\}[s\textsubscript{C}])}$}
+		\State \textit{index i} $\gets$ \textit{\{N\}[s\textsubscript{C}][n]}
+		\State \textit{label} $\gets \{PL\}[i]$ 
+		\If{$label \neq -1$}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State \textit{seed vector vec\textsubscript{s\textsubscript{C}}} $\gets \{V\}[s_C]$
+		\State \textit{neighbour vector vec\textsubscript{i}} $\gets \{V\}[i]$
+		\State \textbf{bool }\textit{added} $\gets$ \textit{CheckPoint(vec\textsubscript{s\textsubscript{C}}, vec\textsubscript{i})}
+		\If{\textbf{not} \textit{added}}
+		\State \textit{\textbf{continue}}
+		\EndIf
+		\State \textit{\{PL\}[i]} $\gets C$
+		\State $n_C \gets +1$
+		\State $S \gets i$
+		\EndFor
+		\EndWhile
+		\State \Return $n_C$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\chapter{Abbildungen} \label{Bilder}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Bauteil_1.png}
+		\centering
+		\caption{Bauteil 1}
+		\label{fig:bauteil_1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Bauteil_2.png}
+		\centering
+		\caption{Bauteil 2}
+		\label{fig:bauteil_2}
+	\end{subfigure}
+	\vfill
+		\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Bauteil_3.png}
+		\centering
+		\caption{Bauteil 3}
+		\label{fig:bauteil_3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Bauteil_4.png}
+		\centering
+		\caption{Bauteil 4}
+		\label{fig:bauteil_4}
+	\end{subfigure}
+\caption{Alle Bauteile für den Test 3 aus Abschnitt~\ref{test_3_part_2}}
+\label{fig:bauteile_test_3_2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Segmente_1.png}
+		\centering
+		\caption{Segmente von Bauteil 1}
+		\label{fig:Segmente_1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Segmente_2.png}
+		\centering
+		\caption{Segmente von Bauteil 2}
+		\label{fig:Segmente_2}
+	\end{subfigure}
+	\vfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Segmente_3.png}
+		\centering
+		\caption{Segmente von Bauteil 3}
+		\label{fig:Segmente_3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\linewidth]{Abbildungen/Segmente_4.png}
+		\centering
+		\caption{Segmente von Bauteil 4}
+		\label{fig:Segmente_4}
+	\end{subfigure}
+	\caption{Alle Segmente für den Test 3 aus Abschnitt~\ref{test_3_part_2}}
+	\label{fig:Segmente_test_3_2}
+\end{figure}
