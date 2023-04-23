@@ -60,7 +60,7 @@ Unter Berücksichtigung der Erkenntnisse aus dem Referenzwerk wurden die restlic
 		Ground-Truth & 12000000 & 0,0001 & 200 & 0,0001 & $\frac{\pi}{2}$ & 30 & 0,0003 & 0,2 \\
 		\hline
 	\end{tabular}
-	\caption{Parameter für den Test auf die Ground-Truth}
+	\caption[Prozessparameter für die erste Untersuchung]{Parameter für den Test auf die Ground-Truth}
 	\label{table: parameters_test1}
 \end{table}
 
@@ -82,7 +82,7 @@ Die Ergebnisse aus den sechs Ausführungen wurden für die Auswertung nach Absch
 		IEFD & 10 & 0 & 10 & 1,00 & 0 & 9 & 2 & 0,9 & 0,2 \\
 		\hline
 	\end{tabular}
-	\caption{Die schlechtesten Werte der jeweiligen Metriken aus sechs Wiederholungen}
+	\caption[Ergebnisse der ersten Untersuchung]{Die schlechtesten Werte der jeweiligen Metriken aus sechs Wiederholungen}
 	\label{table: metric_values}
 \end{table}
 
@@ -152,7 +152,7 @@ Da der Punkteabstand in diesem Test variiert wurde, durfte die Anzahl der Scan-L
 		9 & 4.800 & 0,005 & 0,005 & 0,015 & 0,7 & 0 & 0,86 & 0,14 \\
 		\hline 
 	\end{tabular}
-	\caption{Ergebnisse des zweiten Tests}
+	\caption[Ergebnisse der zweiten Untersuchung]{Ergebnisse des zweiten Tests}
 	\label{table: test_2_results}
 \end{table}
 
@@ -171,34 +171,34 @@ Nachdem der Einfluss der Punktedichte auf die Genauigkeit des Verfahrens überpr
 Wie in Abschnitt~\ref{Motivation} erwähnt, soll das Verfahren unter reellen Bedingungen verwendbar sein und unterschiedlichen Geometrien erkannt werden. Dieses verlangt eine hohe Robustheit des Verfahrens. Anhand der Erkenntnisse aus den vorherigen Tests wurde die Hypothese aufgestellt, dass das Verfahren unter rellen Bedingungen zuverlässig funktionieren würde. Um diese Hypothese zu überprüfen wurden zwei Tests konzipiert. Da reelle Aufnahmen durch einen Lasersensor häufig sehr unregelmäßig sind, wurde für den ersten Test der Einfluss einer steigenden Unregelmäßigkeit des Punkteabstandes auf die Genauigkeit des Verfahrens überprüft. Bei dem zweiten Test wurde das IEFD-Verfahren auf verschiedene Aufnahmen von reellen Bauteilen angewendet und anhand der Metriken aus Abschnitt~\ref{evaluations_metrics} bewertet.
 
 \subsubsection{Erste Teiluntersuchung} \label{test_3_part_1}
-Für die erste Teiluntersuchung wurde die Ground-Truth verwendet. Hierbei wurde einen Punkteabstand von 0,00025\,\si{\m} festgelegt. Die reelle Punkte aus dem Lasersensor, wiesen keinen regelmäßigen Punkteabstand auf. Um diese Unregelmäßigkeit nachzuahmen, wurde eine künstliche Verzerrung des Punktmusters dem Ground-Truth implementiert. Hierfür wurde ein zufälliger Versatz \textit{d} auf dem ursprünglichen Positionen der Punkte aufaddiert. Zur Errechnung des Versatzes wurde eine zufällige reelle Zahl zwischen -1 und 1 gewählt und mit einem Verzerrungsfaktor \textit{\^{r}} multipliziert. Das Faktor ließ sich errechnen, indem der konstante Punkteabstand \textit{r} mit einer Zahl \textit{k} zwischen 0 und 1,5 multipliziert wurde. Für jeden Punkt wurde ein unterschiedlicher Versatz \textit{d} in allen drei Richtungen des Koordinatensystems errechnet, um den Abstand zwischen Punkten möglichst unregelmäßig zu gestalten. Abbildung~\ref{fig: point_pattern_comparision} zeigt die unterschiedlichen Mustern der Punkte in dem Ground-Truth mit und ohne einem Rauschen. 
+Für die erste Teiluntersuchung wurde die Ground-Truth verwendet. Hierbei wurde einen Punkteabstand von 0,00025\,\si{\m} festgelegt. Die reelle Punkte aus dem Lasersensor, wiesen keinen regelmäßigen Punkteabstand auf. Um diese Unregelmäßigkeit nachzuahmen, wurde ein Rauschen zu dem Ground-Truth eingeführt. Hierfür wurde ein zufälliger Versatz \textit{d} auf dem ursprünglichen Position der Punkte aufaddiert, um den einheitlichen Punkteabstand zu verzerren. Zur Errechnung des Versatzes wurde eine zufällige reelle Zahl zwischen -1 und 1 gewählt und mit einem Rauschfaktor \textit{\^{r}} multipliziert. Das Faktor ließ sich errechnen, indem der konstante Punkteabstand \textit{r} mit einer Zahl \textit{k} zwischen 0 und 1,5 multipliziert wurde. Für jeden Punkt wurde ein unterschiedlicher Versatz \textit{d} in allen drei Richtungen des Koordinatensystems errechnet, um den Abstand zwischen Punkten möglichst unregelmäßig zu gestalten. Abbildung~\ref{fig: point_pattern_comparision} zeigt die unterschiedlichen Mustern der Punkte in dem Ground-Truth mit und ohne einem Rauschen. 
 
 \begin{figure}[b]
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/point_pattern_without_dist.png}
 		\centering
-		\caption{Punktmuster von Ground-Truth ohne Verzerrung}
+		\caption{Punktmuster von Ground-Truth ohne Rauschen}
 		\label{fig: point_pattern_without_dist}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.49\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/point_pattern_with_dist.png}
 		\centering
-		\caption{Punktmuster von Ground-Truth mit Verzerrung und \textit{\^{r}=1,5}}
+		\caption{Punktmuster von Ground-Truth mit Rauschen und \textit{\^{r}=1,5}}
 		\label{fig: point_patter_with_dist}
 	\end{subfigure}
-	\caption[Effekt des Rauschens auf die Ground-Truth Datei]{Vergleich der Punktmuster des Ground-Truths mit und ohne Verzerrung}
+	\caption[Effekt des Rauschens auf die Ground-Truth Datei]{Vergleich der Punktmuster des Ground-Truths mit und ohne Rauschen}
 	\label{fig: point_pattern_comparision}
 \end{figure}
 
-Für diesen Test wurden die Parameter außer \distthresha und \distthreshb des IEFD-Verfahrens konstant gehalten und aus Abschnitt~\ref{test_1} übernommen. Zwecks der kürzeren gesamten Verarbeitungszeit wurde ein höherer Punktabstand von 0,00025\,\si{\m}, da es eine optimale Bilanz zwischen Punktedichte und Punktezahl angeboten hat sowie den durchschnittlichen Punkteabstand der Aufnahmen entsprochen hat, die mittels des Lasersensors aufgenommen wurden. Dementsprechend wurde \distthresha auf den Wert 0,00025 und \distthreshb auf den Wert 0,00075 festgelegt. Um das Verzerrungsfaktor zu manipulieren, wurde die Zahl \textit{k} diskret von der Untergrenze \textit{0} bis zur Obergrenze \textit{0,15} mit einer Schrittgröße \textit{0,1} inkrementiert. Die Größe der Iteration~\textit{n} wurde ähnlich wie zuvor dynamisch mit einer Mindestzahl von 80 errechnet. Die Anzahl der wiederholten Scan-Linien \textit{k} betrugen wiederum mindestens 15. Zur Entfernung falscher Kanten wurde eine Region festgelegt, die maximal zwei Scan-Linien am Anfang oder am Ende einer Iteration umfasste. Nach Festlegung dieser Parameter wurde der Test ausgeführt und die Ergebnisse wurden in Tabelle~\ref{table: point_distortion_results} aufgelistet.
+Für diesen Test wurden die Parameter außer \distthresha und \distthreshb des IEFD-Verfahrens konstant gehalten und aus Abschnitt~\ref{test_1} übernommen. Zwecks der kürzeren gesamten Verarbeitungszeit wurde ein höherer Punktabstand von 0,00025\,\si{\m}, da es eine optimale Bilanz zwischen Punktedichte und Punktezahl angeboten hat sowie den durchschnittlichen Punkteabstand der Aufnahmen entsprochen hat, die mittels des Lasersensors aufgenommen wurden. Dementsprechend wurde \distthresha auf den Wert 0,00025 und \distthreshb auf den Wert 0,00075 festgelegt. Um das Rauschfaktor zu manipulieren, wurde die Zahl \textit{k} diskret von der Untergrenze \textit{0} bis zur Obergrenze \textit{0,15} mit einer Schrittgröße \textit{0,1} inkrementiert. Die Größe der Iteration~\textit{n} wurde ähnlich wie zuvor dynamisch mit einer Mindestzahl von 80 errechnet. Die Anzahl der wiederholten Scan-Linien \textit{k} betrugen wiederum mindestens 15. Zur Entfernung falscher Kanten wurde eine Region festgelegt, die maximal zwei Scan-Linien am Anfang oder am Ende einer Iteration umfasste. Nach Festlegung dieser Parameter wurde der Test ausgeführt und die Ergebnisse wurden in Tabelle~\ref{table: point_distortion_results} aufgelistet.
 
 \begin{table}[t]
 	\centering
 	\begin{tabular}[width=\textwidth]{l *{5}{c}}
 		\hline
-		\textbf{Ausführung} & \textbf{Verzerrungsfaktor \^{r}} & \textbf{p\textsubscript{dc}} & \textbf{p\textsubscript{mj}} & \textbf{p\textsubscript{dct}} & \textbf{p\textsubscript{mjt}} \\
+		\textbf{Ausführung} & \textbf{Rauschfaktor \^{r}} & \textbf{p\textsubscript{dc}} & \textbf{p\textsubscript{mj}} & \textbf{p\textsubscript{dct}} & \textbf{p\textsubscript{mjt}} \\
 		\hline
 		1 & 0,1 & 1 & 0 & 1 & 0 \\
 		2 & 0,2 & 1 & 0 & 1 & 0 \\
@@ -217,21 +217,21 @@ Für diesen Test wurden die Parameter außer \distthresha und \distthreshb des I
 		15 & 1,5 & 0,8 & 1,4 & 0,42 & 0,33 \\
 		\hline
 	\end{tabular}
-	\caption{Die Genauigkeit des Verfahrens gegen steigender Verzerrung der Punkte}
+	\caption[Ergebnisse der Untersuchung des Rauschens auf die Genauigkeit]{Die Genauigkeit des Verfahrens gegen einem steigenden Rauschen aufgezeichnet}
 	\label{table: point_distortion_results}
 \end{table}
 
-Die Ausführungen \textit{1-8} lieferten perfekte Ergebnisse, wo das IEFD-Verfahren trotz steigender Verzerrung der Punkte alle zehn Kanten des Ground-Truths erkennen sowie vollständig segmentieren konnte. Als die Verzerrung der Punkte erhöht wurde, wurden neben allen Kanten auch weitere Einzelpunkte als Randpunkte erkannt. Diese Einzelpunkte \(Störpunkte\) lagen zufällig gestreut und es wurde weder eine linienartige Kante noch ein anderes geometrisches Muster visuell erkannt. Ab der neunten Ausführung konnten Spuren der falschen Kanten aus Abschnitt ~\ref{false_edges} erkannt werden. Neben den zehn Kanten des Ground-Truths waren zwei falsche Kanten leicht erkennbar, weswegen die neunte Ausführung eine \textit{p\textsubscript{dc}} und \textit{p\textsubscript{mj}} Bewertung von \textit{1,0} beziehungsweise \textit{0,2} erhalten hat. Aufgrund der Dürftigkeit der falschen Kanten konnte eine dieser Kanten nicht vollständig segmentiert wurden. Stattdessen wurden an der Stelle zwei Segmente erzeugt. Darüber hinaus wurde die Innenkante des Ground-Truths auch nicht vollständig segmentiert. An den Stellen, wo die falschen Kanten die Innenkante geschnitten haben, wurde ein neues Segment erzeugt. Somit erhielt diese Variante eine Bewertung von \textit{0,92} und \textit{0,25} für die Metriken \textit{p\textsubscript{dct}} beziehungsweise \textit{p\textsubscript{mjt}}. Ab einem Verzerrungsfaktor \textit{\^{r}} von \textit{1,0} der Verzerrung konnten mehr falschen Kanten zwischen jeder Iteration erkannt werden. Diese waren allerdings ähnlich dürftig und undeutlich definiert.  Dieser Trend der steigenden Verzerrung wurde bis zu der 13. Ausführung bemerkt, wo der Höchstpunkt erreicht wurde. Relativ zur früheren Ausführungen gab es die meisten Störpunkte und sowie die meisten falschen Kanten, die nicht entfernt wurden. Ab dieser Stelle wurde ein Plateau erreicht. Als die Verzerrung der Punkte erhöht wurde, wurden ungefähr die gleichen Anzahl an falschen Kanten erkannt. Gleichzeitig stiegen die Anzahl der Störpunkte, die durch die Kantenerkennung erkannt wurden. Trotzdem wurden alle Randelemente sowie die Innen- und Außenkante des Ground-Truths durch das Verfahren richtig erkannt. Aufgrund der hohen Anzahl an Störpunkte waren allerdings die Innen- und Außenkanten leicht dürftig. Insgesamt erzielten die Ausführungen 13 bis 15 einen \textit{p\textsubscript{dc}} Wert von 1.0, allerdings waren die Werte für \textit{p\textsubscript{mj}} deutlich höher. Die höhere Anzahl der falschen Kanten hat dazu geführt, dass die Randelemente in der y-Richtung teilweise nicht vollständig segmentiert wurden, sondern wurden bis zu zwei zusätzlichen Segmente erzeugt. Darüber hinaus hat die hohe Anzahl der Störpunkte dazu geführt, dass weder die Innenkante noch die Außenkante vollständig segmentiert wurde. Stattdessen wurde in jeder Iteration ein neues Segment gestartet. Dadurch erhielten beide Metriken \textit{p\textsubscript{dct}} und \textit{p\textsubscript{mjt}} nahezu die gleiche Werte von ca. 0,4 beziehungsweise 0,34. Abbildung~\ref{fig: point_distortion_comparision} visualisiert den Trend der Metriken. 
+Die Ausführungen \textit{1-8} lieferten perfekte Ergebnisse, wo das IEFD-Verfahren trotz steigendem Rauschen alle zehn Kanten des Ground-Truths erkennen sowie vollständig segmentieren konnte. Als das Rauschfaktor erhöht wurde, wurden neben allen Kanten auch weitere Einzelpunkte als Randpunkte erkannt. Diese Einzelpunkte \(Störpunkte\) lagen zufällig gestreut und es wurde weder eine linienartige Kante noch ein anderes geometrisches Muster visuell erkannt. Ab der neunten Ausführung konnten Spuren der falschen Kanten aus Abschnitt ~\ref{false_edges} erkannt werden. Neben den zehn Kanten des Ground-Truths waren zwei falsche Kanten leicht erkennbar, weswegen die neunte Ausführung eine \textit{p\textsubscript{dc}} und \textit{p\textsubscript{mj}} Bewertung von \textit{1,0} beziehungsweise \textit{0,2} erhalten hat. Aufgrund der Dürftigkeit der falschen Kanten konnte eine dieser Kanten nicht vollständig segmentiert wurden. Stattdessen wurden an der Stelle zwei Segmente erzeugt. Darüber hinaus wurde die Innenkante des Ground-Truths auch nicht vollständig segmentiert. An den Stellen, wo die falschen Kanten die Innenkante geschnitten haben, wurde ein neues Segment erzeugt. Somit erhielt diese Variante eine Bewertung von \textit{0,92} und \textit{0,25} für die Metriken \textit{p\textsubscript{dct}} beziehungsweise \textit{p\textsubscript{mjt}}. Ab einem Rauschfaktor \textit{\^{r}} von \textit{1,0} konnten mehr falschen Kanten zwischen jeder Iteration erkannt werden. Diese waren allerdings ähnlich dürftig und undeutlich definiert.  Dieser Trend der steigenden Punktverzerrung wurde bis zu der 13. Ausführung bemerkt, wo der Höchstpunkt erreicht wurde. Relativ zur früheren Ausführungen gab es die meisten Störpunkte und sowie die meisten falschen Kanten, die nicht entfernt wurden. Ab dieser Stelle wurde ein Plateau erreicht. Als das Rauschfaktor erhöht wurde, wurden ungefähr die gleichen Anzahl an falschen Kanten erkannt. Gleichzeitig stiegen die Anzahl der Störpunkte, die durch die Kantenerkennung erkannt wurden. Trotzdem wurden alle Randelemente sowie die Innen- und Außenkante des Ground-Truths durch das Verfahren richtig erkannt. Aufgrund der hohen Anzahl an Störpunkte waren allerdings die Innen- und Außenkanten leicht dürftig. Insgesamt erzielten die Ausführungen 13 bis 15 einen \textit{p\textsubscript{dc}} Wert von 1.0, allerdings waren die Werte für \textit{p\textsubscript{mj}} deutlich höher. Die höhere Anzahl der falschen Kanten hat dazu geführt, dass die Randelemente in der y-Richtung teilweise nicht vollständig segmentiert wurden, sondern wurden bis zu zwei zusätzlichen Segmente erzeugt. Darüber hinaus hat die hohe Anzahl der Störpunkte dazu geführt, dass weder die Innenkante noch die Außenkante vollständig segmentiert wurde. Stattdessen wurde in jeder Iteration ein neues Segment gestartet. Dadurch erhielten beide Metriken \textit{p\textsubscript{dct}} und \textit{p\textsubscript{mjt}} nahezu die gleiche Werte von ca. 0,4 beziehungsweise 0,34. Abbildung~\ref{fig: point_distortion_comparision} visualisiert den Trend der Metriken. 
 
 \begin{figure}[h]
 	\includegraphics[scale=0.85]{Abbildungen/point_distortion_influence_line.png}
 	\centering
-	\caption[Einfluss des Rauschens auf die Genauigkeit]{Das Verhältnis zwischen der Genauigkeit des Verfahrens und dem Verzerrungsfaktor der Punktverzerrung.}
+	\caption[Einfluss des Rauschens auf die Genauigkeit]{Das Verhältnis zwischen der Genauigkeit des Verfahrens und dem Rauschfaktor der Punktverzerrung.}
 	\label{fig: point_distortion_comparision}
 \end{figure}
 
 \subsubsection{Zweite Teiluntersuchung} \label{test_3_part_2}
-Nach der Überprüfung der Genauigkeit bei einer Änderung der Punktverzerrung wurde die Robustheit des IEFD-Verfahrens gegen unterschiedlichen Geometrien überprüft. Dabei wurden reelle 3D-Aufnahmen von vier verschiedenen Bauteilen verwendet. Visualisierungen der Punktwolken dieser Bauteile sind im Anhang~\ref{Bilder} unter Abbildung~\ref{fig:bauteile_test_3_2} zu finden. Ähnlich wie zuvor wurden alle Parameter außer \distthresha und \distthreshb aus Abschnitt~\ref{test_1} übernommen. Vor Festlegung von \distthresha und \distthreshb war noch einen Schritt nötig. Die Punktedichte der Aufnahmen war an manchen Stellen der Punktwolke deutlich höher als im Durchschnitt. Diese waren die Stellen, wo der Lasersensor im Vergleich zu anderen Stellen länger aufhielt, wodurch mehrere Scan-Linien an den Stellen generiert wurden. Abbildung~\ref{fig: point_density_before} visualisiert diese Anomalie. 
+Nach der Überprüfung der Genauigkeit bei einer Änderung des Rauschfaktors wurde die Robustheit des IEFD-Verfahrens gegen unterschiedlichen Geometrien überprüft. Dabei wurden reelle 3D-Aufnahmen von vier verschiedenen Bauteilen verwendet. Visualisierungen der Punktwolken dieser Bauteile sind im Anhang~\ref{Bilder} unter Abbildung~\ref{fig:bauteile_test_3_2} zu finden. Ähnlich wie zuvor wurden alle Parameter außer \distthresha und \distthreshb aus Abschnitt~\ref{test_1} übernommen. Vor Festlegung von \distthresha und \distthreshb war noch einen Schritt nötig. Die Punktedichte der Aufnahmen war an manchen Stellen der Punktwolke deutlich höher als im Durchschnitt. Diese waren die Stellen, wo der Lasersensor im Vergleich zu anderen Stellen länger aufhielt, wodurch mehrere Scan-Linien an den Stellen generiert wurden. Abbildung~\ref{fig: point_density_before} visualisiert diese Anomalie. 
 
 \begin{figure}[t]
 \includegraphics[width=1\textwidth]{Abbildungen/point_density_distribution_blech_before.png}
@@ -263,7 +263,7 @@ Nachdem die Parameter des Verfahrens festgelegt wurden, wurde jeder Scan drei Ma
 		4 & 707337 & 0,0003 & 0,0003 & 0,0003 & 80 & 0,96 & 0,05 & 0,91 & 0,18 \\
 		\hline
 	\end{tabularx}
-	\caption{Ergebnisse des Verfahrens mit vier reellen Punktwolken von Bauteilen}
+	\caption[Ergebnisse der dritten Untersuchung]{Ergebnisse des Verfahrens mit vier reellen Punktwolken von Bauteilen}
 	\label{table: test_3-2_results}
 \end{table}
 
