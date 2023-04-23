@@ -134,9 +134,9 @@ Bei \textit{SegmentEdges} spielt der geometrischer Zusammenhang zwischen Kanten 
 Bei dem ersten Verfahren werden neue Randpunkte darauf geprüft, ob sie vorhandene Segmente erweitern könnten. Während der Segmentierung werden die exakten Nachbarpunkte eines Punktes \textit{p} durchgesucht, um deren Segment zu finden. Falls einer der Nachbarpunkte bereits zu einem Segment \textit{C} gehört, werden die Richtungsvektoren des Segments sowie des Punktes \textit{p} verglichen. Der Richtungsvektor des Segments wird aus der Summe der Richtungsvektoren aller Punkte des Segments ermittelt. Falls die beiden Richtungsvektoren eine hohe Kollinearität aufweisen, wird es versucht, den Segment \textit{C} mit diesem Punkt zu erweitern. Hierfür wird die Methode \textit{\hyperref[alg:grow_segment]{GrowSegment}} aus dem \textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}-Verfahren wiederverwendet. Der neue Randpunkt \textit{p} wird als initialer Seedpunkt \textit{s\textsubscript{i}} innerhalb dieser Methode verwendet. Die Richtungsvektoren der unmarkierten exakten Nachbarpunkte von \textit{p} werden mit dem Richtungsvektor des Segments verglichen. Die Nachbarpunkte mit übereinstimmenden Richtungsvektoren werden zu dem Segment \textit{C} hinzugefügt und als neuer Seedpunkt \textit{s\textsubscript{C}} für die Erweiterung von \textit{C} verwendet. Falls der neue Randpunkt \textit{p} zu keinem vorhandenen Segment passt, wird mit ein neues Segment mittels des \textit{\hyperref[alg:grow_segment]{GrowSegment}}-Verfahrens erstellt.
 
 \begin{figure}[b!]
-	\includegraphics[width = 0.95\textwidth]{Abbildungen/blech_segments_bad.png}
+	\includegraphics[scale=0.3]{Abbildungen/blech_segments_bad.png}
 	\centering
-	\caption[Falsche Segmente]{Die falsch segmentierten horizontalen Kanten}
+	\caption[Falsch segmentierte Kanten]{Die vertikalen Kanten werden nicht vollständig segmentiert, sondern stückweise für jede Iteration}
 	\label{fig: bad_segments}
 \end{figure}
 
@@ -193,7 +193,7 @@ Bei der Implementierung dieser Verfahren werden neben den Inliers der Verfahren 
 
 Nach Identifizierung der Ausreißer werden alle Punkte von \textit{C\textsubscript{vor}} markiert, die entfernt werden sollen. Danach wird errechnet, in welchem Zusammenhang die Indizes der Inliers von \textit{C\textsubscript{vor}} zu dem Indizes der Punkte von \textit{C\textsubscript{nach}} stehen. Dieser Zusammenhang ergibt sich aus der Differenz der Indizes von den Inliers beziehungsweise Punkten der beiden Punktwolken und wird als der \textit{Punkt-Versatz} referiert. Das Algorithmus~\ref{alg: mark_points} zeigt den Verlauf der Markierung und Berechnung der \textit{Punkt-Versätze}. 
 
-\begin{algorithm}[!b]
+\begin{algorithm}[h]
 	\caption{Das Verfahren zum Markieren der entfernten Punktindizes}
 	\label{alg: mark_points}
 	\begin{algorithmic}[1]
@@ -220,7 +220,7 @@ Nach Identifizierung der Ausreißer werden alle Punkte von \textit{C\textsubscri
 
 Die Markierung der Ausreißer sowie der \textit{Punkt-Versatz} werden verwendet, um die Indizes der ersten paar Scan-Linien sowie der letzten paar Scan-Linien für die neue Punktwolke \textit{C\textsubscript{nach}} anzupassen. Darüber hinaus werden auch die Indizes der \textit{k} wiederholten Punkten für die nächste Iteration korrigiert und für den Einsatz in dem \textit{SegmentEdges} Verfahren bereitgestellt. Algorithmus~\ref{alg: correct_points} zeigt das Verfahren zum Korrigieren der Punktindizes.
 
-\begin{algorithm}
+\begin{algorithm}[h]
 	\caption{Verfahren zum Korrigieren der Punktindizes}
 	\label{alg: correct_points}
 	\begin{algorithmic}[1]

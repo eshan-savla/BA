@@ -130,7 +130,7 @@
 		\State \textbf{sort} \textit{PR by no. of neighbours}
 		\State \textit{number of segmented points n\textsubscript{pts}} $\gets$ \textit{no. of labels} $\neq -1$
 		\State \textit{No. of segments n\textsubscript{segs}} $\gets \textbf{max}\textit{(PL)} + 1$
-		\State \textit{n\textsubscript{pts}} $\gets$ \textit{\hyperref[alg: extend_segments]{ExtendSegment}(S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2})}
+		\State \textit{n\textsubscript{pts}} $\gets$ \textit{\hyperref[alg: extend_segments]{ExtendSegment}(S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2}, $\phi$)}
 		\State \textit{initial seed point s\textsubscript{i}} $\gets$ \textit{first point i \textbf{in} PR with \{PL\}[i]}$= -1$
 		\While{$\textit{n\textsubscript{pts}} < \textbf{size}\textit{E}$}
 		\State \textit{segment id C} $\gets$ \textit{n\textsubscript{segs}}
@@ -155,7 +155,7 @@
 	\caption{Ablauf der \textit{\hyperref[alg: extend_segments]{ExtendSegment}} Funktion}
 	\label{alg: extend_segments}
 	\begin{algorithmic}[1]
-		\Function{\textit{\hyperref[alg: extend_segments]{ExtendSegment}}}{\textit{S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2}}}
+		\Function{\textit{\hyperref[alg: extend_segments]{ExtendSegment}}}{\textit{S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2}}, $\phi$}
 		\State \textit{number of segmented points n\textsubscript{prev}} $\gets$ \textbf{size}\textit{(\{PL\}), for labels $\neq -1$ }
 		\State \textit{number of new points added n\textsubscript{add}} $\gets 0$
 		\State \textit{point labels copy \{PL\textsubscript{copy}\}} $\gets$ \{PL\}
@@ -221,7 +221,7 @@
 		\EndIf
 		\State \textit{seed vector vec\textsubscript{s\textsubscript{C}}} $\gets \{V\}[s_C]$
 		\State \textit{neighbour vector vec\textsubscript{i}} $\gets \{V\}[i]$
-		\State \textbf{bool }\textit{added} $\gets$ \textit{CheckPoint(vec\textsubscript{s\textsubscript{C}}, vec\textsubscript{i})}
+		\State \textbf{bool }\textit{added} $\gets$ \textit{CheckPoint(vec\textsubscript{s\textsubscript{C}}, vec\textsubscript{i}, $\phi$)}
 		\If{\textbf{not} \textit{added}}
 		\State \textit{\textbf{continue}}
 		\EndIf
