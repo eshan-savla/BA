@@ -1,4 +1,4 @@
-\chapter{Evaluierung und Ergebnisse}
+\chapter{Ergebnisse und Evaluierung}
 Das IEFD-Verfahren dieser Arbeit ist noch in der Prototypenphase. Wie in Abschnitt~\ref{Motivation} erwähnt, sollte dieses Verfahren unter anderem, eine Anwendung bei der Online-Erkennung von Schweißnähten finden. Um dieses zu erreichen, wurde das Verfahren unter bestimmten Kriterien evaluiert. Zur Evaluierung des Verfahrens wurden Anhand der Forschungsfrage sowie den drei Teilforschungsfragen Tests entworfen. Der erste Test sollte die Genauigkeit des IEFD-Verfahrens überprüfen. Mittels des zweiten Tests wurde der Einfluss der Punktdichte auf das Verfahren überprüft. Der letzte Test überprüfte die Robustheit des IEFD-Verfahrens gegen Objekte mit unterschiedlichen geometrischen Eigenschaften.
 
 \section{Testdaten und Evaluierungsmetriken}
@@ -14,7 +14,7 @@ Die künstliche Punktwolke wurde auf Basis vorgegebener Parameter mittels eines 
 \end{smallmatrix}\right)$, die am Ende des ersten Teils begann. Die Schnittlinie der ersten beiden Teile bildete die Innenkante ab. Der letzte Teil bestand aus einer Oberfläche auf der \textit{xy}-Ebene mit der gleichen Dimension wie der erste Teil. Diese Oberfläche schloss sich am Ende des zweiten Teils an und die daraus entstandene Schnittlinie bildete die Außenkante. Somit ergab sich eine Punktwolke von einer konstanten Größe. Der Punkteabstand dieser Punktwolke wurde für alle Tests unterschiedlich gewählt. Für den ersten und dritte Test wurde ein konstanter und einheitlicher Punkteabstand zwischen allen benachbarten Punkten festgelegt. Für den zweiten Test wurde allerdings der Punkteabstand variiert und wird näher im Abschnitt~\ref{test_2} behandelt. Abbildung~\ref{fig: ground_truth} zeigt die künstlich erstellte Punktwolke, die weiterhin als Ground-Truth benannt wird. 
 
 \begin{figure}[t]
-	\includegraphics[scale = 0.5]{Abbildungen/ground_truth.png}
+	\includegraphics[scale = 0.45]{Abbildungen/ground_truth.png}
 	\centering
 	\caption[Ground-Truth Datei]{Die Testdatei beziehungsweise das Ground-Truth}
 	\label{fig: ground_truth}
@@ -118,14 +118,14 @@ Das Referenzwerk \autocite{ni_edge_2016} deutete auf den Einfluss der Punktedich
 	\begin{subfigure}{0.49\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/ground_truth_0,00005.png}
 		\centering
-		\caption[Ground-Truth mit Punkteabstand von 0,00005\,\si{\m}]{Die erste Variante der Ground-Truth mit Punkteabstand 0,00005\,\si{\m}m}
+		\caption[Ground-Truth mit Punkteabstand von 0,00005\,\si{\m}]{Die erste Variante der Ground-Truth mit Punkteabstand 0,00005\,\si{\m}m. 1x vergrößert}
 		\label{fig: testdata_0,00005m}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.49\textwidth}
 		\includegraphics[width=\textwidth]{Abbildungen/ground_truth_0,005.png}
 		\centering
-		\caption[Ground-Truth mit Punkteabstand von 0,005\,\si{\m}m]{Die neunte Variante der Ground-Truth mit Punkteabstand 0,005\,\si{\m}m}
+		\caption[Ground-Truth mit Punkteabstand von 0,005\,\si{\m}m]{Die neunte Variante der Ground-Truth mit Punkteabstand 0,005\,\si{\m}m. 2x vergrößert}
 		\label{fig: testdata_0,005m}
 	\end{subfigure}
 	\caption[Unterschiedliche Punktedichten der Ground-Truth Datei]{Vergleich zwischen der Varianten der Ground-Truth mit der höchsten und niedrigsten Punktedichte}
