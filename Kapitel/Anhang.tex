@@ -13,7 +13,6 @@
 		\State \textit{reused points \{RE\}} $\gets$ \{\}
 		\State $\textit{false edge start \{FS\}} \gets \{\}$
 		\State $\textit{false edge end \{FE\}} \gets\{\}$
-		\State \textit{Edge Points \{E\}} $\gets$ \{\}
 		\State \textit{segments \{S\}} $\gets$ \{\}
 		\State \textit{previous reused edge points \{ER\textsubscript{p}\}} $\gets \{\}$
 		\For{Scan line S\textsubscript{i} \textbf{in} \{P\}}
@@ -27,6 +26,7 @@
 		\State $\textit{FE} \gets \textit{FE} + P[S_i]$
 		\EndIf	
 		\If{$\textit{\textbf{size(}R\textbf{)}}\geq n$}
+		\State \textit{Edge Points \{E\}} $\gets$ \{\}
 		\State \textit{Adjusted reused edge points \{ER\}} $\gets$ \{\}
 		\State \textit{E, ER} $\gets$ \textit{\hyperref[alg:find_edge_points]{FindEdgePoints}}(\textit{R, RE, FS, FE, K\textsubscript{1}, d\textsubscript{t1},}$\alpha$)
 		
@@ -34,7 +34,7 @@
 		\State \textit{vectors map \{V\}} $\gets$ \{\}
 		\State \textit{N, V} $\gets$ \textit{\hyperref[alg:compute_vectors]{ComputeVectors}}(\textit{E, ER\textsubscript{p},} $K_2$, $d_{t2}$)
 		
-		\State \textit{\{S\}} $\gets$ \textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}(\textit{E, RE\textsubscript{p}, S, N, V, } $K_2, \phi$)
+		\State \textit{\{S\}} $\gets$ \textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}(\textit{E, ER\textsubscript{p}, S, N, V, } $K_2, \phi$)
 		
 		\State $R \gets \{\}$
 		\State $R \gets \{RE\}$
@@ -95,7 +95,7 @@
 		\State \textit{first reused point r\textsubscript{1}} $\gets$ \{ER\textsubscript{P}\}[0]
 		\State \textit{neighbours map \{N\}} $\gets$ \{\}
 		\State \textit{vectors map \{V\}} $\gets$ \{\}
-		\For{\textit{point p = r\textsubscript{1}} \textbf{to size}(\{E\})}
+		\For{\textit{point p = r\textsubscript{1}} \textbf{to size}{(\{E\})}}
 		\State \textit{nearest neighbour \{N\textsubscript{p}\}} $\gets \{\}$
 		\State \textit{N\textsubscript{p}} $\gets$ \textit{NearestNeighbourSearch(E, p, K\textsubscript{2})}
 		\If{$\textbf{size}(\textit{text}) < 3$}
@@ -124,21 +124,21 @@
 	\begin{algorithmic}[1]
 		\Function{\textit{\hyperref[alg:apply_region_growing]{ApplyRegionGrowing}}}{\textit{E, RE\textsubscript{p}, S, N, V, K\textsubscript{2}}, $\phi$}
 		\State \textit{seed counter $x$} $\gets 0$
-		\State \textit{point labels \{PL\}} $\gets$ \textbf{size}\textit{\{E\}}
-		\State \textit{All unlabeled points \textbf{in} PL get value }$-1$
+		\State \textit{point labels \{PL\}} $\gets$ \textbf{size}\textit{(\{E\} + \{S\})}
+		\State \textit{All unlabeled points from E \textbf{in} PL get value }$-1$
 		\State \textit{point residuals \{PR\}} $\gets$ \textit{E}
 		\State \textbf{sort} \textit{PR by no. of neighbours}
 		\State \textit{number of segmented points n\textsubscript{pts}} $\gets$ \textit{no. of labels} $\neq -1$
 		\State \textit{No. of segments n\textsubscript{segs}} $\gets \textbf{max}\textit{(PL)} + 1$
 		\State \textit{n\textsubscript{pts}} $\gets$ \textit{\hyperref[alg: extend_segments]{ExtendSegment}(S, ER\textsubscript{p}, PL, N, V, K\textsubscript{2}, $\phi$)}
 		\State \textit{initial seed point s\textsubscript{i}} $\gets$ \textit{first point i \textbf{in} PR with \{PL\}[i]}$= -1$
-		\While{$\textit{n\textsubscript{pts}} < \textbf{size}\textit{E}$}
+		\While{$\textit{n\textsubscript{pts}} < \textbf{size}\textit{(\{E\})}$}
 		\State \textit{segment id C} $\gets$ \textit{n\textsubscript{segs}}
 		\State \textit{new points new\textsubscript{pts}} $\gets$ \textit{\hyperref[alg:grow_segment]{GrowSegment}(s\textsubscript{i}, C, PL, N, V,  K\textsubscript{2}, $\phi$)}
 		\State \textit{\{S\}[C]} $\gets$ \textit{new\textsubscript{pts}}
 		\State $n_{pts} \gets new_{pts}$
 		\State \textit{n\textsubscript{segs}} $\gets + 1$
-		\For{$\textit{seed i}= x + 1 \textbf{to size}(PR)$}
+		\For{$\textit{seed i}= x + 1 \textbf{ to size}(PR)$}
 		\If{$\{PL\}[i] = -1$}
 		\State $s_i = \{PR\}[i]$
 		\State $x = i$
